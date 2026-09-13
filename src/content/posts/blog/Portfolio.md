@@ -22,4 +22,8 @@ author: 贺子航
 
 
 # 笔记类
-![[第一章 毛泽东思想及其历史地位（完）.docx]]
+
+📖 [在线阅读：第一章 毛泽东思想及其历史地位](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Fmzd-notes-chapter1.docx)
+
+⬇️ [下载原文件](https://lunoxblog.com/files/mzd-notes-chapter1.docx)
+
