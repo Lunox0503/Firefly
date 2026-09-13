@@ -118,3 +118,8 @@ author: 贺子航
 仅展示部分
 
 ![例图2.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789283369970_例图2.jpg)![例图3.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789283371398_例图3.jpg)![例图4.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789283359459_例图4.jpg)![例图5.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789283360817_例图5.jpg)
+
+# 📌 作品类
+
+## 一. 绘画
+![1.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789283792664_1.jpg)![2.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789283782447_2.jpg)![3.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789283781523_3.jpg)![4.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789283769878_4.jpg)
