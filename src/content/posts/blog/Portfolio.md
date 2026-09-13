@@ -11,14 +11,38 @@ draft: false
 author: 贺子航
 ---
 # 📌 荣誉证书
-**一等奖学金证书：**
-![一等奖学金证书.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789304121004_一等奖学金证书.jpg)
 
-**室内设计师（高级）证书：**
-![室内设计师（高级）证书.jpg](https://tu.lunoxblog.com/file/blog/Portfolio/1789304938492_室内设计师（高级）证书.jpg)
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+  <figure style="margin:0;text-align:center;">
+    <img src="https://tu.lunoxblog.com/file/blog/wenzhang/1789304121004_一等奖学金证书.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:8px;" alt="一等奖学金证书" />
+    <figcaption style="font-size:0.85em;margin-top:4px;">一等奖学金证书</figcaption>
+  </figure>
+  <figure style="margin:0;text-align:center;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789304938492_室内设计师（高级）证书.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:8px;" alt="室内设计师（高级）证书" />
+    <figcaption style="font-size:0.85em;margin-top:4px;">室内设计师（高级）证书</figcaption>
+  </figure>
+  <figure style="margin:0;text-align:center;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789304949050_实习证明.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:8px;" alt="实习证明" />
+    <figcaption style="font-size:0.85em;margin-top:4px;">实习证明</figcaption>
+  </figure>
+</div>
 
-**实习证明：**
-![实习证明.jpg](https://tu.lunoxblog.com/file/blog/Portfolio/1789304949050_实习证明.jpg)
+**260px 版本对比 👇**
+
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+  <figure style="margin:0;text-align:center;">
+    <img src="https://tu.lunoxblog.com/file/blog/wenzhang/1789304121004_一等奖学金证书.jpg" style="width:100%;height:260px;object-fit:cover;border-radius:8px;" alt="一等奖学金证书" />
+    <figcaption style="font-size:0.85em;margin-top:4px;">一等奖学金证书</figcaption>
+  </figure>
+  <figure style="margin:0;text-align:center;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789304938492_室内设计师（高级）证书.jpg" style="width:100%;height:260px;object-fit:cover;border-radius:8px;" alt="室内设计师（高级）证书" />
+    <figcaption style="font-size:0.85em;margin-top:4px;">室内设计师（高级）证书</figcaption>
+  </figure>
+  <figure style="margin:0;text-align:center;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789304949050_实习证明.jpg" style="width:100%;height:260px;object-fit:cover;border-radius:8px;" alt="实习证明" />
+    <figcaption style="font-size:0.85em;margin-top:4px;">实习证明</figcaption>
+  </figure>
+</div>
 
 
 # 📌 笔记类
@@ -115,9 +139,9 @@ author: 贺子航
 
 ## 二. 手写笔记
 
-仅展示部分
+**仅展示部分**
 
-![例图2.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789283369970_例图2.jpg)![例图3.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789283371398_例图3.jpg)![例图4.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789283359459_例图4.jpg)![例图5.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789283360817_例图5.jpg)
+
 
 # 📌 作品类
 
