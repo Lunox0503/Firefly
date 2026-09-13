@@ -122,4 +122,6 @@ author: 贺子航
 # 📌 作品类
 
 ## 一. 绘画
-![1.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789283792664_1.jpg)![2.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789283782447_2.jpg)![3.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789283781523_3.jpg)![4.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789283769878_4.jpg)
+![1.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789297050536_1.jpg)![2.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789297041375_2.jpg)![3.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789297041279_3.jpg)![4.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789297033264_4.jpg)
+
+## 二. 手工构成
