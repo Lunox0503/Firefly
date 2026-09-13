@@ -22,6 +22,8 @@ author: 贺子航
 
 
 # 📌 笔记类
+
+📝 **原创声明**：本页展示的所有课程笔记，其内容整理、排版设计及重点高亮标注均为本人独立完成，谢绝搬运商用；如需引用欢迎注明出处，仅作学习交流使用~
 ## 一. 电子笔记
 ![例图1.png|700](https://tu.lunoxblog.com/file/blog/wenzhang/1789281019763_例图1.png)
 ### 1.《毛泽东思想和中国特色社会主义理论体系概论》
@@ -59,3 +61,54 @@ author: 贺子航
 | 第十五章 坚持"一国两制"和推进祖国完全统一 | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Fxigai-notes-chapter15.docx) | [⬇️ 原文件](https://lunoxblog.com/files/xigai-notes-chapter15.docx) |
 | 第十六章 中国特色大国外交和推动构建人类命运共同体 | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Fxigai-notes-chapter16.docx) | [⬇️ 原文件](https://lunoxblog.com/files/xigai-notes-chapter16.docx) |
 | 第十七章 全面从严治党 | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Fxigai-notes-chapter17.doc) | [⬇️ 原文件](https://lunoxblog.com/files/xigai-notes-chapter17.doc) |
+
+### 3.《思想道德与法治》
+
+| 章节 | 在线阅读 | 下载 |
+| --- | --- | --- |
+| 绪论 担当复兴大任 成就时代新人（新书） | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Fsixin-notes-intro.docx) | [⬇️ 原文件](https://lunoxblog.com/files/sixin-notes-intro.docx) |
+| 绪论（旧版） | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Fsixin-notes-intro-old.docx) | [⬇️ 原文件](https://lunoxblog.com/files/sixin-notes-intro-old.docx) |
+| 第一章 领悟人生真谛 把握人生方向（新书） | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Fsixin-notes-chapter1.docx) | [⬇️ 原文件](https://lunoxblog.com/files/sixin-notes-chapter1.docx) |
+| 第一章 把握人生的方向和道路（旧版） | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Fsixin-notes-chapter1-old.docx) | [⬇️ 原文件](https://lunoxblog.com/files/sixin-notes-chapter1-old.docx) |
+| 第二章 追求远大理想 坚定崇高信念（新书） | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Fsixin-notes-chapter2.docx) | [⬇️ 原文件](https://lunoxblog.com/files/sixin-notes-chapter2.docx) |
+| 第二章 坚定理想信念（旧版） | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Fsixin-notes-chapter2-old.docx) | [⬇️ 原文件](https://lunoxblog.com/files/sixin-notes-chapter2-old.docx) |
+| 第三章 继承优良传统 弘扬中国精神（新书） | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Fsixin-notes-chapter3.docx) | [⬇️ 原文件](https://lunoxblog.com/files/sixin-notes-chapter3.docx) |
+| 第三章 倾注对祖国的忠诚与热爱（旧版） | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Fsixin-notes-chapter3-old.docx) | [⬇️ 原文件](https://lunoxblog.com/files/sixin-notes-chapter3-old.docx) |
+| 第四章 加强道德学习 | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Fsixin-notes-chapter4.docx) | [⬇️ 原文件](https://lunoxblog.com/files/sixin-notes-chapter4.docx) |
+| 第五章 培养优良道德品质 | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Fsixin-notes-chapter5.docx) | [⬇️ 原文件](https://lunoxblog.com/files/sixin-notes-chapter5.docx) |
+| 第六章 弘扬社会主义法治精神 | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Fsixin-notes-chapter6.docx) | [⬇️ 原文件](https://lunoxblog.com/files/sixin-notes-chapter6.docx) |
+| 第七章 学好法学基础理论 | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Fsixin-notes-chapter7.docx) | [⬇️ 原文件](https://lunoxblog.com/files/sixin-notes-chapter7.docx) |
+
+### 4.《人机工程学》
+
+| 章节 | 在线阅读 | 下载 |
+| --- | --- | --- |
+| 第一章 人机工程学概述 | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Frenji-notes-chapter1.docx) | [⬇️ 原文件](https://lunoxblog.com/files/renji-notes-chapter1.docx) |
+| 第二章 人体尺寸测量 | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Frenji-notes-chapter2.docx) | [⬇️ 原文件](https://lunoxblog.com/files/renji-notes-chapter2.docx) |
+| 第三章 人体感知系统 | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Frenji-notes-chapter3.docx) | [⬇️ 原文件](https://lunoxblog.com/files/renji-notes-chapter3.docx) |
+| 第四章 人体运动系统 | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Frenji-notes-chapter4.docx) | [⬇️ 原文件](https://lunoxblog.com/files/renji-notes-chapter4.docx) |
+| 第五章 人机界面设计 | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Frenji-notes-chapter5.docx) | [⬇️ 原文件](https://lunoxblog.com/files/renji-notes-chapter5.docx) |
+| 第六章 作业空间的设计 | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Frenji-notes-chapter6.docx) | [⬇️ 原文件](https://lunoxblog.com/files/renji-notes-chapter6.docx) |
+| 第七章 人机工程学在室内设计中的运用 | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Frenji-notes-chapter7.docx) | [⬇️ 原文件](https://lunoxblog.com/files/renji-notes-chapter7.docx) |
+| 第八章 人机工程学在产品设计中的运用 | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Frenji-notes-chapter8.docx) | [⬇️ 原文件](https://lunoxblog.com/files/renji-notes-chapter8.docx) |
+
+### 5.《设计概论》
+
+| 章节 | 在线阅读 | 下载 |
+| --- | --- | --- |
+| 第一章 设计的行为来源 | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Fsheji-notes-chapter1.docx) | [⬇️ 原文件](https://lunoxblog.com/files/sheji-notes-chapter1.docx) |
+| 第二章 设计的概念演变 | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Fsheji-notes-chapter2.docx) | [⬇️ 原文件](https://lunoxblog.com/files/sheji-notes-chapter2.docx) |
+| 第三章 设计的基本原则 | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Fsheji-notes-chapter3.docx) | [⬇️ 原文件](https://lunoxblog.com/files/sheji-notes-chapter3.docx) |
+| 第四章 设计的社会意义 | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Fsheji-notes-chapter4.docx) | [⬇️ 原文件](https://lunoxblog.com/files/sheji-notes-chapter4.docx) |
+| 第五章 形式元素 | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Fsheji-notes-chapter5.docx) | [⬇️ 原文件](https://lunoxblog.com/files/sheji-notes-chapter5.docx) |
+| 第六章 形式法则 | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Fsheji-notes-chapter6.docx) | [⬇️ 原文件](https://lunoxblog.com/files/sheji-notes-chapter6.docx) |
+| 第七章 设计思维 | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Fsheji-notes-chapter7.docx) | [⬇️ 原文件](https://lunoxblog.com/files/sheji-notes-chapter7.docx) |
+| 第八章 设计程序 | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Fsheji-notes-chapter8.docx) | [⬇️ 原文件](https://lunoxblog.com/files/sheji-notes-chapter8.docx) |
+| 第十章 现代设计史略 | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Fsheji-notes-chapter10.docx) | [⬇️ 原文件](https://lunoxblog.com/files/sheji-notes-chapter10.docx) |
+| 第十一章 设计美学 | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Fsheji-notes-chapter11.docx) | [⬇️ 原文件](https://lunoxblog.com/files/sheji-notes-chapter11.docx) |
+| 第十二章 设计心理学 | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Fsheji-notes-chapter12.docx) | [⬇️ 原文件](https://lunoxblog.com/files/sheji-notes-chapter12.docx) |
+| 第十三章 设计批评 | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Fsheji-notes-chapter13.docx) | [⬇️ 原文件](https://lunoxblog.com/files/sheji-notes-chapter13.docx) |
+| 第十四章 视觉传达设计 | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Fsheji-notes-chapter14.docx) | [⬇️ 原文件](https://lunoxblog.com/files/sheji-notes-chapter14.docx) |
+| 第十五章 工业产品设计 | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Fsheji-notes-chapter15.docx) | [⬇️ 原文件](https://lunoxblog.com/files/sheji-notes-chapter15.docx) |
+| 第十六章 环境艺术设计 | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Fsheji-notes-chapter16.docx) | [⬇️ 原文件](https://lunoxblog.com/files/sheji-notes-chapter16.docx) |
+| 第十七章 数字艺术设计 | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Fsheji-notes-chapter17.docx) | [⬇️ 原文件](https://lunoxblog.com/files/sheji-notes-chapter17.docx) |
