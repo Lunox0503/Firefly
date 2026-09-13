@@ -135,8 +135,7 @@ author: 贺子航
 ![VR全景.png](https://tu.lunoxblog.com/file/blog/wenzhang/1789299204541_VR全景.png)
 
 ## 五. 动画
-
-<iframe src="//player.bilibili.com/player.html?bvid=BV1JxYq6dETY&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" width="720" height="405" allowfullscreen="true"></iframe>
+[▶️ 点击观看：客餐厅动画](https://www.bilibili.com/video/BV1JxYq6dETY/)
 ## 六. PPT
 
 | 作品 | 在线查看 |
