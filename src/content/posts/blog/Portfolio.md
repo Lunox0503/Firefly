@@ -12,7 +12,7 @@ author: 贺子航
 ---
 # 📌 荣誉证书
 **一等奖学金证书：**
-![一等奖学金证书.jpg|611](https://tu.lunoxblog.com/file/blog/wenzhang/1789279708760_一等奖学金证书.jpg)
+![一等奖学金证书.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789304121004_一等奖学金证书.jpg)
 
 **室内设计师（高级）证书：**
 ![室内设计师（高级）证书.jpg|610](https://tu.lunoxblog.com/file/blog/wenzhang/1789279620219_室内设计师（高级）证书.jpg)
