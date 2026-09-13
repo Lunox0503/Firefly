@@ -112,3 +112,9 @@ author: 贺子航
 | 第十五章 工业产品设计 | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Fsheji-notes-chapter15.docx) | [⬇️ 原文件](https://lunoxblog.com/files/sheji-notes-chapter15.docx) |
 | 第十六章 环境艺术设计 | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Fsheji-notes-chapter16.docx) | [⬇️ 原文件](https://lunoxblog.com/files/sheji-notes-chapter16.docx) |
 | 第十七章 数字艺术设计 | [📖 打开](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Flunoxblog.com%2Ffiles%2Fsheji-notes-chapter17.docx) | [⬇️ 原文件](https://lunoxblog.com/files/sheji-notes-chapter17.docx) |
+
+## 二. 手写笔记
+
+仅展示部分
+
+![例图2.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789283369970_例图2.jpg)![例图3.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789283371398_例图3.jpg)![例图4.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789283359459_例图4.jpg)![例图5.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789283360817_例图5.jpg)
