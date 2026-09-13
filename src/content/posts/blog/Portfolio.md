@@ -142,5 +142,4 @@ author: 贺子航
 | --- | --- |
 | 上海时代之城109㎡家装方案设计 | [📄 打开](https://lunoxblog.com/files/ppt-shidai-zhicheng109.pdf) |
 | 杭州日铁项目册 | [📄 打开](https://lunoxblog.com/files/ppt-hangzhou-rijie.pdf) |
-| 石材调研 | [📄 打开](https://lunoxblog.com/files/ppt-shicai-diaoyan.pdf) |
 | 苏州博物馆 | [📄 打开](https://lunoxblog.com/files/ppt-suzhou-museum.pdf) |
