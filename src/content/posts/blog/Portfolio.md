@@ -133,3 +133,10 @@ author: 贺子航
 ![VR全景.png]()![客餐厅模型.png](https://tu.lunoxblog.com/file/blog/wenzhang/1789299176970_客餐厅模型.png)![客餐厅效果图1.png](https://tu.lunoxblog.com/file/blog/wenzhang/1789299179872_客餐厅效果图1.png)![客餐厅效果图2.png](https://tu.lunoxblog.com/file/blog/wenzhang/1789299174905_客餐厅效果图2.png)![儿童房模型.png](https://tu.lunoxblog.com/file/blog/wenzhang/1789299174259_儿童房模型.png)![儿童房效果图.png](https://tu.lunoxblog.com/file/blog/wenzhang/1789299166484_儿童房效果图.png)![主卧模型.png](https://tu.lunoxblog.com/file/blog/wenzhang/1789299153904_主卧模型.png)![主卧效果图.png](https://tu.lunoxblog.com/file/blog/wenzhang/1789299115841_主卧效果图.png)
 
 ![VR全景.png](https://tu.lunoxblog.com/file/blog/wenzhang/1789299204541_VR全景.png)
+
+## 五. 动画
+
+<iframe src="//player.bilibili.com/player.html?bvid=BV1JxYq6dETY&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" width="720" height="405" allowfullscreen="true"></iframe>
+
+
+<iframe src="//player.bilibili.com/player.html?bvid=BV1JxYq6dETY&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" width="720" height="405" allowfullscreen="true"></iframe>
