@@ -135,11 +135,14 @@ author: 贺子航
 ![VR全景.png](https://tu.lunoxblog.com/file/blog/wenzhang/1789299204541_VR全景.png)
 
 ## 五. 动画
-[▶️ 点击观看：客餐厅动画](https://www.bilibili.com/video/BV1JxYq6dETY/)
+
+<iframe src="//player.bilibili.com/player.html?bvid=BV1JxYq6dETY&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" width="720" height="405" allowfullscreen="true"></iframe>
+
 ## 六. PPT
 
 | 作品 | 在线查看 |
 | --- | --- |
 | 上海时代之城109㎡家装方案设计 | [📄 打开](https://lunoxblog.com/files/ppt-shidai-zhicheng109.pdf) |
 | 杭州日铁项目册 | [📄 打开](https://lunoxblog.com/files/ppt-hangzhou-rijie.pdf) |
+| 石材调研 | [📄 打开](https://lunoxblog.com/files/ppt-shicai-diaoyan.pdf) |
 | 苏州博物馆 | [📄 打开](https://lunoxblog.com/files/ppt-suzhou-museum.pdf) |
