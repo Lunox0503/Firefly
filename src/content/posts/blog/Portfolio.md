@@ -15,10 +15,10 @@ author: 贺子航
 ![一等奖学金证书.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789304121004_一等奖学金证书.jpg)
 
 **室内设计师（高级）证书：**
-![室内设计师（高级）证书.jpg|610](https://tu.lunoxblog.com/file/blog/wenzhang/1789279620219_室内设计师（高级）证书.jpg)
+![室内设计师（高级）证书.jpg](https://tu.lunoxblog.com/file/blog/Portfolio/1789304938492_室内设计师（高级）证书.jpg)
 
 **实习证明：**
-![实习证明.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789279837601_实习证明.jpg)
+![实习证明.jpg](https://tu.lunoxblog.com/file/blog/Portfolio/1789304949050_实习证明.jpg)
 
 
 # 📌 笔记类
