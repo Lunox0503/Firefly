@@ -128,3 +128,8 @@ author: 贺子航
 ![2.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789297147850_2.jpg)![1.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789297137743_1.jpg)![3.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789297138206_3.jpg)
 ## 三. 施工图
 ![总平面图.png](https://tu.lunoxblog.com/file/blog/wenzhang/1789298291715_总平面图.png)![平面布置图.png](https://tu.lunoxblog.com/file/blog/wenzhang/1789298289357_平面布置图.png)![给水布置图.png](https://tu.lunoxblog.com/file/blog/wenzhang/1789298285516_给水布置图.png)![立面详图.png](https://tu.lunoxblog.com/file/blog/wenzhang/1789298283366_立面详图.png)![天花大样图.png](https://tu.lunoxblog.com/file/blog/wenzhang/1789298274485_天花大样图.png)![彩平图2.png](https://tu.lunoxblog.com/file/blog/wenzhang/1789298268489_彩平图2.png)![彩平图1.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789298260418_彩平图1.jpg)
+
+## 四. 建模
+![VR全景.png]()![客餐厅模型.png](https://tu.lunoxblog.com/file/blog/wenzhang/1789299176970_客餐厅模型.png)![客餐厅效果图1.png](https://tu.lunoxblog.com/file/blog/wenzhang/1789299179872_客餐厅效果图1.png)![客餐厅效果图2.png](https://tu.lunoxblog.com/file/blog/wenzhang/1789299174905_客餐厅效果图2.png)![儿童房模型.png](https://tu.lunoxblog.com/file/blog/wenzhang/1789299174259_儿童房模型.png)![儿童房效果图.png](https://tu.lunoxblog.com/file/blog/wenzhang/1789299166484_儿童房效果图.png)![主卧模型.png](https://tu.lunoxblog.com/file/blog/wenzhang/1789299153904_主卧模型.png)![主卧效果图.png](https://tu.lunoxblog.com/file/blog/wenzhang/1789299115841_主卧效果图.png)
+
+![VR全景.png](https://tu.lunoxblog.com/file/blog/wenzhang/1789299204541_VR全景.png)
