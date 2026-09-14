@@ -194,17 +194,108 @@ author: 贺子航
 </div>
 
 
+## 三. PS
+
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;align-items:start;">
+  <figure style="margin:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789398300640_家庭计划券正面.jpg" style="width:100%;display:block;border-radius:8px;" alt="家庭计划券 · 正面" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">家庭计划券 · 正面</figcaption>
+  </figure>
+  <figure style="margin:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789398304613_家庭计划券反面.jpg" style="width:100%;display:block;border-radius:8px;" alt="家庭计划券 · 反面" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">家庭计划券 · 反面</figcaption>
+  </figure>
+  <figure style="margin:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789398282721_三味教育招生宣传（正面）.jpg" style="width:100%;display:block;border-radius:8px;" alt="三味教育招生宣传 · 正面" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">三味教育招生宣传 · 正面</figcaption>
+  </figure>
+  <figure style="margin:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789398288200_三味教育招生宣传（反面）.jpg" style="width:100%;display:block;border-radius:8px;" alt="三味教育招生宣传 · 反面" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">三味教育招生宣传 · 反面</figcaption>
+  </figure>
+  <figure style="margin:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789398269049_惠东方传单（正面）.jpg" style="width:100%;display:block;border-radius:8px;" alt="惠东方传单 · 正面" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">惠东方传单 · 正面</figcaption>
+  </figure>
+  <figure style="margin:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789398280167_惠东方传单（反面）.jpg" style="width:100%;display:block;border-radius:8px;" alt="惠东方传单 · 反面" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">惠东方传单 · 反面</figcaption>
+  </figure>
+  <figure style="margin:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789398288088_汉堡海报.jpg" style="width:100%;display:block;border-radius:8px;" alt="汉堡海报" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">汉堡海报</figcaption>
+  </figure>
+  <figure style="margin:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789398289875_康合营养家传单.jpg" style="width:100%;display:block;border-radius:8px;" alt="康合营养家传单" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">康合营养家传单</figcaption>
+  </figure>
+</div>
 
 
 
-## 三. 施工图
-
-![给水布置图.png](https://tu.lunoxblog.com/file/blog/Portfolio/1789393048670_给水布置图.png)
-![彩平图2 .png](https://tu.lunoxblog.com/file/blog/Portfolio/1789393099189_彩平图2_.png)![彩平图1.jpg](https://tu.lunoxblog.com/file/blog/Portfolio/1789393090501_彩平图1.jpg)![立面详图.png](https://tu.lunoxblog.com/file/blog/Portfolio/1789393081745_立面详图.png)![天花大样图2.png](https://tu.lunoxblog.com/file/blog/Portfolio/1789393078902_天花大样图2.png)![天花大样图1.png](https://tu.lunoxblog.com/file/blog/Portfolio/1789393080276_天花大样图1.png)![天花布置图.png](https://tu.lunoxblog.com/file/blog/Portfolio/1789393078164_天花布置图.png)![平面布置图.png](https://tu.lunoxblog.com/file/blog/Portfolio/1789393073500_平面布置图.png)![开关布置图.png](https://tu.lunoxblog.com/file/blog/Portfolio/1789393065930_开关布置图.png)
 
 
 
-## 四. 家装项目
+
+## 四. 施工图
+
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;align-items:start;">
+  <figure style="margin:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789393073500_平面布置图.png" style="width:100%;display:block;border-radius:8px;" alt="平面布置图" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">平面布置图</figcaption>
+  </figure>
+  <figure style="margin:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789393078164_天花布置图.png" style="width:100%;display:block;border-radius:8px;" alt="天花布置图" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">天花布置图</figcaption>
+  </figure>
+  <figure style="margin:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789393065930_开关布置图.png" style="width:100%;display:block;border-radius:8px;" alt="开关布置图" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">开关布置图</figcaption>
+  </figure>
+  <figure style="margin:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789393048670_给水布置图.png" style="width:100%;display:block;border-radius:8px;" alt="给水布置图" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">给水布置图</figcaption>
+  </figure>
+  <figure style="margin:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789393080276_天花大样图1.png" style="width:100%;display:block;border-radius:8px;" alt="天花大样图 1" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">天花大样图 1</figcaption>
+  </figure>
+  <figure style="margin:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789393078902_天花大样图2.png" style="width:100%;display:block;border-radius:8px;" alt="天花大样图 2" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">天花大样图 2</figcaption>
+  </figure>
+  <figure style="margin:0;grid-column:1/-1;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789393081745_立面详图.png" style="width:100%;display:block;border-radius:8px;" alt="立面详图" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">立面详图</figcaption>
+  </figure>
+</div>
+
+## 五. 彩平图
+
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;align-items:start;">
+  <figure style="margin:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789397769325_彩平图1.png" style="width:100%;display:block;border-radius:8px;" alt="彩平图 1" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">彩平图 1</figcaption>
+  </figure>
+  <figure style="margin:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789397782205_彩平图2.png" style="width:100%;display:block;border-radius:8px;" alt="彩平图 2" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">彩平图 2</figcaption>
+  </figure>
+  <figure style="margin:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789397783428_彩平图3.png" style="width:100%;display:block;border-radius:8px;" alt="彩平图 3" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">彩平图 3</figcaption>
+  </figure>
+  <figure style="margin:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789397785443_彩平图4_.png" style="width:100%;display:block;border-radius:8px;" alt="彩平图 4" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">彩平图 4</figcaption>
+  </figure>
+</div>
+
+
+
+
+
+## 六. 家装项目
 
 <a href="/posts/blog/project-jiazhuang-1/" style="display:grid;grid-template-columns:1.15fr 1fr;gap:0;margin:0 0 18px;border-radius:12px;overflow:hidden;text-decoration:none;color:inherit;border:1px solid rgba(0,0,0,0.08);background:rgba(0,0,0,0.015);">
   <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789368334250_客餐厅效果图1.png" style="width:100%;height:100%;min-height:150px;object-fit:cover;display:block;" alt="家装项目 1" />
@@ -233,7 +324,7 @@ author: 贺子航
   </div>
 </a>
 
-## 六. PPT
+## 七. PPT
 
 | 作品 | 在线查看 |
 | --- | --- |
