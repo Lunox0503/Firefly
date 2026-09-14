@@ -20,7 +20,7 @@ author: 贺子航
 
 <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
   <figure style="margin:0;text-align:center;">
-    <img src="https://tu.lunoxblog.com/file/blog/wenzhang/1789304121004_一等奖学金证书.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:8px;" alt="一等奖学金证书" />
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789304121004_一等奖学金证书.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:8px;" alt="一等奖学金证书" />
     <figcaption style="font-size:0.85em;margin-top:4px;">一等奖学金证书</figcaption>
   </figure>
   <figure style="margin:0;text-align:center;">
@@ -35,7 +35,7 @@ author: 贺子航
 
 # 📌 笔记类
 
-
+**仅展示部分**
 ## 一. 电子笔记
 ![例图1.png|700](https://tu.lunoxblog.com/file/blog/wenzhang/1789281019763_例图1.png)
 ### 1.《毛泽东思想和中国特色社会主义理论体系概论》
@@ -127,17 +127,51 @@ author: 贺子航
 
 ## 二. 手写笔记
 
-**仅展示部分**
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;">
+  <figure style="margin:0;text-align:center;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789365883289_例图2.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:8px;" alt="手写笔记示例 1" />
+    <figcaption style="font-size:0.85em;margin-top:4px;">手写笔记示例 1</figcaption>
+  </figure>
+  <figure style="margin:0;text-align:center;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789365914234_例图3.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:8px;" alt="手写笔记示例 2" />
+    <figcaption style="font-size:0.85em;margin-top:4px;">手写笔记示例 2</figcaption>
+  </figure>
+</div>
 
 
 
 # 📌 作品类
 
 ## 一. 绘画
-![1.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789297050536_1.jpg)![2.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789297041375_2.jpg)![3.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789297041279_3.jpg)![4.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789297033264_4.jpg)
+
+<div style="column-count:2;column-gap:10px;">
+  <figure style="margin:0 0 10px;break-inside:avoid;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789366114230_帆船.jpg" style="width:100%;display:block;border-radius:8px;" alt="帆船" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">帆船</figcaption>
+  </figure>
+  <figure style="margin:0 0 10px;break-inside:avoid;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789366164455_归鸟屋.jpg" style="width:100%;display:block;border-radius:8px;" alt="归鸟屋" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">归鸟屋</figcaption>
+  </figure>
+  <figure style="margin:0 0 10px;break-inside:avoid;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789366163555_公园.jpg" style="width:100%;display:block;border-radius:8px;" alt="公园" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">公园</figcaption>
+  </figure>
+  <figure style="margin:0 0 10px;break-inside:avoid;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789366152283_物件.jpg" style="width:100%;display:block;border-radius:8px;" alt="物件" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">物件</figcaption>
+  </figure>
+</div>
 
 ## 二. 手工构成
-![2.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789297147850_2.jpg)![1.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789297137743_1.jpg)![3.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789297138206_3.jpg)
+
+![立体构成.jpg](https://tu.lunoxblog.com/file/blog/Portfolio/1789366330301_立体构成.jpg)![色彩构成.jpg](https://tu.lunoxblog.com/file/blog/Portfolio/1789366319738_色彩构成.jpg)![单体构成.jpg](https://tu.lunoxblog.com/file/blog/Portfolio/1789366319168_单体构成.jpg)
+
+
+
+
+
+
 ## 三. 施工图
 ![总平面图.png](https://tu.lunoxblog.com/file/blog/wenzhang/1789298291715_总平面图.png)![平面布置图.png](https://tu.lunoxblog.com/file/blog/wenzhang/1789298289357_平面布置图.png)![给水布置图.png](https://tu.lunoxblog.com/file/blog/wenzhang/1789298285516_给水布置图.png)![立面详图.png](https://tu.lunoxblog.com/file/blog/wenzhang/1789298283366_立面详图.png)![天花大样图.png](https://tu.lunoxblog.com/file/blog/wenzhang/1789298274485_天花大样图.png)![彩平图2.png](https://tu.lunoxblog.com/file/blog/wenzhang/1789298268489_彩平图2.png)![彩平图1.jpg](https://tu.lunoxblog.com/file/blog/wenzhang/1789298260418_彩平图1.jpg)
 
