@@ -199,37 +199,8 @@ author: 贺子航
 
 ## 三. 施工图
 
-<div style="column-count:2;column-gap:10px;">
-  <figure style="margin:0 0 10px;break-inside:avoid;">
-    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789367440120_总平面图.png" style="width:100%;display:block;border-radius:8px;" alt="总平面图" />
-    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">总平面图</figcaption>
-  </figure>
-  <figure style="margin:0 0 10px;break-inside:avoid;">
-    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789367436104_平面布置图.png" style="width:100%;display:block;border-radius:8px;" alt="平面布置图" />
-    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">平面布置图</figcaption>
-  </figure>
-  <figure style="margin:0 0 10px;break-inside:avoid;">
-    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789367426603_给水布置图.png" style="width:100%;display:block;border-radius:8px;" alt="给水布置图" />
-    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">给水布置图</figcaption>
-  </figure>
-  <figure style="margin:0 0 10px;break-inside:avoid;">
-    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789367413725_天花大样图.png" style="width:100%;display:block;border-radius:8px;" alt="天花大样图" />
-    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">天花大样图</figcaption>
-  </figure>
-  <figure style="margin:0 0 10px;break-inside:avoid;">
-    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789367426396_立面详图.png" style="width:100%;display:block;border-radius:8px;" alt="立面详图" />
-    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">立面详图</figcaption>
-  </figure>
-  <figure style="margin:0 0 10px;break-inside:avoid;">
-    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789367404317_彩平图1.jpg" style="width:100%;display:block;border-radius:8px;" alt="彩平图1" />
-    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">彩平图 1</figcaption>
-  </figure>
-  <figure style="margin:0 0 10px;break-inside:avoid;">
-    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789367389689_彩平图2_.png" style="width:100%;display:block;border-radius:8px;" alt="彩平图2" />
-    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">彩平图 2</figcaption>
-  </figure>
-</div>
-
+![给水布置图.png](https://tu.lunoxblog.com/file/blog/Portfolio/1789393048670_给水布置图.png)
+![彩平图2 .png](https://tu.lunoxblog.com/file/blog/Portfolio/1789393099189_彩平图2_.png)![彩平图1.jpg](https://tu.lunoxblog.com/file/blog/Portfolio/1789393090501_彩平图1.jpg)![立面详图.png](https://tu.lunoxblog.com/file/blog/Portfolio/1789393081745_立面详图.png)![天花大样图2.png](https://tu.lunoxblog.com/file/blog/Portfolio/1789393078902_天花大样图2.png)![天花大样图1.png](https://tu.lunoxblog.com/file/blog/Portfolio/1789393080276_天花大样图1.png)![天花布置图.png](https://tu.lunoxblog.com/file/blog/Portfolio/1789393078164_天花布置图.png)![平面布置图.png](https://tu.lunoxblog.com/file/blog/Portfolio/1789393073500_平面布置图.png)![开关布置图.png](https://tu.lunoxblog.com/file/blog/Portfolio/1789393065930_开关布置图.png)
 
 
 
