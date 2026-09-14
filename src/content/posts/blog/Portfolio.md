@@ -10,6 +10,12 @@ category: 分类
 draft: false
 author: 贺子航
 ---
+> [!info] 阅读说明
+> - 💻 推荐使用**电脑端**打开本页，观看体验最佳。
+> - 📝 **原创声明**：本页展示的所有笔记、作品，其内容整理、制作、排版设计及重点高亮标注均为本人独立完成，谢绝搬运商用；如需引用欢迎注明出处，仅作学习交流使用~
+> - 📄 **文档类**：电脑端点「📖 打开」可直接在线查看；手机端在线阅读可能无法打开，请点「⬇️ 原文件」下载后查看。
+
+> **核心观点**：人适应力强或弱，不源于能力本身，而==源于需求==。
 # 📌 荣誉证书
 
 <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
@@ -27,27 +33,9 @@ author: 贺子航
   </figure>
 </div>
 
-**260px 版本对比 👇**
-
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
-  <figure style="margin:0;text-align:center;">
-    <img src="https://tu.lunoxblog.com/file/blog/wenzhang/1789304121004_一等奖学金证书.jpg" style="width:100%;height:260px;object-fit:cover;border-radius:8px;" alt="一等奖学金证书" />
-    <figcaption style="font-size:0.85em;margin-top:4px;">一等奖学金证书</figcaption>
-  </figure>
-  <figure style="margin:0;text-align:center;">
-    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789304938492_室内设计师（高级）证书.jpg" style="width:100%;height:260px;object-fit:cover;border-radius:8px;" alt="室内设计师（高级）证书" />
-    <figcaption style="font-size:0.85em;margin-top:4px;">室内设计师（高级）证书</figcaption>
-  </figure>
-  <figure style="margin:0;text-align:center;">
-    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789304949050_实习证明.jpg" style="width:100%;height:260px;object-fit:cover;border-radius:8px;" alt="实习证明" />
-    <figcaption style="font-size:0.85em;margin-top:4px;">实习证明</figcaption>
-  </figure>
-</div>
-
-
 # 📌 笔记类
 
-📝 **原创声明**：本页展示的所有课程笔记，其内容整理、排版设计及重点高亮标注均为本人独立完成，谢绝搬运商用；如需引用欢迎注明出处，仅作学习交流使用~
+
 ## 一. 电子笔记
 ![例图1.png|700](https://tu.lunoxblog.com/file/blog/wenzhang/1789281019763_例图1.png)
 ### 1.《毛泽东思想和中国特色社会主义理论体系概论》
