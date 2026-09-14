@@ -120,7 +120,6 @@ author: 贺子航
 
 ## 五、动画
 
-最后把客餐厅做成漫游动画，方便直观感受空间尺度和动线。
 
 <iframe src="//player.bilibili.com/player.html?bvid=BV1JxYq6dETY&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" width="720" height="405" allowfullscreen="true"></iframe>
 

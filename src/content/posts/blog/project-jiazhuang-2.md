@@ -2,6 +2,7 @@
 title: 家装项目 2
 published: 2026-09-14
 description: 一个家装项目的完整流程记录：三维建模 → 效果图渲染 → VR 全景 → 动画输出。
+image: https://tu.lunoxblog.com/file/blog/Portfolio/1789382645121_主卧效果图.png
 tags:
   - 家装项目
   - 施工图
@@ -12,20 +13,20 @@ category: 项目
 draft: false
 author: 贺子航
 ---
-
+![餐厅模型.png](https://tu.lunoxblog.com/file/blog/Portfolio/1789391396331_餐厅模型.png)
 > [!info] 项目速览
 > 这是一个家装建模项目，从建模、效果图、全景到动画由我完整参与，下面按流程逐段记录。
 > 👈 [返回个人作品集](/posts/blog/portfolio/)
 
 ## 项目概况
 
-| 项目   | 内容                              |
-| ---- | ------------------------------- |
-| 项目名称 | 家装项目 2                          |
-| 项目类型 | 家装建模设计                          |
+| 项目   | 内容                           |
+| ---- | ---------------------------- |
+| 项目名称 | 家装项目 2                       |
+| 项目类型 | 家装建模设计                       |
 | 涉及空间 | 门厅、客厅、餐厅、厨房、主卧、次卧、儿童房、书房、卫生间 |
-| 我的职责 | 三维建模 · 效果图渲染 · 全景输出 · 动画输出      |
-| 使用软件 | AutoCAD、SketchUp 、Premiere Pro  |
+| 我的职责 | 三维建模 · 效果图渲染 · 全景输出 · 动画输出   |
+| 使用软件 | SketchUp 、Premiere Pro       |
 
 
 
@@ -156,7 +157,6 @@ author: 贺子航
 
 ## 三、动画
 
-最后把空间做成漫游动画，直观感受尺度和动线。
 
 <iframe src="//player.bilibili.com/player.html?bvid=BV14tY164EuN&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" width="720" height="405" allowfullscreen="true"></iframe>
 

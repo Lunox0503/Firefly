@@ -10,12 +10,11 @@ category: 分类
 draft: false
 author: 贺子航
 ---
-> [!info] 阅读说明
-> - 💻 推荐使用**电脑端**打开本页，观看体验最佳。
+> **阅读说明**
+> - 💻 推荐使用**电脑端**打开本页，观看体验最佳。手机端部分图片若无法加载，切换流量重试。
 > - 📝 **原创声明**：本页展示的所有笔记、作品，其内容整理、制作、排版设计及重点高亮标注均为本人独立完成，谢绝搬运商用；如需引用欢迎注明出处，仅作学习交流使用~
 > - 📄 **文档类**：电脑端点「📖 打开」可直接在线查看；手机端在线阅读可能无法打开，请点「⬇️ 原文件」下载后查看。
 
-> **核心观点**：人适应力强或弱，不源于能力本身，而==源于需求==。
 # 📌 荣誉证书
 
 <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
@@ -254,48 +253,14 @@ author: 贺子航
   </div>
 </a>
 
-<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;align-items:start;">
-  <figure style="grid-column:1/-1;margin:0;">
-    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789368346665_客餐厅模型.png" style="width:100%;display:block;border-radius:8px;" alt="客餐厅模型" />
-    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">客餐厅 · 模型</figcaption>
-  </figure>
-  <figure style="margin:0;">
-    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789368334250_客餐厅效果图1.png" style="width:100%;display:block;border-radius:8px;" alt="客餐厅效果图1" />
-    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">客餐厅 · 效果图 1</figcaption>
-  </figure>
-  <figure style="margin:0;">
-    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789368325310_客餐厅效果图2.png" style="width:100%;display:block;border-radius:8px;" alt="客餐厅效果图2" />
-    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">客餐厅 · 效果图 2</figcaption>
-  </figure>
-  <figure style="margin:0;">
-    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789368323983_儿童房模型.png" style="width:100%;display:block;border-radius:8px;" alt="儿童房模型" />
-    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">儿童房 · 模型</figcaption>
-  </figure>
-  <figure style="margin:0;">
-    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789368315164_儿童房效果图.png" style="width:100%;display:block;border-radius:8px;" alt="儿童房效果图" />
-    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">儿童房 · 效果图</figcaption>
-  </figure>
-  <figure style="margin:0;">
-    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789368302962_主卧模型.png" style="width:100%;display:block;border-radius:8px;" alt="主卧模型" />
-    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">主卧 · 模型</figcaption>
-  </figure>
-  <figure style="margin:0;">
-    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789368292860_主卧效果图.png" style="width:100%;display:block;border-radius:8px;" alt="主卧效果图" />
-    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">主卧 · 效果图</figcaption>
-  </figure>
-  <figure style="margin:0;text-align:center;">
-    <img src="https://tu.lunoxblog.com/file/blog/wenzhang/1789299204541_VR全景.png" style="width:100%;max-width:240px;display:inline-block;border-radius:8px;" alt="VR全景" />
-    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">VR 全景 · 扫码查看</figcaption>
-  </figure>
-  <figure style="margin:0;text-align:center;">
-    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789369554144_VR全景2.png" style="width:100%;max-width:240px;display:inline-block;border-radius:8px;" alt="VR全景 2" />
-    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">VR 全景 · 扫码查看</figcaption>
-  </figure>
-</div>
-
-## 五. 动画
-
-<iframe src="//player.bilibili.com/player.html?bvid=BV1JxYq6dETY&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" width="720" height="405" allowfullscreen="true"></iframe>
+<a href="/posts/blog/project-jiazhuang-3/" style="display:grid;grid-template-columns:1.15fr 1fr;gap:0;margin:0 0 18px;border-radius:12px;overflow:hidden;text-decoration:none;color:inherit;border:1px solid rgba(0,0,0,0.08);background:rgba(0,0,0,0.015);">
+  <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789391628079_主卧效果图.png" style="width:100%;height:100%;min-height:150px;object-fit:cover;display:block;" alt="家装项目 3" />
+  <div style="padding:16px 20px;display:flex;flex-direction:column;justify-content:center;">
+    <div style="font-size:1.05em;font-weight:600;margin-bottom:8px;">家装项目 3</div>
+    <div style="font-size:0.82em;opacity:0.6;line-height:1.6;margin-bottom:12px;">建模 · 效果图 · 全景 · 动画</div>
+    <div style="font-size:0.9em;color:#D07688;font-weight:500;">打开项目 →</div>
+  </div>
+</a>
 
 ## 六. PPT
 
