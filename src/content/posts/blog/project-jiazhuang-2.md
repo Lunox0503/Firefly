@@ -15,7 +15,7 @@ author: 贺子航
 
 > [!info] 项目速览
 > 这是一个家装建模项目，从建模、效果图、全景到动画由我完整参与，下面按流程逐段记录。
-> 👈 [返回个人作品集](https://lunoxblog.com/posts/blog/Portfolio/)
+> 👈 [返回个人作品集](/posts/blog/portfolio/)
 
 ## 项目概况
 

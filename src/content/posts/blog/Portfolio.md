@@ -245,6 +245,15 @@ author: 贺子航
   </div>
 </a>
 
+<a href="/posts/blog/project-jiazhuang-2/" style="display:grid;grid-template-columns:1.15fr 1fr;gap:0;margin:0 0 18px;border-radius:12px;overflow:hidden;text-decoration:none;color:inherit;border:1px solid rgba(0,0,0,0.08);background:rgba(0,0,0,0.015);">
+  <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789382645121_主卧效果图.png" style="width:100%;height:100%;min-height:150px;object-fit:cover;display:block;" alt="家装项目 2" />
+  <div style="padding:16px 20px;display:flex;flex-direction:column;justify-content:center;">
+    <div style="font-size:1.05em;font-weight:600;margin-bottom:8px;">家装项目 2</div>
+    <div style="font-size:0.82em;opacity:0.6;line-height:1.6;margin-bottom:12px;">建模 · 效果图 · 全景 · 动画</div>
+    <div style="font-size:0.9em;color:#D07688;font-weight:500;">打开项目 →</div>
+  </div>
+</a>
+
 <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;align-items:start;">
   <figure style="grid-column:1/-1;margin:0;">
     <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789368346665_客餐厅模型.png" style="width:100%;display:block;border-radius:8px;" alt="客餐厅模型" />
