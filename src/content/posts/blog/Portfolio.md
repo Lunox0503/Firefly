@@ -234,9 +234,16 @@ author: 贺子航
 
 
 
-## 四. 建模项目
+## 四. 家装项目
 
-![VR全景2.png](https://tu.lunoxblog.com/file/blog/Portfolio/1789369554144_VR全景2.png)
+<a href="/posts/blog/project-jiazhuang-1/" style="display:grid;grid-template-columns:1.15fr 1fr;gap:0;margin:0 0 18px;border-radius:12px;overflow:hidden;text-decoration:none;color:inherit;border:1px solid rgba(0,0,0,0.08);background:rgba(0,0,0,0.015);">
+  <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789368334250_客餐厅效果图1.png" style="width:100%;height:100%;min-height:150px;object-fit:cover;display:block;" alt="家装项目 1" />
+  <div style="padding:16px 20px;display:flex;flex-direction:column;justify-content:center;">
+    <div style="font-size:1.05em;font-weight:600;margin-bottom:8px;">家装项目 1</div>
+    <div style="font-size:0.82em;opacity:0.6;line-height:1.6;margin-bottom:12px;">施工图 · 建模 · 效果图 · 全景 · 动画</div>
+    <div style="font-size:0.9em;color:#D07688;font-weight:500;">打开项目 →</div>
+  </div>
+</a>
 
 <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;align-items:start;">
   <figure style="grid-column:1/-1;margin:0;">
@@ -267,9 +274,13 @@ author: 贺子航
     <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789368292860_主卧效果图.png" style="width:100%;display:block;border-radius:8px;" alt="主卧效果图" />
     <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">主卧 · 效果图</figcaption>
   </figure>
-  <figure style="grid-column:1/-1;margin:0;text-align:center;">
-    <img src="https://tu.lunoxblog.com/file/blog/wenzhang/1789299204541_VR全景.png" style="width:260px;display:inline-block;border-radius:8px;" alt="VR全景" />
-    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">VR 全景</figcaption>
+  <figure style="margin:0;text-align:center;">
+    <img src="https://tu.lunoxblog.com/file/blog/wenzhang/1789299204541_VR全景.png" style="width:100%;max-width:240px;display:inline-block;border-radius:8px;" alt="VR全景" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">VR 全景 · 扫码查看</figcaption>
+  </figure>
+  <figure style="margin:0;text-align:center;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789369554144_VR全景2.png" style="width:100%;max-width:240px;display:inline-block;border-radius:8px;" alt="VR全景 2" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">VR 全景 · 扫码查看</figcaption>
   </figure>
 </div>
 
