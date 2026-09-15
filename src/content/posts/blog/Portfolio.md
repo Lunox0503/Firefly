@@ -17,9 +17,9 @@ author: 贺子航
 
 # 📌 荣誉证书
 
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;align-items:start;">
   <figure style="margin:0;text-align:center;">
-    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789304121004_一等奖学金证书.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:8px;" alt="一等奖学金证书" />
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789440501957_一等奖学金证书.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:8px;" alt="一等奖学金证书" />
     <figcaption style="font-size:0.85em;margin-top:4px;">一等奖学金证书</figcaption>
   </figure>
   <figure style="margin:0;text-align:center;">
@@ -35,6 +35,7 @@ author: 贺子航
 # 📌 笔记类
 
 **仅展示部分**
+
 ## 一. 电子笔记
 ![例图1.png|700](https://tu.lunoxblog.com/file/blog/wenzhang/1789281019763_例图1.png)
 ### 1.《毛泽东思想和中国特色社会主义理论体系概论》
@@ -231,13 +232,41 @@ author: 贺子航
   </figure>
 </div>
 
+## 四. PPT
+
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;align-items:start;">
+  <a href="https://lunoxblog.com/files/ppt-shidai-zhicheng109.pdf" target="_blank" style="display:block;text-decoration:none;color:inherit;border:1px solid rgba(0,0,0,0.08);border-radius:10px;overflow:hidden;background:rgba(0,0,0,0.015);">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789439871859_上海时代之城家装方案设计.png" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;" alt="上海时代之城 109㎡ 家装方案设计" />
+    <div style="padding:10px 14px;display:flex;justify-content:space-between;align-items:center;gap:8px;">
+      <span style="font-size:0.92em;font-weight:600;">上海时代之城 109㎡ 家装方案设计</span>
+      <span style="font-size:0.85em;color:#D07688;font-weight:500;white-space:nowrap;">在线查看 →</span>
+    </div>
+  </a>
+  <a href="https://lunoxblog.com/files/ppt-suzhou-museum.pdf" target="_blank" style="display:block;text-decoration:none;color:inherit;border:1px solid rgba(0,0,0,0.08);border-radius:10px;overflow:hidden;background:rgba(0,0,0,0.015);">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789439852870_苏州博物馆.png" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;" alt="苏州博物馆" />
+    <div style="padding:10px 14px;display:flex;justify-content:space-between;align-items:center;gap:8px;">
+      <span style="font-size:0.92em;font-weight:600;">苏州博物馆</span>
+      <span style="font-size:0.85em;color:#D07688;font-weight:500;white-space:nowrap;">在线查看 →</span>
+    </div>
+  </a>
+  <a href="https://lunoxblog.com/files/ppt-hangzhou-rijie.pdf" target="_blank" style="display:block;text-decoration:none;color:inherit;border:1px solid rgba(0,0,0,0.08);border-radius:10px;overflow:hidden;background:rgba(0,0,0,0.015);">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789439875480_杭州日铁项目册.png" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;" alt="杭州日铁项目册" />
+    <div style="padding:10px 14px;display:flex;justify-content:space-between;align-items:center;gap:8px;">
+      <span style="font-size:0.92em;font-weight:600;">杭州日铁项目册</span>
+      <span style="font-size:0.85em;color:#D07688;font-weight:500;white-space:nowrap;">在线查看 →</span>
+    </div>
+  </a>
+  <a href="https://lunoxblog.com/files/ppt-shicai-diaoyan.pdf" target="_blank" style="display:block;text-decoration:none;color:inherit;border:1px solid rgba(0,0,0,0.08);border-radius:10px;overflow:hidden;background:rgba(0,0,0,0.015);">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789439860850_石材调研.png" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;" alt="石材调研" />
+    <div style="padding:10px 14px;display:flex;justify-content:space-between;align-items:center;gap:8px;">
+      <span style="font-size:0.92em;font-weight:600;">石材调研</span>
+      <span style="font-size:0.85em;color:#D07688;font-weight:500;white-space:nowrap;">在线查看 →</span>
+    </div>
+  </a>
+</div>
 
 
-
-
-
-
-## 四. 施工图
+## 五. 施工图
 
 <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;align-items:start;">
   <figure style="margin:0;">
@@ -270,7 +299,7 @@ author: 贺子航
   </figure>
 </div>
 
-## 五. 彩平图
+## 六. 彩平图
 
 <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;align-items:start;">
   <figure style="margin:0;">
@@ -290,12 +319,81 @@ author: 贺子航
     <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">彩平图 4</figcaption>
   </figure>
 </div>
+## 七. 建模渲染
+
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;align-items:start;">
+  <figure style="margin:0;grid-column:1/-1;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789440604823_货架模型.png" style="width:100%;display:block;border-radius:8px;" alt="货架模型" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">货架模型</figcaption>
+  </figure>
+  <figure style="margin:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789440603135_积木模型.png" style="width:100%;display:block;border-radius:8px;" alt="积木模型" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">积木模型</figcaption>
+  </figure>
+  <figure style="margin:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789440617419_沙发课桌模型.png" style="width:100%;display:block;border-radius:8px;" alt="沙发课桌模型" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">沙发课桌模型</figcaption>
+  </figure>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;align-items:start;margin-top:10px;">
+  <figure style="margin:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789442200652_广告牌模型.png" style="width:100%;aspect-ratio:1.37;object-fit:cover;display:block;border-radius:8px;" alt="广告牌模型" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">广告牌模型</figcaption>
+  </figure>
+  <figure style="margin:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789442210370_广告牌效果图.png" style="width:100%;aspect-ratio:1.37;object-fit:cover;display:block;border-radius:8px;" alt="广告牌效果图" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">广告牌效果图</figcaption>
+  </figure>
+  <figure style="margin:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789442225532_鞋柜模型.png" style="width:100%;aspect-ratio:1.37;object-fit:cover;display:block;border-radius:8px;" alt="鞋柜模型" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">鞋柜模型</figcaption>
+  </figure>
+  <figure style="margin:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789442234218_鞋柜效果图.png" style="width:100%;aspect-ratio:1.37;object-fit:cover;display:block;border-radius:8px;" alt="鞋柜效果图" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">鞋柜效果图</figcaption>
+  </figure>
+  <figure style="margin:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789442214044_肠胃室模型.png" style="width:100%;aspect-ratio:1.37;object-fit:cover;display:block;border-radius:8px;" alt="肠胃室模型" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">肠胃室模型</figcaption>
+  </figure>
+  <figure style="margin:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789442221806_肠胃室效果图.png" style="width:100%;aspect-ratio:1.37;object-fit:cover;display:block;border-radius:8px;" alt="肠胃室效果图" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">肠胃室效果图</figcaption>
+  </figure>
+  <figure style="margin:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789442245771_房间模型1.png" style="width:100%;aspect-ratio:1.37;object-fit:cover;display:block;border-radius:8px;" alt="房间模型1" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">房间模型 1</figcaption>
+  </figure>
+  <figure style="margin:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789442246046_房间效果图1.png" style="width:100%;aspect-ratio:1.37;object-fit:cover;display:block;border-radius:8px;" alt="房间效果图1" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">房间效果图 1</figcaption>
+  </figure>
+  <figure style="margin:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789442256738_房间模型2.png" style="width:100%;aspect-ratio:1.37;object-fit:cover;display:block;border-radius:8px;" alt="房间模型2" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">房间模型 2</figcaption>
+  </figure>
+  <figure style="margin:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789442260145_房间效果图2.jpg" style="width:100%;aspect-ratio:1.37;object-fit:cover;display:block;border-radius:8px;" alt="房间效果图2" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">房间效果图 2</figcaption>
+  </figure>
+  <figure style="margin:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789442291809_卧室效果图.png" style="width:100%;aspect-ratio:1.37;object-fit:cover;display:block;border-radius:8px;" alt="卧室效果图" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">卧室效果图</figcaption>
+  </figure>
+  <figure style="margin:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789442306689_客厅效果图.jpg" style="width:100%;aspect-ratio:1.37;object-fit:cover;display:block;border-radius:8px;" alt="客厅效果图" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">客厅效果图</figcaption>
+  </figure>
+</div>
 
 
 
 
 
-## 六. 家装项目
+
+
+## 八. 家装项目
 
 <a href="/posts/blog/project-jiazhuang-1/" style="display:grid;grid-template-columns:1.15fr 1fr;gap:0;margin:0 0 18px;border-radius:12px;overflow:hidden;text-decoration:none;color:inherit;border:1px solid rgba(0,0,0,0.08);background:rgba(0,0,0,0.015);">
   <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789368334250_客餐厅效果图1.png" style="width:100%;height:100%;min-height:150px;object-fit:cover;display:block;" alt="家装项目 1" />
@@ -324,11 +422,3 @@ author: 贺子航
   </div>
 </a>
 
-## 七. PPT
-
-| 作品 | 在线查看 |
-| --- | --- |
-| 上海时代之城109㎡家装方案设计 | [📄 打开](https://lunoxblog.com/files/ppt-shidai-zhicheng109.pdf) |
-| 杭州日铁项目册 | [📄 打开](https://lunoxblog.com/files/ppt-hangzhou-rijie.pdf) |
-| 石材调研 | [📄 打开](https://lunoxblog.com/files/ppt-shicai-diaoyan.pdf) |
-| 苏州博物馆 | [📄 打开](https://lunoxblog.com/files/ppt-suzhou-museum.pdf) |
