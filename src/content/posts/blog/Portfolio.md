@@ -3,7 +3,7 @@ title: 个人作品集
 published: 2026-09-13
 updated: 2026-09-13
 description: 这是一个有关我的简易版个人能力展示合集
-image: /cover.jpg
+image: https://tu.lunoxblog.com/file/blog/Portfolio/1789449913591_封面.png
 tags:
   - 作品集
 category: 分类
