@@ -144,30 +144,32 @@ author: 贺子航
 
 ## 一. 绘画
 
-<div style="column-count:3;column-gap:10px;">
-  <figure style="margin:0 0 10px;break-inside:avoid;">
-    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789366114230_帆船.jpg" style="width:100%;display:block;border-radius:8px;" alt="帆船" />
-    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">帆船</figcaption>
+<div style="display:flex;gap:10px;aspect-ratio:3.57;align-items:stretch;">
+  <figure style="margin:0;display:flex;flex-direction:column;flex:1.453 1 0;min-width:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789366114230_帆船.jpg" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;display:block;border-radius:8px;" alt="帆船" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;flex-shrink:0;">帆船</figcaption>
   </figure>
-  <figure style="margin:0 0 10px;break-inside:avoid;">
-    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789366164455_归鸟屋.jpg" style="width:100%;display:block;border-radius:8px;" alt="归鸟屋" />
-    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">归鸟屋</figcaption>
+  <figure style="margin:0;display:flex;flex-direction:column;flex:0.701 1 0;min-width:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789366164455_归鸟屋.jpg" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;display:block;border-radius:8px;" alt="归鸟屋" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;flex-shrink:0;">归鸟屋</figcaption>
   </figure>
-  <figure style="margin:0 0 10px;break-inside:avoid;">
-    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789366163555_公园.jpg" style="width:100%;display:block;border-radius:8px;" alt="公园" />
-    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">公园</figcaption>
+  <figure style="margin:0;display:flex;flex-direction:column;flex:1.418 1 0;min-width:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789366163555_公园.jpg" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;display:block;border-radius:8px;" alt="公园" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;flex-shrink:0;">公园</figcaption>
   </figure>
-  <figure style="margin:0 0 10px;break-inside:avoid;">
-    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789366152283_物件.jpg" style="width:100%;display:block;border-radius:8px;" alt="物件" />
-    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">物件</figcaption>
+</div>
+<div style="display:flex;gap:10px;aspect-ratio:3.00;align-items:stretch;margin-top:10px;">
+  <figure style="margin:0;display:flex;flex-direction:column;flex:0.778 1 0;min-width:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789366152283_物件.jpg" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;display:block;border-radius:8px;" alt="物件" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;flex-shrink:0;">物件</figcaption>
   </figure>
-  <figure style="margin:0 0 10px;break-inside:avoid;">
-    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789366799620_城墙.jpg" style="width:100%;display:block;border-radius:8px;" alt="城墙" />
-    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">城墙</figcaption>
+  <figure style="margin:0;display:flex;flex-direction:column;flex:1.526 1 0;min-width:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789366799620_城墙.jpg" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;display:block;border-radius:8px;" alt="城墙" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;flex-shrink:0;">城墙</figcaption>
   </figure>
-  <figure style="margin:0 0 10px;break-inside:avoid;">
-    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789366811877_水乡.jpg" style="width:100%;display:block;border-radius:8px;" alt="水乡" />
-    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">水乡</figcaption>
+  <figure style="margin:0;display:flex;flex-direction:column;flex:0.691 1 0;min-width:0;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789366811877_水乡.jpg" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;display:block;border-radius:8px;" alt="水乡" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;flex-shrink:0;">水乡</figcaption>
   </figure>
 </div>
 
@@ -175,22 +177,20 @@ author: 贺子航
 
 ## 二. 手工构成
 
-<div style="column-count:3;column-gap:10px;">
-  <figure style="margin:0 0 10px;break-inside:avoid;">
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;align-items:stretch;">
+  <figure style="margin:0;display:flex;flex-direction:column;">
     <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789366330301_立体构成.jpg" style="width:100%;display:block;border-radius:8px;" alt="立体构成" />
     <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">立体构成</figcaption>
   </figure>
-  <figure style="margin:0 0 10px;break-inside:avoid;">
-    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789366319738_色彩构成.jpg" style="width:100%;display:block;border-radius:8px;" alt="色彩构成" />
-    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">色彩构成</figcaption>
+  <figure style="margin:0;display:flex;flex-direction:column;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789366319738_色彩构成.jpg" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;display:block;border-radius:8px;" alt="色彩构成" />
+    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;flex-shrink:0;">色彩构成</figcaption>
   </figure>
-  <figure style="margin:0 0 10px;break-inside:avoid;">
-    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789366319168_单体构成.jpg" style="width:100%;display:block;border-radius:8px;" alt="单体构成" />
-    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">单体构成</figcaption>
-  </figure>
-  <figure style="margin:0 0 10px;break-inside:avoid;">
-    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789366914323_组合构成.jpg" style="width:100%;display:block;border-radius:8px;" alt="组合构成" />
-    <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">组合构成</figcaption>
+  <figure style="margin:0;display:flex;flex-direction:column;gap:10px;">
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789366319168_单体构成.jpg" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;display:block;border-radius:8px;" alt="单体构成" />
+    <figcaption style="font-size:0.85em;margin-top:0;text-align:center;flex-shrink:0;">单体构成</figcaption>
+    <img src="https://tu.lunoxblog.com/file/blog/Portfolio/1789366914323_组合构成.jpg" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;display:block;border-radius:8px;" alt="组合构成" />
+    <figcaption style="font-size:0.85em;margin-top:0;text-align:center;flex-shrink:0;">组合构成</figcaption>
   </figure>
 </div>
 
@@ -319,6 +319,7 @@ author: 贺子航
     <figcaption style="font-size:0.85em;margin-top:4px;text-align:center;">彩平图 4</figcaption>
   </figure>
 </div>
+
 ## 七. 建模渲染
 
 <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;align-items:start;">
