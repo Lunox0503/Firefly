@@ -37,7 +37,7 @@ author: 贺子航
 **仅展示部分**
 
 ## 一. 电子笔记
-![例图1.png|700](https://tu.lunoxblog.com/file/blog/wenzhang/1789281019763_例图1.png)
+![例图1.png](https://tu.lunoxblog.com/file/blog/Portfolio/1789281019763_例图1.png)
 ### 1.《毛泽东思想和中国特色社会主义理论体系概论》
 
 | 章节 | 在线阅读 | 下载 |
