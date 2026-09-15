@@ -7,6 +7,7 @@ image: /cover.jpg
 tags:
   - 作品集
 category: 分类
+pinned: true
 draft: false
 author: 贺子航
 ---
