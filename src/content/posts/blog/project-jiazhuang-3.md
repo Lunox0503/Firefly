@@ -13,7 +13,7 @@ draft: false
 author: 贺子航
 ---
 
-> [!info] 项目速览
+> 项目速览
 > 这是一个家装建模项目，从建模、效果图、全景到动画由我完整参与，下面按流程逐段记录。
 > 👈 [返回个人作品集](/posts/blog/portfolio/)
 
@@ -134,6 +134,6 @@ author: 贺子航
 
 ## 四、动画
 
-最后把空间做成漫游动画，直观感受尺度和动线。
-
 <iframe src="//player.bilibili.com/player.html?bvid=BV1neYC6yEo9&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" width="720" height="405" allowfullscreen="true"></iframe>
+
+👈 [返回个人作品集](/posts/blog/portfolio/)

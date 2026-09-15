@@ -13,8 +13,8 @@ category: 项目
 draft: false
 author: 贺子航
 ---
-![餐厅模型.png](https://tu.lunoxblog.com/file/blog/Portfolio/1789391396331_餐厅模型.png)
-> [!info] 项目速览
+
+> 项目速览
 > 这是一个家装建模项目，从建模、效果图、全景到动画由我完整参与，下面按流程逐段记录。
 > 👈 [返回个人作品集](/posts/blog/portfolio/)
 
@@ -27,8 +27,6 @@ author: 贺子航
 | 涉及空间 | 门厅、客厅、餐厅、厨房、主卧、次卧、儿童房、书房、卫生间 |
 | 我的职责 | 三维建模 · 效果图渲染 · 全景输出 · 动画输出   |
 | 使用软件 | SketchUp 、Premiere Pro       |
-
-
 
 ## 一、建模、效果图
 
@@ -102,9 +100,6 @@ author: 贺子航
 </div>
 
 
-
-
-
 ## 二、全景图
 
 输出 VR 全景，720° 旋转浏览空间，比静态效果图更直观。
@@ -152,12 +147,11 @@ author: 贺子航
 </div>
 
 
-
-
-
 ## 三、动画
 
 
 <iframe src="//player.bilibili.com/player.html?bvid=BV14tY164EuN&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" width="720" height="405" allowfullscreen="true"></iframe>
 
 
+
+👈 [返回个人作品集](/posts/blog/portfolio/)

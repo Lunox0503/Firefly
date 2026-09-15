@@ -14,7 +14,7 @@ draft: false
 author: 贺子航
 ---
 
-> [!info] 项目速览
+> 项目速览
 > 这是一个家装全案项目，从施工图、建模、效果图、全景到动画由我完整参与，下面按流程逐段记录。
 > 👈 [返回个人作品集](/posts/blog/portfolio/)
 
@@ -124,3 +124,5 @@ author: 贺子航
 <iframe src="//player.bilibili.com/player.html?bvid=BV1JxYq6dETY&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" width="720" height="405" allowfullscreen="true"></iframe>
 
 
+
+👈 [返回个人作品集](/posts/blog/portfolio/)
