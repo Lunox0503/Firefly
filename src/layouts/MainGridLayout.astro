@@ -17,6 +17,7 @@ import { getEffectiveSidebarState } from "@/utils/sidebar-effective-utils";
 import Layout from "./Layout.astro";
 
 import "@/styles/expressive-code.css";
+import "@/styles/home-wallpaper-decor.css";
 
 interface Props {
 	title?: string;
@@ -87,7 +88,7 @@ const {
 <slot slot="head" name="head" />
 <HeaderTopRow stickyNavbar={stickyNavbar} navbarWidthFull={navbarWidthFull} />
 
-<WallpaperSection state={banner} backgroundImages={backgroundImages} title={title} bannerPostMeta={bannerPostMeta} />
+<WallpaperSection state={banner} backgroundImages={backgroundImages} title={title} bannerPostMeta={bannerPostMeta} homepageDecor={isHomePageCheck} />
 
 <!-- Main content -->
 <div class="content-panel absolute w-full z-30 pointer-events-none">

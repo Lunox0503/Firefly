@@ -4,6 +4,7 @@ import ScrollDownIndicator from "@/components/controls/ScrollDownIndicator.astro
 import BackgroundPlayer from "@/components/features/BackgroundPlayer.astro";
 import BannerHomeTextOverlay from "@/components/layout/BannerHomeTextOverlay.astro";
 import BannerPostMetaOverlay from "@/components/layout/BannerPostMetaOverlay.astro";
+import HomeWallpaperDecor from "@/components/features/HomeWallpaperDecor.astro";
 import { backgroundWallpaper } from "@/config";
 import type {
 	BannerPostMeta,
@@ -16,14 +17,16 @@ interface Props {
 	backgroundImages: BackgroundImages;
 	title?: string;
 	bannerPostMeta?: BannerPostMeta;
+	/** 首页且启用全屏壁纸装饰时，给 wrapper 加 homepage-fullscreen-decor 标记类 */
+	homepageDecor?: boolean;
 }
 
-const { state, backgroundImages, title, bannerPostMeta } = Astro.props;
+const { state, backgroundImages, title, bannerPostMeta, homepageDecor = false } = Astro.props;
 ---
 
 <!-- Wallpaper - 如果允许切换则始终渲染，否则只渲染当前模式 -->
 {(state.isWallpaperSwitchable || state.isBannerMode || state.isFullscreenMode || state.isOverlayMode) && (
-<div id="wallpaper-wrapper" class="absolute z-10 w-full overflow-hidden" style="--overlay-opacity: ${backgroundWallpaper.overlay?.opacity ?? 0.8}; --overlay-z-index: ${backgroundWallpaper.overlay?.zIndex ?? -1}; --overlay-blur: ${backgroundWallpaper.overlay?.blur ?? 0}px;">
+<div id="wallpaper-wrapper" class:list={["absolute z-10 w-full overflow-hidden", homepageDecor && "homepage-fullscreen-decor"]} style="--overlay-opacity: ${backgroundWallpaper.overlay?.opacity ?? 0.8}; --overlay-z-index: ${backgroundWallpaper.overlay?.zIndex ?? -1}; --overlay-blur: ${backgroundWallpaper.overlay?.blur ?? 0}px;">
 <!-- 背景图片显示 -->
     {state.hasMultipleImages ? (
     /* 轮播模式：渲染所有图片为 slide-item */
@@ -618,6 +621,10 @@ const { state, backgroundImages, title, bannerPostMeta } = Astro.props;
         style={`height: ${state.gradientHeight}; background: linear-gradient(to bottom, transparent, var(--page-bg));`}>
     </div>
     ) : null}
+
+    <!-- 首页全屏壁纸装饰层（身份卡 + 立绘贴纸）：必须挂在 #wallpaper-wrapper 内部，
+         CSS 选择器 #wallpaper-wrapper.homepage-fullscreen-decor .home-wallpaper-decor 依赖这个层级关系 -->
+    {homepageDecor && <HomeWallpaperDecor />}
 </div>
 )}
 
