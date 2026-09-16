@@ -27,6 +27,18 @@ html[data-wallpaper-mode="fullscreen"]
 	z-index: 6;
 }
 
+/* 非首页强制隐藏首页装饰层：#wallpaper-wrapper 不在 swup 容器内、跨页持久，
+   从首页 swup 进入归档等页面时 wrapper 仍带 homepage-fullscreen-decor 类，
+   必须按 body.is-home 兜底隐藏，否则首页名片/贴纸会残留在非首页壁纸上 */
+html[data-wallpaper-mode="fullscreen"]
+	body:not(.is-home)
+	#wallpaper-wrapper.homepage-fullscreen-decor
+	.home-wallpaper-decor {
+	display: none !important;
+	visibility: hidden !important;
+	opacity: 0 !important;
+}
+
 /* The original banner copy stays available in banner mode, but fullscreen uses the compact card instead. */
 html[data-wallpaper-mode="fullscreen"]
 	#wallpaper-wrapper.homepage-fullscreen-decor

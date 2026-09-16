@@ -8,6 +8,7 @@ import SideBar from "@components/layout/SideBar.astro";
 import type { MarkdownHeading } from "astro";
 import FloatingControls from "@/components/controls/FloatingControls.astro";
 import CategoryBar from "@/components/layout/CategoryBar.astro";
+import HomePortfolioIntro from "@/components/features/HomePortfolioIntro.astro";
 import SidebarColumn from "@/components/layout/SidebarColumn.astro";
 import WallpaperSection from "@/components/layout/WallpaperSection.astro";
 import { live2dWidgetConfig, sidebarLayoutConfig, siteConfig } from "@/config";
@@ -18,6 +19,7 @@ import Layout from "./Layout.astro";
 
 import "@/styles/expressive-code.css";
 import "@/styles/home-wallpaper-decor.css";
+import "@/styles/home-card-decor.css";
 
 interface Props {
 	title?: string;
@@ -87,6 +89,9 @@ const {
 
 <slot slot="head" name="head" />
 <HeaderTopRow stickyNavbar={stickyNavbar} navbarWidthFull={navbarWidthFull} />
+
+<!-- 首页开屏动画（角色 + 上下快门），仅在首页播放；访客偏好存 localStorage -->
+<HomePortfolioIntro initialHome={isHomePageCheck} />
 
 <WallpaperSection state={banner} backgroundImages={backgroundImages} title={title} bannerPostMeta={bannerPostMeta} homepageDecor={isHomePageCheck} />
 

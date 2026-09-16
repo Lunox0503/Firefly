@@ -59,6 +59,16 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 			showOnPostPage: true,
 		},
 		{
+			// 组件类型：每日一言
+			type: "quoteOfTheDay",
+			// 是否启用该组件
+			enable: true,
+			// 组件位置
+			position: "top",
+			// 仅在非文章页显示
+			showOnPostPage: false,
+		},
+		{
 			// 组件类型：音乐播放器
 			type: "music",
 			// 是否启用该组件
@@ -102,6 +112,16 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 
 	// 右侧边栏组件配置列表
 	rightComponents: [
+		{
+			// 组件类型：时段问候实时时钟（来自 Aemeath）
+			type: "timeGreeting",
+			// 是否启用该组件
+			enable: true,
+			// 组件位置
+			position: "top",
+			// 仅在非文章页显示，避免干扰正文阅读
+			showOnPostPage: false,
+		},
 		{
 			// 组件类型：最新动态组件
 			type: "dynamic",
@@ -232,6 +252,16 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 					displayCount: -1,
 				},
 			},
+		},
+		{
+			// 组件类型：年 / 月 / 周进度与日期倒计时（来自 Aemeath）
+			type: "scheduleProgress",
+			// 是否启用该组件
+			enable: true,
+			// 组件位置
+			position: "sticky",
+			// 仅在非文章页显示
+			showOnPostPage: false,
 		},
 	],
 

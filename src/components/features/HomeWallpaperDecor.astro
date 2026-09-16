@@ -1,7 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import ImageWrapper from "@/components/common/ImageWrapper.astro";
-import { profileConfig, siteConfig } from "@/config";
+import { profileConfig } from "@/config";
 import { url } from "@/utils/url-utils";
 
 const quickLinks = [
@@ -13,6 +13,10 @@ const quickLinks = [
 ];
 
 const socialLinks = [...profileConfig.links];
+
+// 名片独立文案：只控制首页名片显示，不影响站点标题/副标题（浏览器标签页、RSS 等仍用 siteConfig）
+const cardTitle = "如风";
+const cardSubtitle = "Lose yourself to find yourself.";
 
 const stickerImages = [
 	{
@@ -153,9 +157,9 @@ const showStickers = false;
       <span class="home-wallpaper-card__identity-mark" aria-hidden="true"></span>
       <span class="home-wallpaper-card__motion-text">{profileConfig.name}</span>
     </p>
-    <h1><span class="home-wallpaper-card__motion-text">{siteConfig.title}</span></h1>
+    <h1><span class="home-wallpaper-card__motion-text">{cardTitle}</span></h1>
     <p class="home-wallpaper-card__subtitle">
-      <span class="home-wallpaper-card__motion-text">{siteConfig.subtitle}</span>
+      <span class="home-wallpaper-card__motion-text">{cardSubtitle}</span>
     </p>
 
     <nav class="home-wallpaper-card__nav" aria-label="首页快捷导航">

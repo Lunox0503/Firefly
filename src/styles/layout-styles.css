@@ -666,44 +666,46 @@ html[data-wallpaper-mode="overlay"] .absolute.w-full.z-30.pointer-events-none {
 
 /* ============================================
  * Fullscreen 模式 - 全屏壁纸
- * 壁纸 fixed 固定全屏，标题首屏居中；内容区通过 margin-top:100vh
- * 推到首屏之下，下滑时内容覆盖壁纸；复用 overlay 的透明/模糊配置
+ * 对齐 Aemeath：壁纸 relative 占满首屏、随页面一起滚走（不做 fixed 固定层），
+ * 内容区仍在壁纸下方；fullscreen 下不压暗化遮罩（大佬站没有 dim 层）
  * ============================================ */
 #wallpaper-wrapper.wallpaper-fullscreen {
-    position: fixed !important;
-    inset: 0 !important;
+    position: relative !important;
+    inset: auto !important;
     width: 100% !important;
     height: 100vh !important;
     height: 100lvh !important;
-    z-index: var(--overlay-z-index, -1) !important;
-    /* 全屏壁纸不透明（不需要背景透明度），壁纸本身全不透明显示 */
+    min-height: 100vh !important;
+    max-height: 100vh !important;
+    top: 0 !important;
     opacity: 1 !important;
     pointer-events: none !important;
     overflow: hidden !important;
-    top: 0 !important;
-    min-height: unset !important;
-    max-height: unset !important;
     transform: none !important;
-    transition: opacity 0.6s ease !important;
+    transition: none !important;
+}
+
+/* fullscreen 模式去掉暗化遮罩：壁纸和名片保持原亮度（参考站点没有 dim 层） */
+html[data-wallpaper-mode="fullscreen"] #wallpaper-wrapper .banner-dim-overlay {
+    display: none !important;
 }
 
 /* 刷新首帧即全屏：data-wallpaper-mode 在解析期内联脚本中同步设置，早于 rAF 应用
    wallpaper-fullscreen 类；据此设置 wrapper 尺寸，避免刷新时先横幅大小后变全屏的闪烁 */
 html[data-wallpaper-mode="fullscreen"] #wallpaper-wrapper {
-    position: fixed !important;
-    inset: 0 !important;
+    position: relative !important;
+    inset: auto !important;
     width: 100% !important;
     height: 100vh !important;
     height: 100lvh !important;
-    z-index: var(--overlay-z-index, -1) !important;
+    min-height: 100vh !important;
+    max-height: 100vh !important;
+    top: 0 !important;
     opacity: 1 !important;
     pointer-events: none !important;
     overflow: hidden !important;
-    top: 0 !important;
-    min-height: unset !important;
-    max-height: unset !important;
     transform: none !important;
-    transition: opacity 0.6s ease !important;
+    transition: none !important;
 }
 
 /* 首帧即让图片全屏覆盖并居中（镜像 wallpaper-fullscreen 类的 img 规则）：
@@ -718,9 +720,9 @@ html[data-wallpaper-mode="fullscreen"] #wallpaper-wrapper img {
     opacity: 1 !important;
 }
 
-/* fullscreen 非首页：隐藏横幅标题/元信息覆盖层（镜像 wallpaper-fullscreen 类规则） */
+/* fullscreen 非首页：隐藏横幅标题/元信息覆盖层（镜像 wallpaper-fullscreen 类规则）
+   注意 banner-page-title-overlay 不隐藏——原帖非首页壁纸上有「归档」等页面标题 */
 html[data-wallpaper-mode="fullscreen"] body:not(.is-home) #wallpaper-wrapper .banner-home-text-overlay,
-html[data-wallpaper-mode="fullscreen"] body:not(.is-home) #wallpaper-wrapper .banner-page-title-overlay,
 html[data-wallpaper-mode="fullscreen"] body:not(.is-home) #wallpaper-wrapper .banner-post-meta-overlay {
     display: none !important;
 }
@@ -763,15 +765,33 @@ body.is-home #wallpaper-wrapper.wallpaper-fullscreen img[class*="object-cover"] 
     display: flex !important;
 }
 
-/* 非首页全屏壁纸模式：与 overlay 一致，隐藏首屏标题/遮罩/水波纹/渐变/滚动指示器（内容在最上面） */
+/* 非首页全屏壁纸模式：隐藏首屏标题/渐变/滚动指示器（对齐 Aemeath）
+   banner-page-title-overlay 不隐藏——原帖非首页壁纸上有页面标题；#header-waves 也保留 */
 body:not(.is-home) #wallpaper-wrapper.wallpaper-fullscreen .banner-home-text-overlay,
-body:not(.is-home) #wallpaper-wrapper.wallpaper-fullscreen .banner-page-title-overlay,
 body:not(.is-home) #wallpaper-wrapper.wallpaper-fullscreen .banner-post-meta-overlay,
 body:not(.is-home) #wallpaper-wrapper.wallpaper-fullscreen #banner-dim-container,
-body:not(.is-home) #wallpaper-wrapper.wallpaper-fullscreen #header-waves,
 body:not(.is-home) #wallpaper-wrapper.wallpaper-fullscreen #wallpaper-gradient,
 body:not(.is-home) #wallpaper-wrapper.wallpaper-fullscreen .scroll-down-indicator {
     display: none !important;
+}
+
+/* 非首页全屏壁纸模式：内容区改为普通文档流、排在壁纸下方（对齐 Aemeath/rainzt.cn/archive 实测布局）。
+   6.16 原设计内容区绝对定位悬浮在整页壁纸上，导致归档等页面整页被壁纸垫底；
+   原帖是「上面壁纸占满首屏 + 水波纹过渡，下面纯色背景 + 内容」 */
+html[data-wallpaper-mode="fullscreen"] body:not(.is-home) .absolute.w-full.z-30.pointer-events-none {
+    position: relative !important;
+    top: auto !important;
+    margin-top: 1rem !important;
+    min-height: calc(100vh - 1rem) !important;
+}
+
+/* 非首页全屏壁纸模式：壁纸上的页面标题（归档/关于等）始终显示。
+   标记本身是 hidden lg:flex，dev 模式下 Tailwind 生成顺序会导致 hidden 偶尔压过 lg:flex
+   （表现为跳转后标题时有时无），这里用高特异性规则钉死，桌面端恒显示 */
+@media (min-width: 1024px) {
+    html[data-wallpaper-mode="fullscreen"] body:not(.is-home) #wallpaper-wrapper .banner-page-title-overlay {
+        display: flex !important;
+    }
 }
 
 /* Fullscreen 模式下非首页隐藏主页标题文字（Swup 页面切换时通过 hidden 类控制） */
@@ -779,9 +799,7 @@ body:not(.is-home) #wallpaper-wrapper.wallpaper-fullscreen .scroll-down-indicato
     display: none !important;
 }
 
-/* Fullscreen 模式不需要水波纹和渐变过渡 */
-#wallpaper-wrapper.wallpaper-fullscreen .waves,
-#wallpaper-wrapper.wallpaper-fullscreen #header-waves,
+/* Fullscreen 模式不需要渐变过渡（水波纹保留，对齐 Aemeath 的波浪分界） */
 #wallpaper-wrapper.wallpaper-fullscreen #wallpaper-gradient {
     display: none !important;
 }

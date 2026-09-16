@@ -1,10 +1,30 @@
 import type { BackgroundWallpaperConfig } from "@/types/backgroundWallpaper";
 
+	// 内置桌面壁纸：wallpaper-01 ~ wallpaper-18（2026-09-16 精简为 15 张，同日新增 3 张弗洛洛）
+	const desktopWallpaperImages = Array.from(
+		{ length: 18 },
+		(_, index) =>
+			`/assets/images/wallpaper/wallpaper-${String(index + 1).padStart(2, "0")}.webp`,
+	);
+
+	const mobileOnlyWutheringWavesImages = Array.from(
+		{ length: 3 },
+		(_, index) =>
+			`/assets/images/wallpaper/wallpaper-mobile-${String(index + 1).padStart(2, "0")}.webp`,
+	);
+	const mobileWallpaperImages = [
+		...mobileOnlyWutheringWavesImages,
+		...desktopWallpaperImages,
+	];
+
+
 export const backgroundWallpaper: BackgroundWallpaperConfig = {
 	// 壁纸模式："banner" 横幅壁纸，"fullscreen" 全屏壁纸，"overlay" 覆盖透明，"none" 纯色背景无壁纸
 	mode: "fullscreen",
 	// 是否启用背景视频播放，配置后将在导航栏显示视频播放按钮
 	playerEnable: true,
+	// 是否允许用户通过导航栏/面板切换壁纸模式（移植自 Aemeath）
+	switchable: true,
 	/**
 	 * 背景图片配置
 	 * 图片路径支持三种格式：
@@ -38,24 +58,10 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 	src: {
 		// 桌面背景图片（支持单张或多张随机）
 		// desktop: "assets/images/DesktopWallpaper/d1.avif",
-		desktop: [
-			"assets/images/DesktopWallpaper/d1.avif",
-			"assets/images/DesktopWallpaper/d2.avif",
-			"assets/images/DesktopWallpaper/d3.avif",
-			"assets/images/DesktopWallpaper/d4.avif",
-			"assets/images/DesktopWallpaper/d5.avif",
-			"assets/images/DesktopWallpaper/d6.avif",
-		],
+				desktop: desktopWallpaperImages,
 		// 移动背景图片（支持单张或多张随机）
 		// mobile: "assets/images/MobileWallpaper/m1.avif",
-		mobile: [
-			"assets/images/MobileWallpaper/m1.avif",
-			"assets/images/MobileWallpaper/m2.avif",
-			"assets/images/MobileWallpaper/m3.avif",
-			"assets/images/MobileWallpaper/m4.avif",
-			"assets/images/MobileWallpaper/m5.avif",
-			"assets/images/MobileWallpaper/m6.avif",
-		],
+				mobile: mobileWallpaperImages,
 		// 背景视频播放地址
 		// 支持单个视频路径（字符串）或多个视频循环（数组，参考上面壁纸配置）
 		// 支持远程视频URL，本地视频请放在 public/assets/videos/ 目录下
@@ -72,6 +78,8 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 		homeText: {
 			// 是否启用主页横幅文字
 			enable: true,
+			// 是否允许用户通过控制面板切换横幅标题显示（移植自 Aemeath）
+			switchable: true,
 			// 主页横幅主标题
 			title: "Lovely firefly!",
 			// 主页横幅主标题字体大小
@@ -131,11 +139,16 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 		carousel: {
 			// 是否启用壁纸轮播；关闭时保持每次刷新随机显示一张
 			enable: false,
+			// 是否允许用户通过控制面板切换壁纸轮播（移植自 Aemeath）
+			switchable: true,
 			// 轮播切换间隔（毫秒）
 			interval: 5000,
 			// 过渡效果: 'fade' 渐变 | 'zoom' 缩放 | 'slide' 滑动 | 'kenburns' 旋转木马
 			transitionEffect: "zoom",
 		},
+		// 面板开关（渲染仍读 banner.waves / banner.gradient）（移植自 Aemeath）
+		waves: { switchable: true },
+		gradient: { switchable: true },
 	},
 	// Banner模式特有配置
 	banner: {
@@ -178,6 +191,8 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 	},
 	// 覆盖透明覆盖模式特有配置
 	overlay: {
+		// 是否允许用户通过控制面板调整参数（移植自 Aemeath）
+		switchable: { opacity: true, blur: true, cardOpacity: true },
 		// 层级，确保壁纸在背景层
 		zIndex: -1,
 		// 壁纸透明度
@@ -201,12 +216,13 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 		},
 		// 首页下滑时壁纸模糊渐变开关（从 0 渐变为 overlay.blur 的最大模糊）
 		// 关闭后该设备上全屏壁纸保持清晰（首页与非首页都不模糊），设置面板的模糊度滑块也会隐藏
+		// 2026-09-16 按用户要求关闭：原版（rainzt）滚动时壁纸无任何模糊/透明过渡
 		blurRamp: {
 			enable: {
 				// 桌面端是否启用模糊渐变
-				desktop: true,
+				desktop: false,
 				// 移动端是否启用模糊渐变
-				mobile: true,
+				mobile: false,
 			},
 		},
 	},

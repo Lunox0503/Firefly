@@ -912,3 +912,152 @@ export function setCardFollowThemeEnabled(enabled: boolean): void {
 		document.body.classList.remove("card-follow-theme-hue");
 	}
 }
+
+// ===== 壁纸选择（移植自 Aemeath）=====
+const SELECTED_WALLPAPER_INDEX_KEY = "selectedWallpaperIndex";
+const LEGACY_CUSTOM_WALLPAPER_KEY = "customWallpaper";
+
+export function clearSelectedWallpaperFromDocument(): void {
+	if (typeof document === "undefined") {
+		return;
+	}
+
+	const wallpaperWrapper = document.getElementById("wallpaper-wrapper");
+	if (!wallpaperWrapper) {
+		return;
+	}
+
+	wallpaperWrapper.removeAttribute("data-selected-wallpaper");
+	const slides = wallpaperWrapper.querySelectorAll<HTMLElement>(".slide-item");
+	slides.forEach((slide, index) => {
+		slide.classList.toggle("active", index === 0);
+		slide.classList.remove("prev-waiting");
+	});
+
+	const activeSlide =
+		wallpaperWrapper.querySelector<HTMLElement>(".slide-item.active");
+	const activeImage =
+		activeSlide?.querySelector<HTMLImageElement>("img") ??
+		wallpaperWrapper.querySelector<HTMLImageElement>("img");
+	if (activeImage) {
+		activeImage.style.opacity = "1";
+		const placeholder =
+			activeImage.parentElement?.querySelector<HTMLElement>(
+				".lqip-placeholder",
+			);
+		placeholder?.classList.add("loaded");
+	}
+}
+
+export function applySelectedWallpaperToDocument(index: number): void {
+	if (typeof document === "undefined") {
+		return;
+	}
+
+	const wallpaperWrapper = document.getElementById("wallpaper-wrapper");
+	if (!wallpaperWrapper) {
+		return;
+	}
+
+	wallpaperWrapper.setAttribute("data-selected-wallpaper", String(index));
+	wallpaperWrapper.removeAttribute("data-custom-wallpaper");
+
+	const slides = wallpaperWrapper.querySelectorAll<HTMLElement>(".slide-item");
+	if (slides.length > 0) {
+		slides.forEach((slide) => {
+			const slideIndex = Number.parseInt(slide.dataset.index || "0", 10);
+			slide.classList.toggle("active", slideIndex === index);
+			slide.classList.remove("prev-waiting");
+		});
+	}
+
+	const activeImages = wallpaperWrapper.querySelectorAll<HTMLImageElement>(
+		slides.length > 0 ? `.slide-item[data-index="${index}"] img` : "img",
+	);
+	activeImages.forEach((img) => {
+		const deferredSrc = img.getAttribute("data-src");
+		if (deferredSrc && !img.getAttribute("src")) {
+			img.setAttribute("src", deferredSrc);
+			img.removeAttribute("data-src");
+		}
+		img.style.opacity = "1";
+		const placeholder =
+			img.parentElement?.querySelector<HTMLElement>(".lqip-placeholder");
+		placeholder?.classList.add("loaded");
+	});
+}
+
+function getConfiguredWallpaperCount(): number {
+	const src = backgroundWallpaper.src;
+	if (Array.isArray(src)) return src.length;
+	if (typeof src === "string") return 1;
+	if (src && typeof src === "object") {
+		const desktop = src.desktop;
+		const mobile = src.mobile;
+		const desktopCount = Array.isArray(desktop) ? desktop.length : desktop ? 1 : 0;
+		const mobileCount = Array.isArray(mobile) ? mobile.length : mobile ? 1 : 0;
+		return Math.max(desktopCount, mobileCount);
+	}
+	return 0;
+}
+
+export function clearSelectedWallpaper(): void {
+	if (
+		typeof localStorage !== "undefined" &&
+		typeof localStorage.removeItem === "function"
+	) {
+		localStorage.removeItem(SELECTED_WALLPAPER_INDEX_KEY);
+		localStorage.removeItem(LEGACY_CUSTOM_WALLPAPER_KEY);
+	}
+	clearSelectedWallpaperFromDocument();
+	if (typeof window !== "undefined") {
+		window.dispatchEvent(
+			new CustomEvent("selectedWallpaperChange", {
+				detail: { selected: false },
+			}),
+		);
+	}
+}
+
+export function getStoredSelectedWallpaperIndex(): number | null {
+	if (
+		typeof localStorage === "undefined" ||
+		typeof localStorage.getItem !== "function"
+	) {
+		return null;
+	}
+	const stored = localStorage.getItem(SELECTED_WALLPAPER_INDEX_KEY);
+	if (stored === null) {
+		return null;
+	}
+	const parsed = Number.parseInt(stored, 10);
+	const wallpaperCount = getConfiguredWallpaperCount();
+	if (
+		Number.isNaN(parsed) ||
+		parsed < 0 ||
+		(wallpaperCount > 0 && parsed >= wallpaperCount)
+	) {
+		localStorage.removeItem(SELECTED_WALLPAPER_INDEX_KEY);
+		return null;
+	}
+	return parsed;
+}
+
+export function setSelectedWallpaperIndex(index: number): void {
+	if (
+		typeof localStorage === "undefined" ||
+		typeof localStorage.setItem !== "function"
+	) {
+		return;
+	}
+	localStorage.removeItem(LEGACY_CUSTOM_WALLPAPER_KEY);
+	localStorage.setItem(SELECTED_WALLPAPER_INDEX_KEY, String(index));
+	applySelectedWallpaperToDocument(index);
+	if (typeof window !== "undefined") {
+		window.dispatchEvent(
+			new CustomEvent("selectedWallpaperChange", {
+				detail: { selected: true, index },
+			}),
+		);
+	}
+}

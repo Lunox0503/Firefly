@@ -1,6 +1,7 @@
 export type BackgroundWallpaperConfig = {
 	mode: "banner" | "fullscreen" | "overlay" | "none"; // 壁纸模式：banner横幅模式、fullscreen全屏壁纸、overlay全屏透明覆盖模式或none纯色背景
 	playerEnable?: boolean; // 是否启用背景视频播放，默认false
+	switchable?: boolean; // 是否允许用户通过面板切换壁纸模式（移植自 Aemeath）
 	src:
 		| string
 		| string[]
@@ -15,6 +16,7 @@ export type BackgroundWallpaperConfig = {
 		playerMode?: "order" | "random"; // 多视频播放模式："order" 顺序循环（默认），"random" 随机切换
 		homeText?: {
 			enable: boolean; // 是否在首页显示自定义文字（全局开关）
+			switchable?: boolean; // 是否允许用户通过控制面板切换横幅标题显示（移植自 Aemeath）
 			title?: string; // 主标题
 			subtitle?: string | string[]; // 副标题，支持单个字符串或字符串数组
 			titleSize?: string; // 主标题字体大小，如 "3.5rem"
@@ -39,6 +41,16 @@ export type BackgroundWallpaperConfig = {
 			enable: boolean; // 是否启用壁纸轮播
 			interval?: number; // 轮播间隔时间，单位毫秒
 			transitionEffect?: "fade" | "zoom" | "slide" | "kenburns"; // 过渡效果: 'fade' 渐变 | 'zoom' 缩放 | 'slide' 滑动 | 'kenburns' 旋转木马
+			switchable?: boolean; // 是否允许用户通过控制面板切换壁纸轮播（移植自 Aemeath）
+		};
+		// 水波纹/渐变过渡的「面板开关」声明（渲染配置仍读 banner.waves / banner.gradient）
+		waves?: {
+			enable?: boolean | { desktop: boolean; mobile: boolean };
+			switchable?: boolean; // 是否允许用户通过控制面板切换水波纹动画（移植自 Aemeath）
+		};
+		gradient?: {
+			enable?: boolean | { desktop: boolean; mobile: boolean };
+			switchable?: boolean; // 是否允许用户通过控制面板切换渐变过渡（移植自 Aemeath）
 		};
 	};
 
@@ -93,6 +105,11 @@ export type BackgroundWallpaperConfig = {
 	};
 	// 全屏透明覆盖模式特有配置
 	overlay?: {
+		switchable?: {
+			opacity?: boolean; // 是否允许用户通过控制面板调整壁纸透明度（移植自 Aemeath）
+			blur?: boolean; // 是否允许用户通过控制面板调整背景模糊度（移植自 Aemeath）
+			cardOpacity?: boolean; // 是否允许用户通过控制面板调整卡片透明度（移植自 Aemeath）
+		};
 		zIndex?: number; // 层级，确保壁纸在合适的层级显示
 		opacity?: number; // 壁纸透明度，0-1之间
 		blur?: number; // 背景模糊程度，单位px

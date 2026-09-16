@@ -224,6 +224,15 @@ export const en: Translation = {
 		"Configure bilibili.uid in src/config/siteConfig.ts",
 
 	// Anime Tracking - Shared components
+	[Key.anime]: "Anime",
+	[Key.animeSubtitle]: "My anime tracking list, data from Bilibili and TMDB",
+	[Key.animeSource]: "Source",
+	[Key.animeNotConfigured]: "Anime data source not configured",
+	[Key.animeNotConfiguredDesc]:
+		"Please configure Bilibili UID or TMDB API Key in src/config/siteConfig.ts",
+	[Key.animeTmdbAvg]: "TMDB Avg",
+	[Key.animeDualSynced]: "Dual Synced",
+	[Key.animeViewTmdb]: "View TMDB Details",
 	[Key.animeTotal]: "Total",
 	[Key.animeAverageRating]: "Avg Rating",
 	[Key.animeSearch]: "Search anime...",
@@ -500,4 +509,5 @@ export const en: Translation = {
 	[Key.videoPrev]: "Previous video",
 	[Key.videoNext]: "Next video",
 	[Key.videoLoadError]: "Video failed to load",
+		builtinWallpaper: "Built-in Wallpapers",
 };

@@ -60,6 +60,19 @@ const codeFontFamily = codeFontVar
 	: MONO_FONT_STACK;
 ---
 
+<!-- 霞鹜文楷屏幕阅读字体（CDN webfont，按需加载子集）：供导航栏「文」按钮切换 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.min.css" />
+
+<!-- 导航栏字体切换：firefly-font-mode 存储偏好，默认文楷 -->
+<script is:inline>
+	(() => {
+		const storageKey = "firefly-font-mode";
+		const savedMode = localStorage.getItem(storageKey);
+		const mode = savedMode === "original" ? "original" : "wenkai";
+		document.documentElement.dataset.fontMode = mode;
+	})();
+</script>
+
 <!-- Astro Font API: 自动下载、缓存并生成优化的 @font-face -->
 {Array.from(allCssVars).map((cssVar) => (
   <Font
@@ -90,6 +103,30 @@ const codeFontFamily = codeFontVar
     }`
 			: ""
 	}
+`}
+/>
+
+<!-- 文楷/原字体切换的 CSS 变量映射（与导航栏 FontSwitch 按钮配合） -->
+<style
+  set:html={`
+  :root {
+    --font-lxgw-wenkai: "LXGW WenKai Screen", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", sans-serif;
+    --font-active-sans: var(--font-lxgw-wenkai);
+    --font-sans: var(--font-lxgw-wenkai);
+  }
+
+  :root[data-font-mode="original"] {
+    --font-active-sans: ${bodyFontFamily};
+    --font-sans: ${bodyFontFamily};
+  }
+
+  body,
+  button,
+  input,
+  textarea,
+  select {
+    font-family: var(--font-active-sans);
+  }
 `}
 />
 

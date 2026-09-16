@@ -29,22 +29,19 @@
 		private renderer: WavesRenderer | null = null;
 		private animationId: number | null = null;
 		private startTime = 0;
-		private reducedMotion = false;
+		// 与原博客(rainzt)行为保持一致:水波纹是纯装饰动画,
+		// 不随系统"减弱动态效果"(prefers-reduced-motion)停止,始终播放。
 		private lastVisibilityHidden = document.hidden;
 		private lastFillColor = "";
 
 		private resizeObserver: ResizeObserver | null = null;
 		private resizeRafId: number | null = null;
 		private dprQuery: MediaQueryList | null = null;
-		private reducedMotionQuery: MediaQueryList | null = null;
 		private themeObserver: MutationObserver | null = null;
 
 		private boundHandleResize: (() => void) | null = null;
 		private boundHandleVisibility: (() => void) | null = null;
 		private boundHandleTheme: (() => void) | null = null;
-		private boundHandleReducedMotion:
-			| ((e: MediaQueryListEvent) => void)
-			| null = null;
 
 		async init(): Promise<void> {
 			if (this.isRunning) return;
@@ -77,11 +74,7 @@
 					throw new Error("Canvas 2D context not initialized");
 				}
 
-				this.reducedMotionQuery = window.matchMedia(
-					"(prefers-reduced-motion: reduce)",
-				);
-				this.reducedMotion = this.reducedMotionQuery.matches;
-				this.lastFillColor = readPageBg();
+			this.lastFillColor = readPageBg();
 				this.lastVisibilityHidden = document.hidden;
 
 				const { width, height, dpr } = this.measure();
@@ -91,11 +84,11 @@
 					this.renderer?.draw(performance.now(), this.startTime);
 				}
 
-				this.setupObservers();
+			this.setupObservers();
 
-				if (!this.reducedMotion && width > 0 && height > 0 && !document.hidden) {
-					this.startAnimation();
-				}
+			if (width > 0 && height > 0 && !document.hidden) {
+				this.startAnimation();
+			}
 			} catch (err) {
 				console.warn("[Waves] init failed:", err);
 				this.stop();
@@ -144,14 +137,12 @@
 				}
 				this.renderer.setSize(width, height, dpr);
 			}
-			// 先同步画一帧,再启动 rAF,避免 resize/重新显示瞬间出现空白帧
-			this.renderer?.draw(performance.now(), this.startTime);
-			if (this.reducedMotion) {
-				// 弱动效:仅静态一帧,不启动 rAF
-			} else if (!this.lastVisibilityHidden) {
-				this.startAnimation();
-			}
+		// 先同步画一帧,再启动 rAF,避免 resize/重新显示瞬间出现空白帧
+		this.renderer?.draw(performance.now(), this.startTime);
+		if (!this.lastVisibilityHidden) {
+			this.startAnimation();
 		}
+	}
 
 		private startAnimation(): void {
 			if (this.animationId !== null || !this.renderer) return;
@@ -179,17 +170,7 @@
 			this.lastVisibilityHidden = hidden;
 			if (hidden) {
 				this.cancelAnimation();
-			} else if (!this.reducedMotion) {
-				this.startAnimation();
-			}
-		}
-
-		private applyReducedMotion(enabled: boolean): void {
-			this.reducedMotion = enabled;
-			if (enabled) {
-				this.cancelAnimation();
-				this.renderer?.draw(performance.now(), this.startTime);
-			} else if (!this.lastVisibilityHidden) {
+			} else {
 				this.startAnimation();
 			}
 		}
@@ -208,9 +189,6 @@
 			if (color === this.lastFillColor) return;
 			this.lastFillColor = color;
 			this.renderer?.setFillColor(color);
-			if (this.reducedMotion) {
-				this.renderer?.draw(performance.now(), this.startTime);
-			}
 		}
 
 		private setupObservers(): void {
@@ -248,18 +226,6 @@
 				attributes: true,
 				attributeFilter: ["class", "data-theme", "style"],
 			});
-
-			// prefers-reduced-motion
-			const onReducedMotion = (e: MediaQueryListEvent) => {
-				this.applyReducedMotion(e.matches);
-			};
-			this.boundHandleReducedMotion = onReducedMotion;
-			if (this.reducedMotionQuery) {
-				this.reducedMotionQuery.addEventListener(
-					"change",
-					onReducedMotion,
-				);
-			}
 		}
 
 		stop(): void {
@@ -289,18 +255,9 @@
 			}
 			this.themeObserver?.disconnect();
 			this.themeObserver = null;
-			const onReducedMotion = this.boundHandleReducedMotion;
-			if (onReducedMotion) {
-				this.reducedMotionQuery?.removeEventListener(
-					"change",
-					onReducedMotion,
-				);
-			}
-			this.reducedMotionQuery = null;
 			this.boundHandleResize = null;
 			this.boundHandleVisibility = null;
 			this.boundHandleTheme = null;
-			this.boundHandleReducedMotion = null;
 			this.renderer = null;
 			this.ctx = null;
 			this.canvas?.remove();

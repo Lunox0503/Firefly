@@ -223,6 +223,15 @@ export const ko: Translation = {
 		"src/config/siteConfig.ts에서 bilibili.uid를 설정하세요",
 
 	// Anime Tracking - Shared components
+	[Key.anime]: "애니",
+	[Key.animeSubtitle]: "Bilibili와 TMDB에서 가져온 나의 애니 목록",
+	[Key.animeSource]: "데이터 출처",
+	[Key.animeNotConfigured]: "애니 데이터 소스가 설정되지 않았습니다",
+	[Key.animeNotConfiguredDesc]:
+		"src/config/siteConfig.ts에서 Bilibili UID 또는 TMDB API Key를 설정해 주세요",
+	[Key.animeTmdbAvg]: "TMDB 평균",
+	[Key.animeDualSynced]: "듀얼 동기화됨",
+	[Key.animeViewTmdb]: "TMDB 상세 보기",
 	[Key.animeTotal]: "총계",
 	[Key.animeAverageRating]: "평균 평점",
 	[Key.animeSearch]: "애니메이션 검색...",
@@ -497,4 +506,5 @@ export const ko: Translation = {
 	[Key.videoPrev]: "이전 영상",
 	[Key.videoNext]: "다음 영상",
 	[Key.videoLoadError]: "영상을 불러오지 못했습니다",
+		builtinWallpaper: "Built-in Wallpapers",
 };

@@ -3,6 +3,9 @@ import GoogleAnalytics from "@components/analytics/GoogleAnalytics.astro";
 import La51Analytics from "@components/analytics/La51Analytics.astro";
 import MicrosoftClarity from "@components/analytics/MicrosoftClarity.astro";
 import UmamiAnalytics from "@components/analytics/UmamiAnalytics.astro";
+import UmamiMetrics from "@components/analytics/UmamiMetrics.astro";
+import ChangelogManager from "@components/features/ChangelogManager.astro";
+import CodeInteractionManager from "@components/features/CodeInteractionManager.astro";
 import CodeGroupManager from "@components/features/CodeGroupManager.astro";
 import FancyboxManager from "@components/features/FancyboxManager.astro";
 import FontSetup from "@components/features/FontSetup.astro";
@@ -11,6 +14,7 @@ import MusicManager from "@components/features/MusicManager.astro";
 import MusicPlayerView from "@components/features/MusicPlayerView.astro";
 import SakuraEffect from "@components/features/SakuraEffect.astro";
 import WavesEffect from "@components/features/WavesEffect.astro";
+import WelcomeToast from "@components/features/WelcomeToast.astro";
 import ConfigCarrier from "@components/layout/ConfigCarrier.astro";
 
 import {
@@ -35,6 +39,7 @@ import { buildSiteGraph, toAbsoluteUrl } from "@/utils/schema-utils";
 import { url } from "@/utils/url-utils";
 
 import "@/styles/main.css";
+import "@/styles/mouse.css";
 import "@/styles/variables.styl";
 import "@rehype-callouts-theme";
 
@@ -145,6 +150,16 @@ const siteLogo = await getSiteLogo();
           replays={analyticsConfig.umamiAnalytics.replays}
           />
         )}
+        {analyticsConfig?.umamiAnalytics?.websiteId &&
+          analyticsConfig.umamiAnalytics.shareId &&
+          analyticsConfig.umamiAnalytics.shareApiBase && (
+            <UmamiMetrics
+              shareId={analyticsConfig.umamiAnalytics.shareId}
+              shareApiBase={analyticsConfig.umamiAnalytics.shareApiBase}
+              historicalVisitors={analyticsConfig.umamiAnalytics.historicalStats?.visitors}
+              historicalPageviews={analyticsConfig.umamiAnalytics.historicalStats?.pageviews}
+            />
+          )}
         {analyticsConfig?.la51Analytics?.Id && (
             <La51Analytics
             analyticsId={analyticsConfig.la51Analytics.Id}
@@ -502,6 +517,15 @@ const siteLogo = await getSiteLogo();
 
     <!-- GitHub 卡片客户端实时补全（forks/stars） -->
     <GithubCardManager />
+
+    <!-- 博客日志页 / 关于页的条目展开与滚动定位 -->
+    <ChangelogManager />
+
+    <!-- 代码块交互增强（复制、折叠、行号高亮） -->
+    <CodeInteractionManager />
+
+    <!-- 首次进入的欢迎提示（时段问候 + 访客地点） -->
+    <WelcomeToast />
   </body>
 </html>
 

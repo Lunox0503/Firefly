@@ -224,6 +224,15 @@ export const ru: Translation = {
 		"Настройте bilibili.uid в src/config/siteConfig.ts",
 
 	// Отслеживание аниме - общие компоненты
+	[Key.anime]: "Аниме",
+	[Key.animeSubtitle]: "Мой список аниме, данные из Bilibili и TMDB",
+	[Key.animeSource]: "Источник",
+	[Key.animeNotConfigured]: "Источник данных не настроен",
+	[Key.animeNotConfiguredDesc]:
+		"Настройте Bilibili UID или TMDB API Key в src/config/siteConfig.ts",
+	[Key.animeTmdbAvg]: "TMDB ср.",
+	[Key.animeDualSynced]: "Два источника",
+	[Key.animeViewTmdb]: "Подробнее на TMDB",
 	[Key.animeTotal]: "Всего",
 	[Key.animeAverageRating]: "Средний рейтинг",
 	[Key.animeSearch]: "Поиск аниме...",
@@ -501,4 +510,5 @@ export const ru: Translation = {
 	[Key.videoPrev]: "Предыдущее видео",
 	[Key.videoNext]: "Следующее видео",
 	[Key.videoLoadError]: "Не удалось загрузить видео",
+		builtinWallpaper: "Встроенные обои",
 };

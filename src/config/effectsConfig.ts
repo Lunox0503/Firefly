@@ -4,7 +4,10 @@ import type { SakuraConfig } from "../types/effectsConfig";
 
 export const sakuraConfig: SakuraConfig = {
 	// 是否启用樱花特效
-	enable: false,
+	enable: true,
+
+	// 是否允许用户在设置面板中切换（移植自 Aemeath）
+	switchable: true,
 
 	// 樱花数量
 	sakuraNum: 21,

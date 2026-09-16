@@ -22,27 +22,27 @@ export const profileConfig: ProfileConfig = {
 	// showName: true 时显示图标和名称，false 时只显示图标
 	links: [
 		{
-			name: "qq",
-			icon: "fa7-brands:qq",
-			url: "https://qm.qq.com/q/ZGsFa8qX2G",
-			showName: false,
-		},
-		{
 			name: "GitHub",
 			icon: "fa7-brands:github",
-			url: "https://github.com/CuteLeaf",
+			url: "https://github.com/CuteLeaf", // TODO: 换成你自己的 GitHub 主页地址
 			showName: false,
 		},
 		{
-			name: "Email",
-			icon: "fa7-solid:envelope",
-			url: "mailto:xiaye@msn.com",
+			name: "Bilibili",
+			icon: "fa7-brands:bilibili",
+			url: "https://space.bilibili.com/38932988",
 			showName: false,
 		},
 		{
-			name: "RSS",
-			icon: "fa7-solid:rss",
-			url: "/rss/",
+			name: "微信",
+			icon: "fa7-brands:weixin",
+			url: "copy:请替换成你的微信号", // 点击复制微信号，把冒号后面换成你的微信号
+			showName: false,
+		},
+		{
+			name: "QQ",
+			icon: "fa7-brands:qq",
+			url: "https://qm.qq.com/q/ZGsFa8qX2G",
 			showName: false,
 		},
 	],

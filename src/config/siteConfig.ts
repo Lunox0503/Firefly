@@ -31,6 +31,20 @@ const pages = resolvePageToggles({
 	vndb: false,
 	// MyAnimeList页面开关
 	mal: false,
+	// 追番页面开关（Bilibili + TMDB）
+	anime: true,
+	// 工具页面开关
+	tools: true,
+	// 朋友圈页面开关（聚合友链最新文章）
+	moments: true,
+	// 动态表情页面开关
+	lottie: true,
+	// 项目更新日志页面开关
+	changelog: true,
+	// 博客日志页面开关
+	blogChangelog: true,
+	// 站点统计页面开关
+	analytics: true,
 
 	// ── 关于 (About) ──────────────────────────────────
 
@@ -46,7 +60,7 @@ export const siteConfig: SiteConfig = {
 	subtitle: "Demo site",
 
 	// 站点 URL
-	site_url: "https://firefly.cuteleaf.cn",
+	site_url: "https://lunoxblog.com",
 
 	// 站点描述
 	description:
@@ -241,6 +255,20 @@ export const siteConfig: SiteConfig = {
 	bilibili: {
 		// 你的 Bilibili 用户 UID
 		uid: "38932988",
+	},
+
+	// ── 追番配置（Bilibili + TMDB），供 /anime/ 页面使用 ──────────────────────────────────
+	anime: {
+		// Bilibili 配置
+		bilibili: {
+			// 你的 Bilibili 用户 UID
+			uid: "38932988",
+		},
+		// TMDB 配置（可选，需要能访问 TMDB）
+		// tmdb: {
+		//   apiKey: "your_tmdb_api_key",
+		//   listId: "your_list_id",
+		// },
 	},
 
 	// ── 番组计划bangumi配置 ──────────────────────────────────

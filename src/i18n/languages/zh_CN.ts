@@ -219,6 +219,15 @@ export const zh_CN: Translation = {
 		"请在 src/config/siteConfig.ts 中配置 bilibili.uid",
 
 	// 追番 - 公共组件
+	[Key.anime]: "追番",
+	[Key.animeSubtitle]: "我的追番列表，数据来自 Bilibili 和 TMDB",
+	[Key.animeSource]: "数据来源",
+	[Key.animeNotConfigured]: "未配置追番数据源",
+	[Key.animeNotConfiguredDesc]:
+		"请在 src/config/siteConfig.ts 中配置 Bilibili UID 或 TMDB API Key",
+	[Key.animeTmdbAvg]: "TMDB 均分",
+	[Key.animeDualSynced]: "双源已同步",
+	[Key.animeViewTmdb]: "查看 TMDB 详情",
 	[Key.animeTotal]: "总追番",
 	[Key.animeAverageRating]: "平均评分",
 	[Key.animeSearch]: "搜索番剧...",
@@ -488,4 +497,5 @@ export const zh_CN: Translation = {
 	[Key.videoPrev]: "上一个视频",
 	[Key.videoNext]: "下一个视频",
 	[Key.videoLoadError]: "视频加载失败",
+		builtinWallpaper: "内置壁纸",
 };

@@ -223,6 +223,15 @@ export const ja: Translation = {
 		"src/config/siteConfig.ts で bilibili.uid を設定してください",
 
 	// 追番 - 共通コンポーネント
+	[Key.anime]: "追番",
+	[Key.animeSubtitle]: "私のアニメ追跡リスト、Bilibili と TMDB からデータ取得",
+	[Key.animeSource]: "データソース",
+	[Key.animeNotConfigured]: "アニメデータソースが未設定",
+	[Key.animeNotConfiguredDesc]:
+		"src/config/siteConfig.ts で Bilibili UID または TMDB API Key を設定してください",
+	[Key.animeTmdbAvg]: "TMDB 平均",
+	[Key.animeDualSynced]: "デュアル同期済み",
+	[Key.animeViewTmdb]: "TMDB 詳細を見る",
 	[Key.animeTotal]: "合計",
 	[Key.animeAverageRating]: "平均評価",
 	[Key.animeSearch]: "アニメを検索...",
@@ -498,4 +507,5 @@ export const ja: Translation = {
 	[Key.videoPrev]: "前の動画",
 	[Key.videoNext]: "次の動画",
 	[Key.videoLoadError]: "動画の読み込みに失敗しました",
+		builtinWallpaper: "内蔵壁紙",
 };

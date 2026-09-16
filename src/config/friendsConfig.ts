@@ -52,6 +52,37 @@ export const friendsConfig: FriendLink[] = [
 	},
 ];
 
+// 已加入的博客项目（友链页面顶部的"我参加的博客社区/项目"展示区）
+export const friendsProjects: FriendLink[] = [
+	{
+		title: "博友圈",
+		imgurl: "https://www.boyouquan.com/assets/images/sites/logo/logo-small.png",
+		desc: "让我们跨越山海彼此相连，一起用文字打败时间！",
+		siteurl: "https://www.boyouquan.com/home",
+		tags: ["博客社区", "友链互推", "RSS"],
+		weight: 40,
+		enabled: true,
+	},
+	{
+		title: "博客星球",
+		imgurl: "https://www.blogplanet.cn/img/bkxq.png",
+		desc: "每一个博客都是一个独立星球！",
+		siteurl: "https://www.blogplanet.cn/",
+		tags: ["博客社区", "博客收录", "博主交流"],
+		weight: 30,
+		enabled: true,
+	},
+	{
+		title: "BlogsClub",
+		imgurl: "https://www.blogsclub.org/usr/themes/default/favicon.png",
+		desc: "BlogsClub 是一个互联网独立博客俱乐部。",
+		siteurl: "https://www.blogsclub.org/",
+		tags: ["博客社区", "博主交流", "博客收录"],
+		weight: 10,
+		enabled: true,
+	},
+];
+
 // 获取启用的友链并进行排序
 export const getEnabledFriends = (): FriendLink[] => {
 	const friends = friendsConfig.filter((friend) => friend.enabled);

@@ -90,6 +90,13 @@ export type SiteConfig = {
 		gallery: boolean; // 相册页面开关
 		bilibili: boolean; // 哔哩哔哩追番页面开关
 		dynamic: boolean; // 动态页面开关
+		anime?: boolean; // 追番页面开关（Bilibili + TMDB）
+		tools?: boolean; // 工具页面开关
+		moments?: boolean; // 朋友圈页面开关
+		lottie?: boolean; // 动态表情页面开关
+		changelog?: boolean; // 项目更新日志页面开关
+		blogChangelog?: boolean; // 博客日志页面开关
+		analytics?: boolean; // 站点统计页面开关
 	};
 
 	// 分类导航栏开关
@@ -202,6 +209,20 @@ export type SiteConfig = {
 	bilibili?: {
 		uid?: string; // Bilibili 用户 UID
 	};
+
+	// 追番配置（Bilibili + TMDB），供 /anime/ 页面使用
+	anime?: {
+		bilibili?: {
+			uid: string; // Bilibili 用户 UID
+		};
+		tmdb?: {
+			apiKey: string; // TMDB API Key
+			listId: string; // TMDB 列表 ID
+		};
+	};
+
+	// 自定义主题版本，用于页脚及站点信息展示
+	themeVersion?: string;
 
 	// 分页配置
 	pagination: {

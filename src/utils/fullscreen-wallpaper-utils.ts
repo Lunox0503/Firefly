@@ -5,6 +5,7 @@ import { pathsEqual, url } from "@/utils/url-utils";
 const TITLE_FADE_RATIO = 0.5; // 滚动到半个视口高度后标题完全淡出
 const BLUR_RAMP_SCROLL = 300; // px，首页下滑该距离后壁纸模糊达到配置的最大值（期间从 0 连续渐变）
 const BLUR_QUANTIZE_STEP = 2; // px，模糊值量化步长，避免每帧都触发全屏 blur 重栅格化
+const NAVBAR_OFFSET_PX = 88; // 5.5rem，非首页自动滚动时内容区停在导航栏下方（与原帖一致）
 let parallaxTicking = false;
 let cachedMaxBlur: number | null = null; // 缓存的 --overlay-blur 解析值（仅在加载/滑块变化时刷新）
 let lastWrittenBlur = ""; // 上次实际写入的 --fullscreen-blur，值未变则跳过写入
@@ -50,11 +51,12 @@ function requestFullscreenTitleParallax(): void {
 
 // 非首页全屏壁纸模式：强制隐藏标题覆盖层（与 overlay 一致），
 // 处理运行时切换 / Swup 导航后 banner 渲染的覆盖层残留（内联 !important，不依赖 CSS 是否已刷新）
+// 注意 banner-page-title-overlay 不隐藏——原帖非首页壁纸上有「归档」等页面标题
 export function syncFullscreenOverlays(): void {
 	const mode = document.documentElement.getAttribute("data-wallpaper-mode");
 	const isHome = pathsEqual(window.location.pathname, url("/"));
 	const overlays = document.querySelectorAll(
-		"#banner-overlay-container .banner-home-text-overlay, #banner-overlay-container .banner-page-title-overlay, #banner-overlay-container .banner-post-meta-overlay",
+		"#banner-overlay-container .banner-home-text-overlay, #banner-overlay-container .banner-post-meta-overlay",
 	);
 	overlays.forEach((el) => {
 		const element = el as HTMLElement;
@@ -64,6 +66,19 @@ export function syncFullscreenOverlays(): void {
 			element.style.removeProperty("display");
 		}
 	});
+	// 页面标题覆盖层（归档/友链/关于等）：非首页全屏模式下强制显示（桌面端）。
+	// 标记是 hidden lg:flex 组合，dev 下 Tailwind 生成顺序不稳定会偶发隐藏，
+	// 这里用内联样式钉死，swup 跳转后必然生效（移动端交给 hidden 类，保持隐藏）
+	const pageTitle = document.querySelector(
+		"#banner-overlay-container .banner-page-title-overlay",
+	) as HTMLElement | null;
+	if (pageTitle) {
+		if (mode === "fullscreen" && !isHome && window.innerWidth >= 1024) {
+			pageTitle.style.setProperty("display", "flex", "important");
+		} else {
+			pageTitle.style.removeProperty("display");
+		}
+	}
 }
 
 // 全屏壁纸模糊：首页从 0 随滚动连续渐变到配置的最大值，非首页固定为最大值（与 overlay 一致）
@@ -135,6 +150,40 @@ export function initFullscreenWallpaper(): void {
 	syncFullscreenOverlays(); // 初始加载时同步非首页覆盖层状态
 	syncFullscreenBlur(); // 初始加载时同步壁纸模糊状态
 
+	// 非首页全屏壁纸模式：内容区排在 100vh 壁纸下方（普通文档流），
+	// swup 跳转/直达时视口默认停在页面最顶部，用户得手动滚过壁纸才能看到内容。
+	// 对齐原帖行为：跳转到非首页后自动滚到内容区顶部（导航栏下方）。
+	// 锚点链接交给浏览器；前进/后退交给 swup 滚动恢复，不干预。
+	// 注意 swup 是延迟初始化的（window.swup 出现得比脚本晚），用轮询等它就绪再挂钩子
+	const w = window as Window & {
+		swup?: {
+			hooks: {
+				on: (name: string, handler: (...args: unknown[]) => void) => void;
+			};
+		};
+	};
+	let scrollHookRegistered = false;
+	const tryRegisterScrollHook = (): boolean => {
+		if (scrollHookRegistered) return true;
+		if (!w.swup?.hooks) return false;
+		w.swup.hooks.on("content:replace", (...args: unknown[]) => {
+			const visit = args[0] as { history?: { popstate?: boolean } } | undefined;
+			if (visit?.history?.popstate) return; // 前进/后退由 swup 滚动恢复接管
+			scrollToContentOnNavigation();
+			syncFullscreenOverlays(); // 跳转后立即同步标题/覆盖层状态（page:view 稍后还会再同步一次）
+		});
+		scrollHookRegistered = true;
+		return true;
+	};
+	if (!tryRegisterScrollHook()) {
+		// swup 初始化时间不固定（可能晚于 10s），轮询直到挂上为止；开销为每 120ms 读一个属性
+		const swupPollId = window.setInterval(() => {
+			if (tryRegisterScrollHook()) window.clearInterval(swupPollId);
+		}, 120);
+	}
+	// 直达非首页（刷新/直接输网址/普通跳转）也同样滚到内容区
+	window.addEventListener("load", () => scrollToContentOnNavigation());
+
 	// 设置面板调整模糊滑块（--overlay-blur 变化）时，同步全屏壁纸的 --fullscreen-blur，
 	// 否则非首页的模糊只在滚动/切页时才更新，滑块会表现为失效
 	const wrapper = document.getElementById("wallpaper-wrapper");
@@ -149,6 +198,30 @@ export function initFullscreenWallpaper(): void {
 		}
 	});
 	observer.observe(wrapper, { attributes: true, attributeFilter: ["style"] });
+}
+
+/**
+ * 非首页全屏壁纸模式：把视口滚到内容区顶部（内容容器停在导航栏下方）。
+ * 壁纸仍占满首屏、向上滚走；直达 /archive/ 等页面时与原帖一致直接看到内容。
+ */
+export function scrollToContentOnNavigation(): void {
+	const html = document.documentElement;
+	if (html.getAttribute("data-wallpaper-mode") !== "fullscreen") return;
+	if (window.location.hash) return; // 锚点跳转由浏览器处理
+	if (pathsEqual(window.location.pathname, url("/"))) return; // 首页保持顶部
+
+	requestAnimationFrame(() => {
+		const container = document.querySelector(
+			".absolute.w-full.z-30.pointer-events-none",
+		) as HTMLElement | null;
+		if (!container) return;
+		const currentScroll =
+			window.pageYOffset || document.documentElement.scrollTop;
+		const contentTop =
+			container.getBoundingClientRect().top + currentScroll;
+		const target = Math.max(0, contentTop - NAVBAR_OFFSET_PX);
+		window.scrollTo({ top: target, behavior: "instant" as ScrollBehavior });
+	});
 }
 
 /** 模式初始化后同步（此时 data-wallpaper-mode 才是运行时模式） */

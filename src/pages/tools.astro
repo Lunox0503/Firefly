@@ -1,0 +1,2203 @@
+---
+import { Icon } from "astro-icon/components";
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+
+type Tool = {
+	name: string;
+	description: string;
+	icon: string;
+	image?: string;
+	platforms: string[];
+	url: string;
+	isFree: boolean;
+	accent: string;
+	isMine?: boolean;
+	isRecommended?: boolean;
+};
+
+const myTools: Tool[] = [
+	{
+		name: "自动上架-V4.1.0",
+		description: "跨境商品批量上架，串联表格、图库与 AI 标题。",
+		icon: "material-symbols:rocket-launch-rounded",
+		image: "/assets/tools/auto-listing-v4.1.0.png",
+		platforms: ["Windows", "Shopee", "TikTok Shop"],
+		url: "https://wwbna.lanzn.com/b01d78blmf",
+		isFree: false,
+		accent: "#e0a322",
+		isMine: true,
+		isRecommended: true,
+	},
+	{
+		name: "批量图案替换工具",
+		description: "按模板批量替换商品图案，支持图库与子文件夹两种制作模式。",
+		icon: "material-symbols:grid-view-rounded",
+		platforms: ["Windows"],
+		url: "https://wwbna.lanzouv.com/b01d72k9mb",
+		isFree: false,
+		accent: "#0ea5e9",
+		isMine: true,
+	},
+	{
+		name: "图片批量提取工具",
+		description: "从 PSD 批量提取商品图，并整理为自动上架所需的素材。",
+		icon: "material-symbols:image-search-rounded",
+		platforms: ["Windows", "Photoshop"],
+		url: "https://wwbna.lanzouv.com/b01d72ka5a",
+		isFree: false,
+		accent: "#22c55e",
+		isMine: true,
+	},
+	{
+		name: "批量修改 Shopee 库存",
+		description: "按 SKU 批量修改 Shopee 商品库存，适合日常库存维护。",
+		icon: "material-symbols:inventory-2-rounded",
+		platforms: ["Windows", "Shopee"],
+		url: "https://wwbna.lanzouv.com/b01d72kaje",
+		isFree: false,
+		accent: "#f97316",
+		isMine: true,
+	},
+];
+
+const thirdPartyTools: Tool[] = [
+	{
+		name: "Tabby",
+		description:
+			"现代开源终端模拟器，支持 SSH、Telnet、本地 Shell，界面美观，插件丰富。",
+		icon: "material-symbols:terminal-rounded",
+		platforms: ["Windows", "Mac", "Linux"],
+		url: "https://tabby.sh",
+		isFree: true,
+		accent: "#38bdf8",
+	},
+	{
+		name: "ShareX",
+		description:
+			"Windows 下强力截图工具，支持截图、录屏、OCR、自动上传到图床。",
+		icon: "material-symbols:photo-camera-rounded",
+		platforms: ["Windows"],
+		url: "https://getsharex.com",
+		isFree: true,
+		accent: "#22c55e",
+	},
+	{
+		name: "Raycast",
+		description:
+			"Mac 平台高效率启动器，扩展生态完整，适合把常用操作收进键盘流。",
+		icon: "material-symbols:keyboard-command-key",
+		platforms: ["Mac"],
+		url: "https://raycast.com",
+		isFree: true,
+		accent: "#ef4444",
+	},
+	{
+		name: "Obsidian",
+		description:
+			"基于本地 Markdown 的知识管理工具，双向链接、图谱展示和插件生态都很顺手。",
+		icon: "material-symbols:book-2-rounded",
+		platforms: ["Windows", "Mac", "Linux"],
+		url: "https://obsidian.md",
+		isFree: true,
+		accent: "#8b5cf6",
+	},
+	{
+		name: "VS Code",
+		description:
+			"微软出品的开源代码编辑器，插件生态丰富，前端、后端、脚本都能覆盖。",
+		icon: "material-symbols:code-blocks-rounded",
+		platforms: ["Windows", "Mac", "Linux"],
+		url: "https://code.visualstudio.com",
+		isFree: true,
+		accent: "#3b82f6",
+	},
+	{
+		name: "Neovim",
+		description:
+			"Vim 的现代重构版本，终端里高度可定制的编辑器，越调越像自己的工作台。",
+		icon: "material-symbols:terminal-rounded",
+		platforms: ["Windows", "Mac", "Linux"],
+		url: "https://neovim.io",
+		isFree: true,
+		accent: "#10b981",
+	},
+	{
+		name: "Docker Desktop",
+		description: "容器化开发环境，快速部署各类服务，适合本地模拟生产依赖。",
+		icon: "simple-icons:docker",
+		platforms: ["Windows", "Mac", "Linux"],
+		url: "https://www.docker.com",
+		isFree: true,
+		accent: "#0ea5e9",
+	},
+	{
+		name: "Figma",
+		description:
+			"在线协作设计工具，原型、UI、交付和团队评审都能放在一个画布里完成。",
+		icon: "simple-icons:figma",
+		platforms: ["Web", "Mac", "Windows"],
+		url: "https://www.figma.com",
+		isFree: true,
+		accent: "#f97316",
+	},
+	{
+		name: "1Password",
+		description: "安全的密码管理器，跨平台同步，支持多因素认证和团队密钥管理。",
+		icon: "material-symbols:shield-lock-rounded",
+		platforms: ["Windows", "Mac", "Linux", "iOS", "Android"],
+		url: "https://1password.com",
+		isFree: false,
+		accent: "#2563eb",
+	},
+	{
+		name: "Notion",
+		description:
+			"All-in-One 工作空间，笔记、数据库、项目管理和资料沉淀都能塞进去。",
+		icon: "simple-icons:notion",
+		platforms: ["Windows", "Mac", "Web", "iOS", "Android"],
+		url: "https://www.notion.so",
+		isFree: true,
+		accent: "#64748b",
+	},
+	{
+		name: "Warp",
+		description:
+			"基于 Rust 的现代终端，命令块、协作和 AI 辅助让命令行更像工作流工具。",
+		icon: "material-symbols:auto-awesome-rounded",
+		platforms: ["Mac", "Linux"],
+		url: "https://www.warp.dev",
+		isFree: true,
+		accent: "#a855f7",
+	},
+	{
+		name: "Arc Browser",
+		description:
+			"重新组织浏览器体验，垂直标签、空间管理和分屏让浏览器更像工作系统。",
+		icon: "material-symbols:public",
+		platforms: ["Mac", "Windows", "iOS"],
+		url: "https://arc.net",
+		isFree: true,
+		accent: "#ec4899",
+	},
+];
+
+const toolSections = [
+	{
+		title: "本人项目",
+		description: "我自己整理和制作的跨境电商效率工具。",
+		tools: myTools,
+	},
+	{
+		title: "非本人项目",
+		description: "收藏备用的第三方工具。",
+		tools: thirdPartyTools,
+	},
+];
+
+const tools = [...myTools, ...thirdPartyTools];
+
+const getPlatformIcon = (platform: string) => {
+	const lower = platform.toLowerCase();
+	if (lower.includes("windows")) return "fa7-brands:windows";
+	if (lower.includes("mac") || lower.includes("ios")) return "fa7-brands:apple";
+	if (lower.includes("linux")) return "fa7-brands:linux";
+	if (lower.includes("android")) return "fa7-brands:android";
+	if (lower.includes("web")) return "material-symbols:public";
+	if (lower.includes("photoshop")) return "simple-icons:adobephotoshop";
+	if (lower.includes("shopee")) return "material-symbols:local-mall-rounded";
+	return "material-symbols:devices-rounded";
+};
+---
+
+<MainGridLayout title="工具" description="小众神器库">
+	<section class="tools-page card-base">
+		<header class="tools-hero">
+			<div>
+				<div class="tools-kicker">
+					<Icon is:inline name="material-symbols:construction-rounded" />
+					<span>which awesome</span>
+				</div>
+				<h1>小众神器库</h1>
+				<p>
+					免费、极简、无广告、高效率，只保留真正值得放进日常工作流的工具。
+				</p>
+			</div>
+			<div class="tools-stats" aria-label="工具统计">
+				<div>
+					<strong>{tools.length}</strong>
+					<span>工具</span>
+				</div>
+				<div>
+					<strong>{myTools.length}</strong>
+					<span>本人项目</span>
+				</div>
+				<div>
+					<strong>{thirdPartyTools.length}</strong>
+					<span>非本人</span>
+				</div>
+			</div>
+		</header>
+
+		<div class="tools-sections">
+			{
+				toolSections.map((section) => (
+					<section class="tools-section" aria-labelledby={`${section.title}-heading`}>
+						<div class="tools-section-heading">
+							<div>
+								<h2 id={`${section.title}-heading`}>{section.title}</h2>
+								<p>{section.description}</p>
+							</div>
+							<span>{section.tools.length} 个</span>
+						</div>
+						<div class="tools-grid">
+							{section.tools.map((tool) => (
+								<a
+									class:list={[
+										"tool-card",
+										{ "tool-card-mine": tool.isMine, "tool-card-recommended": tool.isRecommended },
+									]}
+									href={tool.url}
+									target="_blank"
+									rel="noopener noreferrer"
+									style={`--tool-accent: ${tool.accent}`}
+									aria-label={tool.isRecommended ? `${tool.name}，推荐工具` : `访问 ${tool.name}`}
+								>
+									<div class="tool-card-surface" aria-hidden="true">
+										<div class="tool-card-surface-hover" />
+										{tool.isRecommended && (
+											<tool-recommended-star-flow class="tool-recommended-star-flow">
+												<canvas class="tool-recommended-star-canvas"></canvas>
+											</tool-recommended-star-flow>
+										)}
+									</div>
+					{tool.isRecommended && (
+						<span class="tool-recommended-badge" aria-hidden="true">
+											<svg class="tool-recommended-icon" viewBox="0 0 24 24" role="presentation">
+												<path d="M12 3.1c.7 0 1.32.42 1.6 1.06l1.41 3.32c.18.43.58.73 1.04.77l3.59.32c.7.06 1.29.54 1.49 1.22.2.67-.03 1.4-.59 1.82l-2.73 2.08c-.37.28-.53.76-.4 1.2l.84 3.49c.17.69-.09 1.41-.68 1.79-.58.39-1.35.39-1.94 0l-3.02-1.96a1.37 1.37 0 0 0-1.5 0l-3.02 1.96c-.59.39-1.36.39-1.94 0-.59-.38-.85-1.1-.68-1.79l.84-3.49c.13-.44-.03-.92-.4-1.2l-2.73-2.08c-.56-.42-.79-1.15-.59-1.82.2-.68.79-1.16 1.49-1.22l3.59-.32c.46-.04.86-.34 1.04-.77l1.41-3.32A1.73 1.73 0 0 1 12 3.1Z" />
+											</svg>
+											<span>推荐工具</span>
+						</span>
+					)}
+					<span class="tool-card-badge">
+						{tool.isMine ? "本人项目" : tool.isFree ? "免费开源" : "付费软件"}
+					</span>
+					<div class="tool-card-avatar" aria-hidden="true">
+						{tool.image ? (
+							<img
+								class="tool-card-avatar-image"
+								src={tool.image}
+								alt=""
+								width="1280"
+								height="1280"
+								decoding="async"
+							/>
+						) : (
+							<Icon is:inline name={tool.icon} />
+						)}
+											</div>
+									<div class="tool-card-content">
+										<h3 class="tool-card-title" title={tool.name}>{tool.name}</h3>
+										<p class="tool-card-description" title={tool.description}>{tool.description}</p>
+									</div>
+					<div class="tool-card-tags" aria-label={`${tool.name}支持的平台`}>
+						{tool.platforms.map((platform) => (
+											<span class="tool-card-tag">
+												<Icon is:inline name={getPlatformIcon(platform)} />
+												{platform}
+											</span>
+										))}
+									</div>
+								</a>
+							))}
+						</div>
+					</section>
+				))
+			}
+		</div>
+	</section>
+</MainGridLayout>
+
+<script is:inline>
+	if (!customElements.get("tool-recommended-star-flow")) {
+		class ToolRecommendedStarFlow extends HTMLElement {
+			constructor() {
+				super();
+				this.canvas = null;
+				this.context = null;
+				this.card = null;
+				this.particles = [];
+				this.width = 0;
+				this.height = 0;
+				this.pixelRatio = 1;
+				this.elapsed = 0;
+				this.lastTimestamp = 0;
+				this.animationFrame = 0;
+				this.resizeFrame = 0;
+				this.hoverAmount = 0;
+				this.hoverTarget = 0;
+				this.initialized = false;
+				this.resizeObserver = null;
+				this.initializeFrame = 0;
+				this.reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+				this.handleFrame = this.handleFrame.bind(this);
+				this.initialize = this.initialize.bind(this);
+				this.handleResize = this.handleResize.bind(this);
+				this.handleVisibilityChange = this.handleVisibilityChange.bind(this);
+				this.handlePointerEnter = this.handlePointerEnter.bind(this);
+				this.handlePointerLeave = this.handlePointerLeave.bind(this);
+				this.handleFocusIn = this.handleFocusIn.bind(this);
+				this.handleFocusOut = this.handleFocusOut.bind(this);
+			}
+
+			connectedCallback() {
+				this.scheduleInitialize();
+			}
+
+			scheduleInitialize() {
+				if (this.initialized || !this.isConnected || this.initializeFrame) return;
+				this.initializeFrame = requestAnimationFrame(() => {
+					this.initializeFrame = 0;
+					this.initialize();
+				});
+			}
+
+			initialize() {
+				if (this.initialized || !this.isConnected) return;
+				this.canvas = this.querySelector(".tool-recommended-star-canvas");
+				this.context = this.canvas?.getContext("2d", { alpha: true }) || null;
+				this.card = this.closest(".tool-card-recommended");
+
+				if (!this.canvas || !this.context) {
+					this.scheduleInitialize();
+					return;
+				}
+
+				this.initialized = true;
+				this.particles = this.createParticles();
+				this.card?.addEventListener("pointerenter", this.handlePointerEnter);
+				this.card?.addEventListener("pointerleave", this.handlePointerLeave);
+				this.card?.addEventListener("focusin", this.handleFocusIn);
+				this.card?.addEventListener("focusout", this.handleFocusOut);
+				document.addEventListener("visibilitychange", this.handleVisibilityChange);
+
+				if (typeof ResizeObserver !== "undefined") {
+					this.resizeObserver = new ResizeObserver(this.handleResize);
+					this.resizeObserver.observe(this);
+				} else {
+					window.addEventListener("resize", this.handleResize, { passive: true });
+				}
+
+				this.resizeFrame = requestAnimationFrame(this.handleResize);
+				this.updatePlayback();
+			}
+
+			disconnectedCallback() {
+				if (this.initializeFrame) {
+					cancelAnimationFrame(this.initializeFrame);
+					this.initializeFrame = 0;
+				}
+				this.stopAnimation();
+				cancelAnimationFrame(this.resizeFrame);
+				this.resizeObserver?.disconnect();
+				window.removeEventListener("resize", this.handleResize);
+				document.removeEventListener("visibilitychange", this.handleVisibilityChange);
+				this.card?.removeEventListener("pointerenter", this.handlePointerEnter);
+				this.card?.removeEventListener("pointerleave", this.handlePointerLeave);
+				this.card?.removeEventListener("focusin", this.handleFocusIn);
+				this.card?.removeEventListener("focusout", this.handleFocusOut);
+				this.initialized = false;
+			}
+
+			createParticles() {
+				let seed = 0x51a7c0de;
+				const random = () => {
+					seed = (seed * 1664525 + 1013904223) >>> 0;
+					return seed / 4294967296;
+				};
+				const layerPattern = [0, 1, 0, 2, 1, 0, 1, 2, 0, 1, 0, 2, 1, 0, 1, 2];
+				const entryPattern = [
+					{ edge: "top", position: 0.08 },
+					{ edge: "top", position: 0.32 },
+					{ edge: "top", position: 0.58 },
+					{ edge: "top", position: 0.84 },
+					{ edge: "right", position: 0.08 },
+					{ edge: "right", position: 0.28 },
+					{ edge: "right", position: 0.48 },
+					{ edge: "right", position: 0.68 },
+					{ edge: "right", position: 0.88 },
+					{ edge: "top", position: 0.2 },
+					{ edge: "top", position: 0.46 },
+					{ edge: "top", position: 0.72 },
+					{ edge: "right", position: 0.18 },
+					{ edge: "right", position: 0.38 },
+					{ edge: "right", position: 0.62 },
+					{ edge: "right", position: 0.82 },
+					{ edge: "top", position: 0.14 },
+					{ edge: "top", position: 0.4 },
+					{ edge: "top", position: 0.68 },
+					{ edge: "top", position: 0.96 },
+					{ edge: "right", position: 0.14 },
+					{ edge: "right", position: 0.34 },
+					{ edge: "right", position: 0.56 },
+					{ edge: "right", position: 0.76 },
+					{ edge: "top", position: 0.02 },
+					{ edge: "top", position: 0.26 },
+					{ edge: "top", position: 0.5 },
+					{ edge: "top", position: 0.74 },
+					{ edge: "right", position: 0.02 },
+					{ edge: "right", position: 0.4 },
+					{ edge: "right", position: 0.6 },
+					{ edge: "right", position: 0.98 },
+				];
+
+				return entryPattern.map((entry, index) => {
+					const layer = layerPattern[index % layerPattern.length];
+					const alphaMin = [0.62, 0.76, 0.9][layer];
+					const alphaRange = [0.14, 0.14, 0.1][layer];
+					return {
+						layer,
+						phase: index / entryPattern.length,
+						entryEdge: entry.edge,
+						entryPosition: entry.position,
+						radius: 3.4 + layer * 1.6 + random() * 1.8,
+						alpha: alphaMin + random() * alphaRange,
+						glow: [5, 8, 12][layer] + random() * [2, 3, 4][layer],
+						curve: 2.1 + layer * 1.2 + random() * 2.3,
+						drift: 0.9 + random() * 1.6,
+						driftSpeed: 0.62 + random() * 0.72,
+						twinklePhase: random() * Math.PI * 2,
+						twinkleSpeed: 0.88 + random() * 1.05,
+						rotation: random() * Math.PI * 2,
+						rotationSpeed: (0.2 + random() * 0.26) * (random() > 0.5 ? 1 : -1),
+						tailScale: 3.2 + random() * 1.7 + layer * 0.75,
+					};
+				});
+			}
+
+			handleResize() {
+				cancelAnimationFrame(this.resizeFrame);
+				if (!this.isConnected || !this.canvas || !this.context) return;
+				const bounds = this.getBoundingClientRect();
+				const width = Math.max(1, Math.round(bounds.width));
+				const height = Math.max(1, Math.round(bounds.height));
+				const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+
+				if (width !== this.width || height !== this.height || pixelRatio !== this.pixelRatio) {
+					this.width = width;
+					this.height = height;
+					this.pixelRatio = pixelRatio;
+					this.canvas.width = Math.round(width * pixelRatio);
+					this.canvas.height = Math.round(height * pixelRatio);
+					this.context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+				}
+
+				this.renderFrame();
+			}
+
+			handleFrame(timestamp) {
+				if (!this.shouldAnimate()) {
+					this.animationFrame = 0;
+					return;
+				}
+
+				const delta = this.lastTimestamp ? Math.min(42, timestamp - this.lastTimestamp) : 0;
+				this.lastTimestamp = timestamp;
+				this.hoverAmount += (this.hoverTarget - this.hoverAmount) * Math.min(1, delta / 180);
+				this.elapsed += delta * (1 + this.hoverAmount * 0.12);
+				this.renderFrame();
+				this.animationFrame = requestAnimationFrame(this.handleFrame);
+			}
+
+			renderFrame() {
+				if (!this.context || !this.width || !this.height) return;
+				const context = this.context;
+				context.setTransform(this.pixelRatio, 0, 0, this.pixelRatio, 0, 0);
+				context.clearRect(0, 0, this.width, this.height);
+
+				const time = this.elapsed / 1000;
+				const cycleDuration = 3900;
+				for (const particle of this.particles) {
+					const progress = (particle.phase + this.elapsed / cycleDuration) % 1;
+					const radius = particle.radius;
+					const startX = particle.entryEdge === "right" ? this.width + radius * 2.4 : particle.entryPosition * this.width;
+					const startY = particle.entryEdge === "right" ? particle.entryPosition * this.height : -radius * 2.4;
+					const pathDeltaX = -(this.width + radius * 4.8);
+					const pathDeltaY = this.height + radius * 4.8;
+					const pathLength = Math.hypot(pathDeltaX, pathDeltaY);
+					const directionX = pathDeltaX / pathLength;
+					const directionY = pathDeltaY / pathLength;
+					const normalX = -directionY;
+					const normalY = directionX;
+					const drift = Math.sin(time * particle.driftSpeed + particle.twinklePhase) * particle.drift;
+					const wave = Math.sin(progress * Math.PI * 2 + particle.twinklePhase) * particle.curve + drift;
+					const x = startX + progress * pathDeltaX + normalX * wave;
+					const y = startY + progress * pathDeltaY + normalY * wave;
+					const edgeDistance = Math.min(x, y, this.width - x, this.height - y);
+					const fadeDistance = Math.max(18, radius * 3.5);
+					const edgeProgress = Math.min(1, Math.max(0, edgeDistance / fadeDistance));
+					const edgeFade = edgeProgress * edgeProgress * (3 - 2 * edgeProgress);
+					const twinkle = 0.84 + Math.sin(time * particle.twinkleSpeed + particle.twinklePhase) * 0.12;
+					const alpha = Math.min(0.92, particle.alpha * edgeFade * twinkle);
+					const rotation = particle.rotation + time * particle.rotationSpeed;
+
+					this.drawTrail(context, x, y, radius, particle.tailScale, directionX, directionY, alpha);
+					this.drawStar(context, x, y, radius, rotation, alpha, particle.layer, particle.glow);
+				}
+			}
+
+			drawTrail(context, x, y, radius, tailScale, directionX, directionY, alpha) {
+				const tailLength = radius * tailScale;
+				const startX = x - directionX * tailLength;
+				const startY = y - directionY * tailLength;
+				const gradient = context.createLinearGradient(startX, startY, x, y);
+				gradient.addColorStop(0, "rgba(248, 197, 76, 0)");
+				gradient.addColorStop(1, `rgba(247, 183, 45, ${Math.min(0.82, alpha * 0.95)})`);
+
+				context.save();
+				context.strokeStyle = gradient;
+				context.lineWidth = Math.max(1.1, radius * 0.54);
+				context.lineCap = "round";
+				context.shadowColor = `rgba(232, 155, 22, ${Math.min(0.72, alpha)})`;
+				context.shadowBlur = 6;
+				context.beginPath();
+				context.moveTo(startX, startY);
+				context.quadraticCurveTo(
+					x - directionX * tailLength * 0.42,
+					y - directionY * tailLength * 0.42,
+					x - directionX * radius * 0.72,
+					y - directionY * radius * 0.72,
+				);
+				context.stroke();
+				context.restore();
+			}
+
+			drawStar(context, x, y, radius, rotation, alpha, layer, glow) {
+				const fillColors = ["255, 220, 125", "250, 200, 76", "246, 185, 50"];
+				const fill = fillColors[layer] || fillColors[0];
+				context.save();
+				context.translate(x, y);
+				context.shadowColor = `rgba(224, 145, 14, ${Math.min(0.84, alpha * 1.1)})`;
+				context.shadowBlur = glow + 2;
+				this.traceStar(context, radius, rotation);
+				context.fillStyle = `rgba(${fill}, ${alpha})`;
+				context.fill();
+				context.strokeStyle = `rgba(255, 247, 193, ${Math.min(1, alpha + 0.16)})`;
+				context.lineWidth = 0.72;
+				context.stroke();
+				context.restore();
+			}
+
+			traceStar(context, outerRadius, rotation) {
+				const innerRadius = outerRadius * 0.48;
+				const points = Array.from({ length: 10 }, (_, index) => {
+					const radius = index % 2 === 0 ? outerRadius : innerRadius;
+					const angle = rotation - Math.PI / 2 + (index * Math.PI) / 5;
+					return { x: Math.cos(angle) * radius, y: Math.sin(angle) * radius };
+				});
+
+				context.beginPath();
+				context.moveTo(points[0].x, points[0].y);
+				points.slice(1).forEach((point) => context.lineTo(point.x, point.y));
+				context.closePath();
+			}
+
+			shouldAnimate() {
+				return !document.hidden && !this.reducedMotion;
+			}
+
+			updatePlayback() {
+				if (this.shouldAnimate()) {
+					if (!this.animationFrame) {
+						this.lastTimestamp = 0;
+						this.animationFrame = requestAnimationFrame(this.handleFrame);
+					}
+				} else {
+					this.stopAnimation();
+					this.renderFrame();
+				}
+			}
+
+			stopAnimation() {
+				cancelAnimationFrame(this.animationFrame);
+				this.animationFrame = 0;
+				this.lastTimestamp = 0;
+			}
+
+			handleVisibilityChange() {
+				this.updatePlayback();
+			}
+
+			handlePointerEnter() {
+				this.hoverTarget = 1;
+			}
+
+			handlePointerLeave() {
+				this.hoverTarget = 0;
+			}
+
+			handleFocusIn() {
+				this.handlePointerEnter();
+			}
+
+			handleFocusOut(event) {
+				if (!this.card?.contains(event.relatedTarget)) this.handlePointerLeave();
+			}
+		}
+
+		customElements.define("tool-recommended-star-flow", ToolRecommendedStarFlow);
+	}
+</script>
+
+<style>
+	.tools-page {
+		width: 100%;
+		position: relative;
+		z-index: 1;
+		overflow: visible;
+		/* 与友链页 card-base 的 px-9 / py-6 对齐，给卡片留出同等呼吸距离 */
+		padding: 1.15rem 2.75rem 1.35rem;
+		border: 1px solid color-mix(in srgb, #fff 68%, var(--line-divider));
+		background: color-mix(in srgb, #fff 72%, var(--card-bg));
+		box-shadow:
+			0 0.65rem 1.8rem rgb(65 122 151 / 0.08),
+			inset 0 1px 0 rgb(255 255 255 / 0.78);
+		-webkit-backdrop-filter: blur(18px) saturate(1.03);
+		backdrop-filter: blur(18px) saturate(1.03);
+		--tools-text-90: rgb(0 0 0 / 0.9);
+		--tools-text-50: rgb(0 0 0 / 0.5);
+		--tools-text-30: rgb(0 0 0 / 0.3);
+	}
+
+	:global(:root.dark) .tools-page {
+		--tools-text-90: rgb(255 255 255 / 0.9);
+		--tools-text-50: rgb(255 255 255 / 0.5);
+		--tools-text-30: rgb(255 255 255 / 0.3);
+		border-color: color-mix(in srgb, var(--line-divider) 86%, transparent);
+		background: color-mix(in srgb, var(--card-bg) 80%, transparent);
+		box-shadow:
+			0 0.65rem 1.8rem rgb(0 0 0 / 0.2),
+			inset 0 1px 0 rgb(255 255 255 / 0.1);
+	}
+
+	.tools-hero {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 1.25rem;
+		align-items: end;
+		margin-bottom: 1.25rem;
+		padding: 1.5rem;
+		border-radius: var(--radius-large);
+		background: color-mix(in oklab, var(--card-bg) 80%, transparent);
+		border: 1px solid color-mix(in oklab, var(--line-divider) 75%, transparent);
+		backdrop-filter: blur(18px);
+	}
+
+	.tools-kicker {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.45rem;
+		margin-bottom: 0.75rem;
+		padding: 0.35rem 0.65rem;
+		border-radius: 0.5rem;
+		color: var(--primary);
+		background: color-mix(in oklab, var(--primary) 12%, transparent);
+		font-size: 0.8rem;
+		font-weight: 700;
+	}
+
+	.tools-hero h1 {
+		margin: 0;
+		font-size: clamp(1.75rem, 3vw, 2.75rem);
+		line-height: 1.15;
+		font-weight: 800;
+		color: var(--tools-text-90);
+	}
+
+	.tools-hero p {
+		max-width: 42rem;
+		margin: 0.75rem 0 0;
+		color: var(--tools-text-50);
+		line-height: 1.75;
+	}
+
+	.tools-stats {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(4.25rem, 1fr));
+		gap: 0.55rem;
+		min-width: 16rem;
+	}
+
+	.tools-stats div {
+		padding: 0.75rem 0.85rem;
+		text-align: center;
+		border-radius: 0.6rem;
+		background: color-mix(in oklab, var(--card-bg) 65%, transparent);
+		border: 1px solid color-mix(in oklab, var(--line-divider) 65%, transparent);
+	}
+
+	.tools-stats strong {
+		display: block;
+		font-size: 1.35rem;
+		line-height: 1;
+		color: var(--tools-text-90);
+	}
+
+	.tools-stats span {
+		display: block;
+		margin-top: 0.35rem;
+		font-size: 0.75rem;
+		color: var(--tools-text-50);
+	}
+
+	.tools-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(16.5rem, 1fr));
+		gap: 1rem;
+	}
+
+	.tools-sections {
+		display: grid;
+		gap: 1.25rem;
+	}
+
+	.tools-section-heading {
+		display: flex;
+		align-items: end;
+		justify-content: space-between;
+		gap: 1rem;
+		margin-bottom: 0.8rem;
+		padding: 0 0.2rem;
+	}
+
+	.tools-section-heading h2 {
+		margin: 0;
+		font-size: 1.25rem;
+		line-height: 1.3;
+		color: var(--tools-text-90);
+		font-weight: 850;
+	}
+
+	.tools-section-heading p {
+		margin: 0.25rem 0 0;
+		color: var(--tools-text-50);
+		font-size: 0.88rem;
+		line-height: 1.6;
+	}
+
+	.tools-section-heading > span {
+		flex: 0 0 auto;
+		padding: 0.35rem 0.7rem;
+		border-radius: 999px;
+		color: var(--primary);
+		background: color-mix(in oklab, var(--primary) 12%, transparent);
+		font-size: 0.78rem;
+		font-weight: 800;
+	}
+
+	.tool-card {
+		min-height: 13.4rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		gap: 1rem;
+		position: relative;
+		isolation: isolate;
+		overflow: hidden;
+		padding: 1.1rem;
+		border-radius: 1.05rem;
+		text-decoration: none;
+		color: inherit;
+		background:
+			linear-gradient(
+				145deg,
+				color-mix(in oklab, var(--card-bg) 96%, transparent),
+				color-mix(in oklab, var(--card-bg) 76%, transparent)
+			),
+			color-mix(in oklab, var(--card-bg) 72%, transparent);
+		border: 1px solid color-mix(in oklab, var(--line-divider) 82%, transparent);
+		backdrop-filter: blur(16px);
+		box-shadow:
+			0 0.7rem 1.7rem rgb(24 50 77 / 0.06),
+			inset 0 1px 0 rgb(255 255 255 / 0.58);
+		transition:
+			transform 0.32s cubic-bezier(0.2, 0.78, 0.2, 1),
+			background 0.32s ease,
+			border-color 0.32s ease,
+			box-shadow 0.32s ease;
+	}
+
+	.tool-card > * {
+		position: relative;
+		z-index: 1;
+	}
+
+	.tool-card-watermark {
+		position: absolute !important;
+		z-index: 0 !important;
+		top: 3.1rem;
+		right: 0.65rem;
+		width: 6rem;
+		height: 6rem;
+		padding: 1.05rem;
+		border: 1px solid color-mix(in oklab, var(--tool-accent) 18%, transparent);
+		border-radius: 1.55rem 1.55rem 0.45rem 1.55rem;
+		color: var(--tool-accent);
+		background: color-mix(in oklab, var(--tool-accent) 5%, transparent);
+		opacity: 0.16;
+		transform: rotate(-9deg);
+		filter: drop-shadow(0 0.65rem 0.8rem color-mix(in oklab, var(--tool-accent) 12%, transparent));
+		transition:
+			opacity 0.32s ease,
+			transform 0.48s cubic-bezier(0.2, 0.78, 0.2, 1),
+			filter 0.32s ease;
+	}
+
+	.tool-card::before {
+		content: "";
+		position: absolute;
+		z-index: 0;
+		inset: 0;
+		pointer-events: none;
+		background:
+			radial-gradient(
+				12rem 9rem at 105% -12%,
+				color-mix(in oklab, var(--tool-accent) 25%, transparent),
+				transparent 68%
+			),
+			linear-gradient(
+				120deg,
+				transparent 48%,
+				color-mix(in oklab, var(--tool-accent) 7%, transparent) 100%
+			);
+		opacity: 0.9;
+		transform: scale(1);
+		transform-origin: right top;
+		transition: transform 0.55s cubic-bezier(0.2, 0.78, 0.2, 1);
+	}
+
+	.tool-card::after {
+		content: "";
+		position: absolute;
+		z-index: 0;
+		right: -1.65rem;
+		bottom: -2.05rem;
+		width: 9rem;
+		height: 8.8rem;
+		pointer-events: none;
+		background-image: radial-gradient(
+			circle,
+			color-mix(in oklab, var(--tool-accent) 44%, transparent) 0.75px,
+			transparent 0.9px
+		);
+		background-size: 0.7rem 0.7rem;
+		mask-image: linear-gradient(135deg, transparent 0%, #000 48%, #000 100%);
+		opacity: 0.38;
+		transform: rotate(-8deg);
+		transition: opacity 0.32s ease, transform 0.55s cubic-bezier(0.2, 0.78, 0.2, 1);
+	}
+
+	.tool-card:hover {
+		transform: translate3d(0, -0.38rem, 0);
+		background: color-mix(in oklab, var(--card-bg) 96%, transparent);
+		border-color: color-mix(in oklab, var(--tool-accent) 58%, var(--line-divider));
+		box-shadow:
+			0 1.15rem 2.6rem color-mix(in oklab, var(--tool-accent) 20%, transparent),
+			inset 0 1px 0 rgb(255 255 255 / 0.72);
+	}
+
+	.tool-card:hover::before {
+		transform: scale(1.12) translate(-0.25rem, 0.15rem);
+	}
+
+	.tool-card:hover::after {
+		opacity: 0.66;
+		transform: rotate(-3deg) translate(-0.35rem, -0.25rem);
+	}
+
+	.tool-card:hover .tool-card-watermark {
+		opacity: 0.26;
+		transform: rotate(-3deg) translate(-0.25rem, -0.15rem);
+		filter: drop-shadow(0 0.85rem 1rem color-mix(in oklab, var(--tool-accent) 19%, transparent));
+	}
+
+	.tool-card-mine {
+		background:
+			linear-gradient(
+				145deg,
+				color-mix(in oklab, var(--tool-accent) 12%, var(--card-bg)),
+				color-mix(in oklab, var(--tool-accent) 4%, var(--card-bg))
+			),
+			var(--card-bg);
+		border-color: color-mix(in oklab, var(--tool-accent) 36%, var(--line-divider));
+	}
+
+	.tool-card-top {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		position: relative;
+		gap: 0.85rem;
+		margin-bottom: 1.05rem;
+	}
+
+	.tool-card-top::after {
+		content: "";
+		position: absolute;
+		left: 0;
+		bottom: -0.58rem;
+		width: min(6.8rem, 44%);
+		height: 1px;
+		background: linear-gradient(
+			90deg,
+			var(--tool-accent),
+			color-mix(in oklab, var(--tool-accent) 10%, transparent)
+		);
+		opacity: 0.58;
+	}
+
+	.tool-icon {
+		width: 2.85rem;
+		height: 2.85rem;
+		display: grid;
+		place-items: center;
+		flex: 0 0 auto;
+		position: relative;
+		overflow: hidden;
+		border-radius: 0.85rem 0.85rem 0.85rem 0.3rem;
+		color: var(--tool-accent);
+		background:
+			linear-gradient(
+				135deg,
+				color-mix(in oklab, var(--tool-accent) 26%, var(--card-bg)),
+				color-mix(in oklab, var(--tool-accent) 8%, var(--card-bg))
+			),
+			var(--card-bg);
+		border: 1px solid color-mix(in oklab, var(--tool-accent) 34%, transparent);
+		box-shadow:
+			0 0.55rem 1.1rem color-mix(in oklab, var(--tool-accent) 14%, transparent),
+			inset 0 1px 0 rgb(255 255 255 / 0.52);
+		font-size: 1.35rem;
+		transition: transform 0.32s cubic-bezier(0.2, 0.78, 0.2, 1), box-shadow 0.32s ease;
+	}
+
+	.tool-icon::after {
+		content: "";
+		position: absolute;
+		inset: -30% 35% 42% -60%;
+		background: rgb(255 255 255 / 0.46);
+		transform: rotate(28deg);
+		pointer-events: none;
+	}
+
+	.tool-card:hover .tool-icon {
+		transform: translateY(-0.12rem) rotate(-4deg);
+		box-shadow:
+			0 0.75rem 1.3rem color-mix(in oklab, var(--tool-accent) 24%, transparent),
+			inset 0 1px 0 rgb(255 255 255 / 0.66);
+	}
+
+	.tool-badge-row {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.tool-badge {
+		padding: 0.3rem 0.55rem;
+		border-radius: 999px;
+		color: var(--tool-accent);
+		background: color-mix(in oklab, var(--tool-accent) 13%, transparent);
+		border: 1px solid color-mix(in oklab, var(--tool-accent) 24%, transparent);
+		box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.38);
+		font-size: 0.72rem;
+		font-weight: 800;
+		white-space: nowrap;
+	}
+
+	.tool-external {
+		color: var(--tools-text-30);
+		font-size: 0.82rem;
+		transition: color 0.2s ease, transform 0.28s cubic-bezier(0.2, 0.78, 0.2, 1);
+	}
+
+	.tool-card:hover .tool-external {
+		color: var(--tool-accent);
+		transform: translate(0.12rem, -0.12rem);
+	}
+
+	.tool-card h3 {
+		margin: 0;
+		font-size: 1.08rem;
+		line-height: 1.35;
+		color: var(--tools-text-90);
+		font-weight: 850;
+		letter-spacing: -0.01em;
+	}
+
+	.tool-card p {
+		margin: 0.5rem 0 0;
+		color: var(--tools-text-50);
+		font-size: 0.9rem;
+		line-height: 1.7;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 3;
+		overflow: hidden;
+	}
+
+	.tool-platforms {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4rem;
+		margin-top: 0.1rem;
+		padding-top: 0.82rem;
+		border-top: 1px solid color-mix(in oklab, var(--line-divider) 58%, transparent);
+	}
+
+	.tool-platforms span {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.3rem;
+		min-height: 1.7rem;
+		padding: 0.28rem 0.5rem;
+		border-radius: 999px;
+		color: var(--tools-text-50);
+		background: color-mix(in oklab, var(--card-bg) 72%, transparent);
+		border: 1px solid color-mix(in oklab, var(--line-divider) 58%, transparent);
+		font-size: 0.72rem;
+		font-weight: 700;
+		transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+	}
+
+	.tool-card:hover .tool-platforms span {
+		color: color-mix(in oklab, var(--tool-accent) 62%, var(--tools-text-90));
+		background: color-mix(in oklab, var(--tool-accent) 8%, var(--card-bg));
+		border-color: color-mix(in oklab, var(--tool-accent) 24%, var(--line-divider));
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.tool-card,
+		.tool-card::before,
+		.tool-card::after,
+		.tool-card-watermark,
+		.tool-icon,
+		.tool-external,
+		.tool-platforms span {
+			transition: none;
+		}
+	}
+
+	@media (max-width: 767px) {
+		.tools-page {
+			padding: 0.85rem 1.15rem 1.1rem;
+		}
+
+		.tools-hero {
+			grid-template-columns: 1fr;
+			padding: 1.1rem;
+		}
+
+		.tools-stats {
+			min-width: 0;
+			width: 100%;
+		}
+
+		.tools-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.tools-section-heading {
+			align-items: flex-start;
+		}
+	}
+
+	/* 工具卡片沿用友链卡片的透明底、轻边框与底部标签布局 */
+	.tools-grid {
+		grid-template-columns: repeat(auto-fit, minmax(13.75rem, 1fr));
+		grid-auto-rows: 10rem;
+		gap: 0.75rem;
+	}
+
+	.tool-card {
+		box-sizing: border-box;
+		height: 10rem;
+		min-height: 10rem;
+		display: grid;
+		grid-template-columns: 4rem minmax(0, 1fr);
+		grid-template-rows: minmax(0, 1fr) auto;
+		gap: 0.65rem;
+		padding: 0.75rem;
+		border: 1px solid rgba(255, 246, 219, 0.28);
+		border-radius: 10px 7px 12px 8px;
+		background-color: color-mix(in srgb, var(--card-bg) 26%, transparent);
+		box-shadow:
+			0 0.48rem 1.05rem rgba(68, 128, 164, 0.09),
+			0 0.12rem 0.32rem rgba(67, 108, 139, 0.06),
+			inset 0 1px 0 rgba(255, 255, 255, 0.68);
+		-webkit-backdrop-filter: blur(4px) saturate(1.04);
+		backdrop-filter: blur(4px) saturate(1.04);
+		transition:
+			transform 220ms ease,
+			border-color 220ms ease,
+			background-color 220ms ease,
+			box-shadow 220ms ease;
+	}
+
+	.tool-card > * {
+		min-width: 0;
+	}
+
+	.tool-card-surface {
+		position: absolute !important;
+		inset: 0;
+		z-index: 0 !important;
+		overflow: hidden;
+		border-radius: inherit;
+		pointer-events: none;
+	}
+
+	.tool-card-surface-hover {
+		position: absolute;
+		inset: 0;
+		background: var(--primary);
+		opacity: 0;
+		transition: opacity 220ms ease;
+	}
+
+	.tool-card::after {
+		content: "";
+		position: absolute;
+		inset: auto -1.8rem -2rem auto;
+		width: 8rem;
+		height: 7rem;
+		pointer-events: none;
+		background-image: radial-gradient(
+			circle,
+			color-mix(in srgb, var(--tool-accent) 42%, transparent) 0.7px,
+			transparent 0.9px
+		);
+		background-size: 0.7rem 0.7rem;
+		mask-image: linear-gradient(135deg, transparent, #000 55%);
+		opacity: 0.32;
+		transform: rotate(-8deg);
+	}
+
+	.tool-card-avatar {
+		grid-column: 1;
+		grid-row: 1;
+		align-self: center;
+		width: 4rem;
+		height: 4rem;
+		display: grid;
+		place-items: center;
+		position: relative;
+		z-index: 2;
+		overflow: hidden;
+		border: 1px solid color-mix(in srgb, var(--tool-accent) 30%, transparent);
+		border-radius: 0.85rem 0.85rem 0.85rem 0.3rem;
+		background:
+			linear-gradient(
+				145deg,
+				color-mix(in srgb, var(--tool-accent) 22%, var(--card-bg)),
+				color-mix(in srgb, var(--tool-accent) 7%, var(--card-bg))
+			),
+			color-mix(in srgb, var(--card-bg) 42%, transparent);
+		color: var(--tool-accent);
+		box-shadow:
+			0 0.45rem 0.9rem color-mix(in srgb, var(--tool-accent) 14%, transparent),
+			inset 0 1px 0 rgb(255 255 255 / 0.52);
+		font-size: 1.45rem;
+		transition: transform 220ms ease, box-shadow 220ms ease;
+	}
+
+	.tool-card-avatar::after {
+		content: "";
+		position: absolute;
+		inset: -30% 35% 42% -60%;
+		background: rgb(255 255 255 / 0.46);
+		transform: rotate(28deg);
+		pointer-events: none;
+	}
+
+	.tool-card-content {
+		grid-column: 2;
+		grid-row: 1;
+		align-self: start;
+		min-width: 0;
+		padding-top: 0.35rem;
+		position: relative;
+		z-index: 2;
+	}
+
+	.tool-card-title {
+		margin: 0;
+		color: var(--tools-text-90);
+		font-size: 1.02rem;
+		font-weight: 850;
+		letter-spacing: -0.01em;
+		line-height: 1.25;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.tool-card-description {
+		margin: 0.35rem 0 0;
+		color: var(--tools-text-50);
+		font-size: 0.78rem;
+		line-height: 1.5;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 3;
+		overflow: hidden;
+	}
+
+	.tool-card-tags {
+		grid-column: 1 / -1;
+		grid-row: 2;
+		min-width: 0;
+		display: flex;
+		align-items: center;
+		gap: 0.32rem;
+		width: 100%;
+		overflow-x: auto;
+		padding: 0.05rem 0 0.02rem;
+		scrollbar-width: none;
+	}
+
+	.tool-card-tags::-webkit-scrollbar {
+		display: none;
+	}
+
+	.tool-card-tag {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.22rem;
+		flex: 0 0 auto;
+		min-height: 1.3rem;
+		padding: 0.18rem 0.42rem;
+		border: 1px dashed color-mix(in srgb, var(--primary) 18%, var(--line-divider));
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--card-bg) 32%, transparent);
+		color: color-mix(in srgb, var(--text-color) 66%, var(--primary));
+		font-size: 0.62rem;
+		font-weight: 700;
+		line-height: 1;
+		white-space: nowrap;
+	}
+
+	.tool-card-tag :global(svg) {
+		width: 0.72rem;
+		height: 0.72rem;
+		flex: 0 0 auto;
+	}
+
+	.tool-card-status-tag {
+		border-color: color-mix(in srgb, var(--primary) 28%, var(--line-divider));
+		background: color-mix(in srgb, var(--primary) 6%, transparent);
+		color: color-mix(in srgb, var(--text-color) 72%, var(--primary));
+	}
+
+	.tool-card-actions {
+		position: absolute !important;
+		top: 0.52rem;
+		right: 0.55rem;
+		z-index: 40 !important;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.28rem;
+	}
+
+	.tool-card-badge {
+		display: inline-flex;
+		align-items: center;
+		min-height: 1.5rem;
+		padding: 0.22rem 0.55rem;
+		border: 1px solid rgb(255 255 255 / 0.58);
+		border-radius: 999px;
+		background: linear-gradient(135deg, rgb(255 255 255 / 0.58), rgb(235 247 251 / 0.3));
+		box-shadow:
+			0 0.28rem 0.72rem rgb(70 105 123 / 0.12),
+			inset 0 1px rgb(255 255 255 / 0.88);
+		color: #567184;
+		font-size: 0.62rem;
+		font-weight: 800;
+		line-height: 1;
+		white-space: nowrap;
+		-webkit-backdrop-filter: blur(0.35rem) saturate(1.08);
+		backdrop-filter: blur(0.35rem) saturate(1.08);
+	}
+
+	.tool-card-external {
+		width: 0.85rem;
+		height: 0.85rem;
+		color: var(--tools-text-30);
+		transition: color 220ms ease, transform 220ms ease;
+	}
+
+	.tool-recommended-badge {
+		position: absolute;
+		top: -0.62rem;
+		left: 0.62rem;
+		z-index: 45;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.24rem;
+		min-height: 1.58rem;
+		padding: 0.22rem 0.62rem 0.24rem 0.5rem;
+		border-radius: 10px 7px 12px 8px;
+		color: #9b650b;
+		font-size: 0.64rem;
+		font-weight: 700;
+		letter-spacing: 0.02em;
+		line-height: 1;
+		white-space: nowrap;
+		pointer-events: none;
+		isolation: isolate;
+	}
+
+	.tool-recommended-badge::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		border: 1px dashed color-mix(in srgb, #e0a322 48%, rgb(255 246 219 / 0.42));
+		border-radius: inherit;
+		background: color-mix(in srgb, #fff0b3 24%, transparent);
+		box-shadow:
+			0 0.3rem 0.5rem rgb(17 17 25 / 0.12),
+			0 0.08rem 0.24rem rgb(17 17 25 / 0.08),
+			inset 0 1px rgb(255 255 255 / 0.3);
+		-webkit-backdrop-filter: blur(2px) saturate(1.02);
+		backdrop-filter: blur(2px) saturate(1.02);
+		transform: rotate(-2deg);
+	}
+
+	.tool-recommended-badge > * {
+		position: relative;
+		z-index: 1;
+	}
+
+	.tool-recommended-icon {
+		width: 0.82rem;
+		height: 0.82rem;
+		color: #e09d13;
+		fill: currentColor;
+	}
+
+	.tool-card-recommended {
+		border-style: dashed;
+		border-color: color-mix(in srgb, #e0a322 48%, var(--line-divider));
+		background-color: color-mix(in srgb, #fff1b8 25%, transparent);
+		box-shadow:
+			0 0.42rem 1.18rem color-mix(in srgb, #e7b83e 24%, transparent),
+			0 0 1.08rem color-mix(in srgb, #e7b83e 14%, transparent);
+	}
+
+	.tool-card:hover,
+	.tool-card:focus-visible {
+		z-index: 100;
+		transform: translateY(-0.125rem);
+		border-style: dashed;
+		border-color: color-mix(in srgb, var(--primary) 42%, var(--line-divider));
+		background-color: color-mix(in srgb, var(--card-bg) 52%, transparent);
+		box-shadow:
+			0 0.7rem 1.45rem rgba(65, 143, 188, 0.15),
+			0 0.18rem 0.44rem rgba(73, 113, 151, 0.08),
+			inset 0 1px 0 rgba(255, 255, 255, 0.86);
+	}
+
+	.tool-card:hover .tool-card-surface-hover,
+	.tool-card:focus-visible .tool-card-surface-hover {
+		opacity: 0.05;
+	}
+
+	.tool-card:hover .tool-card-avatar,
+	.tool-card:focus-visible .tool-card-avatar {
+		transform: translateY(-0.08rem) scale(1.04);
+		box-shadow:
+			0 0.65rem 1.1rem color-mix(in srgb, var(--tool-accent) 22%, transparent),
+			inset 0 1px 0 rgb(255 255 255 / 0.66);
+	}
+
+	.tool-card:hover .tool-card-external,
+	.tool-card:focus-visible .tool-card-external {
+		color: var(--tool-accent);
+		transform: translate(0.08rem, -0.08rem);
+	}
+
+	:global(.dark) .tool-card {
+		border-color: color-mix(in srgb, var(--primary) 42%, var(--line-divider));
+		background-color: color-mix(in srgb, var(--card-bg) 48%, transparent);
+		box-shadow:
+			0 0.55rem 1.2rem rgb(0 0 0 / 0.2),
+			0 0.12rem 0.35rem rgb(0 0 0 / 0.15),
+			inset 0 1px 0 rgb(255 255 255 / 0.1);
+	}
+
+	:global(.dark) .tool-card-badge {
+		border-color: rgb(214 239 246 / 0.38);
+		color: #c1dbe5;
+		background: linear-gradient(135deg, rgb(74 107 120 / 0.56), rgb(38 64 77 / 0.42));
+		box-shadow:
+			0 0.28rem 0.72rem rgb(0 0 0 / 0.3),
+			inset 0 1px rgb(214 239 246 / 0.18);
+	}
+
+	@media (max-width: 767px) {
+		.tools-grid {
+			grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+			grid-auto-rows: 9rem;
+		}
+
+		.tool-card {
+			height: 9rem;
+			min-height: 9rem;
+			grid-template-columns: 3.5rem minmax(0, 1fr);
+			gap: 0.55rem;
+			padding: 0.62rem;
+		}
+
+		.tool-card-avatar {
+			width: 3.5rem;
+			height: 3.5rem;
+			font-size: 1.25rem;
+		}
+
+		.tool-card-content {
+			padding-top: 1.35rem;
+		}
+
+		.tool-card-title {
+			font-size: 0.96rem;
+		}
+
+		.tool-card-description {
+			font-size: 0.74rem;
+			line-height: 1.45;
+		}
+
+		.tool-card-badge {
+			min-height: 1.35rem;
+			padding: 0.18rem 0.45rem;
+			font-size: 0.58rem;
+		}
+
+		.tool-card-external {
+			width: 0.75rem;
+			height: 0.75rem;
+		}
+
+		.tool-card-actions {
+			top: 0.42rem;
+			right: 0.45rem;
+		}
+
+		.tool-recommended-badge {
+			top: -0.56rem;
+			left: 0.52rem;
+			font-size: 0.58rem;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.tool-card,
+		.tool-card-avatar,
+		.tool-card-external,
+		.tool-card-surface-hover {
+			animation: none;
+			transition: none;
+		}
+	}
+</style>
+
+<style>
+	/* 工具卡沿用友链卡的透明材质、异形圆角和交互；推荐卡不包含扫光层。 */
+	.tools-grid {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		grid-auto-rows: 9rem;
+		align-items: stretch;
+		gap: 0.75rem;
+	}
+
+	.tool-card {
+		--tool-card-border-color: rgba(255, 246, 219, 0.28);
+		--tool-card-hover-border-color: color-mix(in srgb, var(--primary) 42%, var(--line-divider));
+		box-sizing: border-box;
+		isolation: isolate;
+		display: grid;
+		grid-template-columns: 4rem minmax(0, 1fr);
+		grid-template-rows: minmax(0, 1fr) auto;
+		gap: 0.75rem;
+		width: 100%;
+		height: 9rem;
+		min-height: 9rem;
+		min-width: 0;
+		position: relative;
+		overflow: visible;
+		padding: 0.625rem;
+		border: 1px solid var(--tool-card-border-color);
+		border-radius: 10px 7px 12px 8px;
+		background: color-mix(in srgb, var(--card-bg) 26%, transparent);
+		box-shadow:
+			0 0.48rem 1.05rem rgba(68, 128, 164, 0.09),
+			0 0.12rem 0.32rem rgba(67, 108, 139, 0.06),
+			inset 0 1px 0 rgba(255, 255, 255, 0.68);
+		-webkit-backdrop-filter: blur(4px) saturate(1.04);
+		backdrop-filter: blur(4px) saturate(1.04);
+		transition:
+			transform 220ms ease,
+			border-color 220ms ease,
+			background-color 220ms ease,
+			box-shadow 220ms ease;
+	}
+
+	.tool-card::before,
+	.tool-card::after,
+	.tool-card:hover::before,
+	.tool-card:hover::after {
+		content: none;
+		display: none;
+	}
+
+	.tool-card > * {
+		position: relative;
+		z-index: 10;
+	}
+
+	.tool-card > .tool-recommended-badge {
+		position: absolute !important;
+		top: -0.62rem;
+		left: 0.62rem;
+		z-index: 40 !important;
+	}
+
+	.tool-card > .tool-card-badge {
+		position: absolute !important;
+		top: 0.5rem;
+		right: 0.58rem;
+		z-index: 35 !important;
+	}
+
+	.tool-card > .tool-card-surface {
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		border-radius: inherit;
+		overflow: hidden;
+		pointer-events: none;
+	}
+
+	.tool-card-surface-hover {
+		position: absolute;
+		inset: 0;
+		border-radius: inherit;
+		background: var(--primary);
+		opacity: 0;
+		transition: opacity 220ms ease;
+	}
+
+	.tool-recommended-star-flow {
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+		display: block;
+		overflow: hidden;
+		pointer-events: none;
+			opacity: 0.94;
+		isolation: isolate;
+		contain: paint;
+		transition: opacity 320ms cubic-bezier(0.16, 1, 0.3, 1);
+	}
+
+	.tool-recommended-star-canvas {
+		position: absolute;
+		inset: 0;
+		display: block;
+		width: 100%;
+		height: 100%;
+		background: transparent;
+		opacity: 1;
+	}
+
+	.tool-card-recommended:hover .tool-recommended-star-flow,
+	.tool-card-recommended:focus-visible .tool-recommended-star-flow {
+		opacity: 1;
+	}
+
+	.tool-card-avatar {
+		display: grid;
+		place-items: center;
+		width: 4rem;
+		height: 4rem;
+		flex: 0 0 auto;
+		position: relative;
+		overflow: hidden;
+		isolation: isolate;
+		border: 1px solid color-mix(in srgb, var(--primary) 18%, var(--line-divider));
+		border-radius: 0.75rem;
+		background: color-mix(in srgb, var(--card-bg) 32%, transparent);
+		box-shadow:
+			0 0.18rem 0.55rem color-mix(in srgb, var(--primary) 9%, transparent),
+			0 0 0.72rem color-mix(in srgb, var(--primary) 17%, transparent);
+		color: var(--tool-accent);
+		font-size: 1.8rem;
+		transition:
+			transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1),
+			border-color 240ms ease,
+			box-shadow 300ms ease;
+	}
+
+	.tool-card-avatar::after {
+		position: absolute;
+		inset: -30% 35% 42% -60%;
+		content: "";
+		pointer-events: none;
+		background: rgb(255 255 255 / 0.5);
+		transform: rotate(28deg);
+	}
+
+	.tool-card-avatar-image {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: inherit;
+	}
+
+	.tool-card-content {
+		display: flex;
+		grid-column: 2;
+		grid-row: 1;
+		flex: 1 1 auto;
+		flex-direction: column;
+		justify-content: flex-start;
+		gap: 0.25rem;
+		align-self: start;
+		min-width: 0;
+		padding-top: 0.35rem;
+		padding-right: 0;
+	}
+
+	.tool-card .tool-card-title {
+		display: block;
+		width: fit-content;
+		max-width: 100%;
+		margin: 0;
+		overflow: hidden;
+		color: var(--text-color);
+		font-size: 0.9rem;
+		font-weight: 750;
+		line-height: 1.35;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		transition: color 220ms ease, text-shadow 220ms ease;
+	}
+
+	.tool-card .tool-card-description {
+		display: -webkit-box;
+		margin: 0;
+		overflow: hidden;
+		color: #607487;
+		font-size: 0.82rem;
+		letter-spacing: 0.005em;
+		line-height: 1.45;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 3;
+	}
+
+	.tool-card-tags {
+		display: flex;
+		grid-column: 1 / -1;
+		grid-row: 2;
+		flex-wrap: nowrap;
+		align-items: center;
+		gap: 0.25rem;
+		width: 100%;
+		min-width: 0;
+		max-height: none;
+		margin-top: 0;
+		overflow-x: auto;
+		overflow-y: hidden;
+		scrollbar-width: none;
+	}
+
+	.tool-card-tags::-webkit-scrollbar {
+		display: none;
+	}
+
+	.tool-card-tag {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.22rem;
+		min-height: 1.3rem;
+		padding: 0.22rem 0.4rem;
+		border: 1px dashed color-mix(in srgb, var(--primary) 18%, var(--line-divider));
+		border-radius: 0.45rem;
+		background: color-mix(in srgb, var(--card-bg) 32%, transparent);
+		color: color-mix(in srgb, var(--text-color) 66%, var(--primary));
+		font-size: 0.62rem;
+		font-weight: 650;
+		line-height: 1;
+		white-space: nowrap;
+		transition: color 220ms ease, border-color 220ms ease, background 220ms ease;
+	}
+
+	.tool-card-tag :global(svg) {
+		width: 0.72rem;
+		height: 0.72rem;
+		flex: 0 0 auto;
+	}
+
+	.tool-card-actions {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.24rem;
+		position: absolute;
+		top: 0.55rem;
+		right: 0.62rem;
+		z-index: 24;
+		pointer-events: none;
+	}
+
+	.tool-card-badge {
+		display: inline-flex;
+		align-items: center;
+		min-height: 1.45rem;
+		padding: 0 0.45rem;
+		border: 1px dashed rgba(255, 246, 219, 0.42);
+		border-radius: 8px 11px 7px 10px;
+		background: transparent;
+		box-shadow:
+			0 0.3rem 0.5rem rgba(17, 17, 25, 0.12),
+			0 0.08rem 0.24rem rgba(17, 17, 25, 0.08),
+			inset 0 1px 0 rgba(255, 255, 255, 0.22);
+		color: color-mix(in srgb, var(--content-meta) 88%, var(--text-color));
+		font-size: 0.6rem;
+		font-weight: 800;
+		line-height: 1;
+		white-space: nowrap;
+	}
+
+	.tool-card-external {
+		width: 0.8rem;
+		height: 0.8rem;
+		color: color-mix(in srgb, var(--content-meta) 88%, var(--text-color));
+		transition: color 220ms ease, transform 220ms ease;
+	}
+
+	.tool-card-mine:not(.tool-card-recommended) {
+		border-color: var(--tool-card-border-color);
+		background-color: color-mix(in srgb, var(--primary) 12%, transparent);
+		box-shadow:
+			0 0.42rem 1.18rem color-mix(in srgb, var(--primary) 22%, transparent),
+			0 0 1.05rem color-mix(in srgb, var(--primary) 12%, transparent);
+	}
+
+	.tool-card-mine:not(.tool-card-recommended) .tool-card-avatar {
+		border-color: color-mix(in srgb, #39bde8 35%, var(--line-divider));
+		box-shadow:
+			0 0.18rem 0.55rem rgba(42, 157, 204, 0.13),
+			0 0 0.78rem rgba(42, 190, 232, 0.24);
+	}
+
+	.tool-card-mine:not(.tool-card-recommended) .tool-card-description {
+		color: #3f7185;
+	}
+
+	.tool-card-mine:not(.tool-card-recommended) .tool-card-title {
+		color: #178bc0;
+		text-shadow: 0 0 0.55rem rgba(42, 157, 204, 0.22);
+	}
+
+	.tool-card-mine:not(.tool-card-recommended) .tool-card-tag {
+		border-color: color-mix(in srgb, #2a9dcc 42%, #acd7ef);
+		background: transparent;
+		color: #0c5f8b;
+	}
+
+	.tool-card-recommended {
+		--tool-recommended-ink: #c9870d;
+		--tool-recommended-cycle: 3.8s;
+		border-color: var(--tool-card-border-color);
+		background-color: color-mix(in srgb, #fff1b8 25%, transparent);
+		box-shadow:
+			0 0.42rem 1.18rem color-mix(in srgb, #e7b83e 24%, transparent),
+			0 0 1.08rem color-mix(in srgb, #e7b83e 14%, transparent);
+	}
+
+	.tool-card-recommended .tool-card-surface::after {
+		position: absolute;
+		top: 50%;
+		right: -0.2rem;
+		z-index: 0;
+		width: 7.2rem;
+		height: 7.2rem;
+		content: "";
+		pointer-events: none;
+		background: linear-gradient(138deg, #f7c73f, #ffdc70 70%, #eea915);
+		-webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M60 14c4 0 7 3 9 7l10 21 24 4c4 1 7 3 8 7 1 3 0 7-3 10L90 80l4 24c1 4-1 8-4 10-3 2-7 2-11 0L60 102l-19 12c-4 2-8 2-11 0-3-2-5-6-4-10l4-24-18-17c-3-3-4-7-3-10 1-4 4-6 8-7l24-4 10-21c2-4 5-7 9-7Z' stroke-width='4'/%3E%3Cpath d='m23 26 2 6 6 2-6 2-2 6-2-6-6-2 6-2 2-6Zm79 65 1.5 4 4 1.5-4 1.5-1.5 4-1.5-4-4-1.5 4-1.5-4Z' stroke-width='2.5'/%3E%3C/g%3E%3C/svg%3E");
+		mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M60 14c4 0 7 3 9 7l10 21 24 4c4 1 7 3 8 7 1 3 0 7-3 10L90 80l4 24c1 4-1 8-4 10-3 2-7 2-11 0L60 102l-19 12c-4 2-8 2-11 0-3-2-5-6-4-10l4-24-18-17c-3-3-4-7-3-10 1-4 4-6 8-7l24-4 10-21c2-4 5-7 9-7Z' stroke-width='4'/%3E%3Cpath d='m23 26 2 6 6 2-6 2-2 6-2-6-6-2 6-2 2-6Zm79 65 1.5 4 4 1.5-4 1.5-1.5 4-1.5-4-4-1.5 4-1.5-4Z' stroke-width='2.5'/%3E%3C/g%3E%3C/svg%3E");
+		-webkit-mask-position: center;
+		mask-position: center;
+		-webkit-mask-repeat: no-repeat;
+		mask-repeat: no-repeat;
+		-webkit-mask-size: contain;
+		mask-size: contain;
+		opacity: 0.24;
+		transform: translateY(-50%) rotate(-8deg);
+		transition: opacity 300ms ease, transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1);
+	}
+
+	.tool-card-recommended .tool-card-avatar {
+		border-color: color-mix(in srgb, #efbd46 48%, #fff1b8);
+		box-shadow:
+			0 0.18rem 0.55rem rgba(211, 154, 25, 0.13),
+			0 0 0.82rem rgba(244, 190, 54, 0.34);
+	}
+
+	.tool-card-recommended .tool-card-description {
+		color: #7d6b43;
+	}
+
+	.tool-card-recommended .tool-card-title {
+		display: inline-flex;
+		align-items: center;
+		flex: 0 1 auto;
+		width: fit-content;
+		max-width: calc(100% - 1.75rem);
+		padding: 0.12rem 0.56rem 0.16rem;
+		border: 1px solid color-mix(in srgb, #e8ae2d 46%, transparent);
+		border-radius: 0.72rem;
+		background: color-mix(in srgb, #fff2ae 68%, var(--card-bg));
+		box-shadow: 0 0 0.55rem color-mix(in srgb, #efb229 22%, transparent);
+		color: var(--tool-recommended-ink);
+		font-weight: 850;
+		letter-spacing: 0.008em;
+		text-shadow:
+			0 1px 0 rgba(255, 248, 205, 0.96),
+			0 0 0.28rem rgba(248, 192, 56, 0.62),
+			0 0 0.72rem rgba(232, 159, 20, 0.38);
+		animation: tool-recommended-title-glow var(--tool-recommended-cycle) cubic-bezier(0.42, 0, 0.22, 1) infinite;
+		will-change: filter;
+	}
+
+	.tool-card-recommended .tool-card-tag {
+		border-color: color-mix(in srgb, #dba922 24%, transparent);
+		background: transparent;
+		color: #8b620c;
+	}
+
+	.tool-recommended-badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.24rem;
+		min-height: 1.58rem;
+		position: absolute;
+		top: -0.62rem;
+		left: 0.62rem;
+		z-index: 40;
+		padding: 0.22rem 0.62rem 0.24rem 0.5rem;
+		border-radius: 10px 7px 12px 8px;
+		background: transparent;
+		box-shadow: none;
+		color: #9b650b;
+		font-size: 0.64rem;
+		font-weight: 700;
+		letter-spacing: 0.02em;
+		line-height: 1;
+		white-space: nowrap;
+		pointer-events: none;
+		isolation: isolate;
+	}
+
+	.tool-recommended-badge::before {
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		content: "";
+		border: 1px dashed color-mix(in srgb, #e0a322 48%, rgba(255, 246, 219, 0.42));
+		border-radius: inherit;
+		background: color-mix(in srgb, #fff0b3 24%, transparent);
+		box-shadow:
+			0 0.3rem 0.5rem rgba(17, 17, 25, 0.12),
+			0 0.08rem 0.24rem rgba(17, 17, 25, 0.08),
+			inset 0 1px 0 rgba(255, 255, 255, 0.3);
+		-webkit-backdrop-filter: blur(2px) saturate(1.02);
+		backdrop-filter: blur(2px) saturate(1.02);
+		transform: rotate(-2deg);
+		transform-origin: 50% 100%;
+		transition: transform 220ms ease, box-shadow 220ms ease;
+	}
+
+	.tool-recommended-badge > * {
+		position: relative;
+		z-index: 1;
+	}
+
+	.tool-recommended-icon {
+		width: 0.82rem;
+		height: 0.82rem;
+		color: #e09d13;
+		fill: currentColor;
+		filter: drop-shadow(0 0 0.12rem rgba(224, 157, 19, 0.25));
+	}
+
+	.tool-card:hover,
+	.tool-card:focus-visible {
+		z-index: 100;
+		transform: translateY(-0.125rem);
+		border-style: dashed;
+		border-color: var(--tool-card-hover-border-color);
+		background-color: color-mix(in srgb, var(--card-bg) 52%, transparent);
+		box-shadow:
+			0 0.7rem 1.45rem rgba(65, 143, 188, 0.15),
+			0 0.18rem 0.44rem rgba(73, 113, 151, 0.08),
+			inset 0 1px 0 rgba(255, 255, 255, 0.86);
+	}
+
+	.tool-card:hover .tool-card-surface-hover,
+	.tool-card:focus-visible .tool-card-surface-hover {
+		opacity: 0.05;
+	}
+
+	.tool-card:hover .tool-card-avatar,
+	.tool-card:focus-visible .tool-card-avatar {
+		border-color: color-mix(in srgb, var(--primary) 34%, var(--line-divider));
+		box-shadow:
+			0 0.28rem 0.7rem color-mix(in srgb, var(--primary) 13%, transparent),
+			0 0 0.95rem color-mix(in srgb, var(--primary) 24%, transparent);
+		transform: scale(1.05);
+	}
+
+	.tool-card:hover .tool-card-tag,
+	.tool-card:focus-visible .tool-card-tag {
+		border-color: color-mix(in srgb, var(--primary) 32%, var(--line-divider));
+		background: color-mix(in srgb, var(--primary) 7%, transparent);
+		color: color-mix(in srgb, var(--text-color) 76%, var(--primary));
+	}
+
+	.tool-card:hover .tool-card-external,
+	.tool-card:focus-visible .tool-card-external {
+		color: var(--primary);
+		transform: translate(0.08rem, -0.08rem);
+	}
+
+	.tool-card-recommended:hover,
+	.tool-card-recommended:focus-visible {
+		border-color: color-mix(in srgb, #e0a322 58%, var(--line-divider));
+		background-color: color-mix(in srgb, #ffeda4 36%, transparent);
+		box-shadow:
+			0 0.58rem 1.42rem color-mix(in srgb, #e7b83e 31%, transparent),
+			0 0 1.42rem color-mix(in srgb, #e7b83e 19%, transparent);
+	}
+
+	.tool-card-recommended:hover .tool-card-surface::after,
+	.tool-card-recommended:focus-visible .tool-card-surface::after {
+		opacity: 0.36;
+		transform: translate(-0.2rem, -50%) rotate(-12deg) scale(1.05);
+	}
+
+	.tool-card-recommended:hover .tool-recommended-badge::before,
+	.tool-card-recommended:focus-visible .tool-recommended-badge::before {
+		box-shadow:
+			0 0.34rem 0.5rem rgba(17, 17, 25, 0.16),
+			0 0.1rem 0.26rem rgba(17, 17, 25, 0.1),
+			inset 0 1px rgba(255, 255, 255, 0.36);
+		transform: translateY(-1px) rotate(-2deg);
+	}
+
+	:global(:root.dark) .tool-card {
+		--tool-card-border-color: color-mix(in srgb, var(--primary) 42%, var(--line-divider));
+		--tool-card-hover-border-color: color-mix(in srgb, var(--primary) 48%, var(--line-divider));
+		border-color: var(--tool-card-border-color);
+		background-color: color-mix(in srgb, var(--card-bg) 48%, transparent);
+		box-shadow:
+			0 0.55rem 1.2rem rgba(0, 0, 0, 0.2),
+			0 0.12rem 0.35rem rgba(0, 0, 0, 0.15),
+			inset 0 1px 0 rgba(255, 255, 255, 0.1);
+	}
+
+	:global(:root.dark) .tool-card-description {
+		color: #b6c7d5;
+	}
+
+	:global(:root.dark) .tool-card-avatar {
+		border-color: color-mix(in srgb, var(--primary) 24%, var(--line-divider));
+		box-shadow:
+			0 0.18rem 0.62rem color-mix(in srgb, var(--primary) 12%, transparent),
+			0 0 0.82rem color-mix(in srgb, var(--primary) 22%, transparent);
+	}
+
+	:global(:root.dark) .tool-card-tag {
+		border-color: color-mix(in srgb, var(--primary) 22%, var(--line-divider));
+		background: color-mix(in srgb, var(--card-bg) 46%, transparent);
+		color: color-mix(in srgb, var(--text-color) 78%, var(--primary));
+	}
+
+	:global(:root.dark) .tool-card-recommended {
+		--tool-recommended-ink: #f6cf67;
+		border-color: var(--tool-card-border-color);
+		background-color: color-mix(in srgb, #7a5714 22%, transparent);
+		box-shadow:
+			0 0.42rem 1.18rem color-mix(in srgb, #d39b24 19%, transparent),
+			0 0 1.08rem color-mix(in srgb, #d39b24 12%, transparent);
+	}
+
+	:global(:root.dark) .tool-card-recommended .tool-card-avatar {
+		border-color: rgba(238, 191, 72, 0.58);
+		box-shadow:
+			0 0.18rem 0.62rem rgba(99, 70, 11, 0.24),
+			0 0 0.92rem rgba(232, 172, 34, 0.4);
+	}
+
+	:global(:root.dark) .tool-card-recommended .tool-card-description {
+		color: #e5cb8d;
+	}
+
+	:global(:root.dark) .tool-card-recommended .tool-card-title {
+		border-color: color-mix(in srgb, #e2ac3f 46%, transparent);
+		background: color-mix(in srgb, #8b6419 42%, var(--card-bg));
+		box-shadow: 0 0 0.58rem color-mix(in srgb, #d79a24 28%, transparent);
+		color: #f6cf67;
+		text-shadow:
+			0 1px 0 rgba(92, 56, 5, 0.74),
+			0 0 0.32rem rgba(255, 211, 102, 0.64),
+			0 0 0.82rem rgba(230, 157, 20, 0.46);
+	}
+
+	:global(:root.dark) .tool-card-recommended .tool-card-tag {
+		border-color: color-mix(in srgb, #d9a82e 24%, transparent);
+		background: transparent;
+		color: #f2cf78;
+	}
+
+	:global(:root.dark) .tool-card:hover,
+	:global(:root.dark) .tool-card:focus-visible {
+		border-color: var(--tool-card-hover-border-color);
+		background-color: color-mix(in srgb, var(--card-bg) 72%, transparent);
+		box-shadow:
+			0 0.78rem 1.6rem rgba(0, 0, 0, 0.28),
+			0 0.16rem 0.45rem rgba(0, 0, 0, 0.18),
+			inset 0 1px 0 rgba(255, 255, 255, 0.14);
+	}
+
+	:global(:root.dark) .tool-card-recommended:hover,
+	:global(:root.dark) .tool-card-recommended:focus-visible {
+		border-color: rgba(238, 191, 72, 0.72);
+		background-color: color-mix(in srgb, #8a6218 30%, transparent);
+		box-shadow:
+			0 0.78rem 1.6rem rgba(99, 70, 11, 0.32),
+			0 0.16rem 0.45rem rgba(0, 0, 0, 0.18),
+			inset 0 1px 0 rgba(255, 255, 255, 0.14);
+	}
+
+	:global(:root.dark) .tool-recommended-badge {
+		color: #ffe39a;
+	}
+
+	:global(:root.dark) .tool-recommended-badge::before {
+		border-color: color-mix(in srgb, #e9bd51 48%, rgba(255, 246, 219, 0.26));
+		background: color-mix(in srgb, #8b641b 24%, transparent);
+		box-shadow:
+			0 0.3rem 0.5rem rgba(0, 0, 0, 0.16),
+			0 0.08rem 0.24rem rgba(0, 0, 0, 0.1),
+			inset 0 1px 0 rgba(255, 236, 155, 0.2);
+	}
+
+	:global(:root.dark) .tool-recommended-icon {
+		color: #ffd56a;
+		filter: drop-shadow(0 0 0.14rem rgba(255, 213, 106, 0.28));
+	}
+
+	@keyframes tool-recommended-title-glow {
+		0%,
+		100% {
+			filter:
+				drop-shadow(0 0 0.08rem rgba(239, 175, 34, 0.24))
+				drop-shadow(0 0 0.18rem rgba(232, 153, 12, 0.12));
+		}
+
+		12% {
+			filter:
+				drop-shadow(0 0 0.14rem rgba(248, 190, 54, 0.46))
+				drop-shadow(0 0 0.3rem rgba(233, 158, 16, 0.22));
+		}
+
+		48% {
+			filter:
+				drop-shadow(0 0 0.22rem rgba(255, 217, 112, 0.92))
+				drop-shadow(0 0 0.52rem rgba(233, 151, 8, 0.58));
+		}
+
+		86% {
+			filter:
+				drop-shadow(0 0 0.13rem rgba(248, 190, 54, 0.4))
+				drop-shadow(0 0 0.28rem rgba(233, 158, 16, 0.18));
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.tool-card,
+		.tool-card-surface-hover,
+		.tool-recommended-star-flow,
+		.tool-card-avatar,
+		.tool-card-title,
+		.tool-card-tag,
+		.tool-card-external,
+		.tool-recommended-badge::before,
+		.tool-card-recommended .tool-card-surface::after {
+			transition: none;
+			animation: none;
+		}
+	}
+
+	@media (max-width: 767px) {
+		.tools-hero {
+			grid-template-columns: 1fr;
+			align-items: start;
+			padding: 1.1rem;
+		}
+
+		.tools-heading-line {
+			gap: 0.6rem;
+		}
+
+		.tools-hero p {
+			margin-left: 0;
+		}
+
+		.tools-stats {
+			width: 100%;
+			min-width: 0;
+		}
+
+		.tools-section-heading {
+			align-items: flex-start;
+		}
+
+		.tools-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.tool-card {
+			height: 8.5rem;
+			min-height: 8.5rem;
+			grid-template-columns: 3.5rem minmax(0, 1fr);
+			gap: 0.55rem;
+			padding: 0.62rem;
+		}
+
+		.tool-card-avatar {
+			width: 3.5rem;
+			height: 3.5rem;
+			font-size: 1.25rem;
+		}
+
+		.tool-card-content {
+			padding-top: 0.3rem;
+			padding-right: 0;
+		}
+	}
+</style>

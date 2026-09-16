@@ -11,6 +11,20 @@ export const analyticsConfig: AnalyticsConfig = {
 		websiteId: "",
 		// Umami JS地址，支持使用自建
 		scriptUrl: "https://cloud.umami.is/script.js",
+		// 在 Umami 后台创建公开分享链接后填写。仅用于读取公开统计，不要填写管理员 Token。
+		// Umami Cloud 公开分享链接的 slug，仅供前端读取公开统计。
+		shareId: "",
+		// Umami Cloud 使用 https://cloud.umami.is；自建 Umami 则改成你的实例地址。
+		shareApiBase: "",
+		// 建站前其它平台的历史累计，仅用于站内展示，不会写入 Umami。
+		historicalStats: {
+			visitors: 0,
+			pageviews: 0,
+		},
+		// 文章页是否显示 Umami 浏览量
+		showPageViews: false,
+		// 站点统计卡片中是否显示累计访客与总浏览量
+		showSiteStats: true,
 		// Umami 会话回放脚本地址，支持使用自建
 		replaysScriptUrl: "https://cloud.umami.is/recorder.js",
 		// 是否追踪出站链接

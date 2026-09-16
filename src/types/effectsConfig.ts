@@ -1,5 +1,6 @@
 export type SakuraConfig = {
 	enable: boolean; // 是否启用樱花特效
+	switchable?: boolean; // 是否允许用户在设置面板中切换（移植自 Aemeath）
 	sakuraNum: number; // 樱花数量，默认21
 	limitTimes: number; // 樱花越界限制次数，-1为无限循环
 	size: {

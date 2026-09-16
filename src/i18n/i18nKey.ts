@@ -219,6 +219,9 @@ enum I18nKey {
 	bilibiliNotConfiguredDesc = "bilibiliNotConfiguredDesc",
 
 	// 追番 - 公共组件
+	anime = "anime",
+	builtinWallpaper = "builtinWallpaper",
+	animeSubtitle = "animeSubtitle",
 	animeTotal = "animeTotal",
 	animeAverageRating = "animeAverageRating",
 	animeSearch = "animeSearch",

@@ -33,19 +33,17 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 		],
 	});
 
-	//社交及其子菜单
-	links.push({
-		name: "社交",
-		url: "#",
-		icon: "material-symbols:group",
-		children: [
-			// 友链
-			LinkPresets.Friends,
+	// 站点统计
+	links.push(LinkPresets.Analytics);
 
-			// 留言
-			LinkPresets.Guestbook,
-		],
-	});
+	// 友链
+	links.push(LinkPresets.Friends);
+
+	// 朋友圈
+	links.push(LinkPresets.Moments);
+
+	// 留言板
+	links.push(LinkPresets.Guestbook);
 
 	// 我的及其子菜单
 	links.push({
@@ -62,17 +60,11 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 			// 书签导航
 			LinkPresets.Booknav,
 
-			// 哔哩哔哩追番
-			LinkPresets.Bilibili,
+			// 追番
+			LinkPresets.Anime,
 
-			// 番组计划
-			LinkPresets.Bangumi,
-
-			// VNDB
-			LinkPresets.VNDB,
-
-			// MyAnimeList
-			LinkPresets.MAL,
+			// 工具
+			LinkPresets.Tools,
 		],
 	});
 
@@ -87,40 +79,15 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 
 			// 关于页面
 			LinkPresets.About,
-		],
-	});
 
-	// 自定义导航栏链接
-	links.push({
-		name: "链接",
-		url: "#",
-		icon: "material-symbols:link",
-		// 子菜单
-		children: [
-			{
-				name: "GitHub",
-				url: "https://github.com/CuteLeaf/Firefly",
-				external: true,
-				icon: "fa7-brands:github",
-			},
-			{
-				name: "Gitee",
-				url: "https://gitee.com/CuteLeaf/Firefly",
-				external: true,
-				icon: "fa7-brands:gitee",
-			},
-			{
-				name: "QQ交流群",
-				url: "https://qm.qq.com/q/ZGsFa8qX2G",
-				external: true,
-				icon: "fa7-brands:qq",
-			},
-			{
-				name: "Firefly文档",
-				url: "https://docs-firefly.cuteleaf.cn",
-				external: true,
-				icon: "material-symbols:docs",
-			},
+			// 动态表情
+			LinkPresets.Lottie,
+
+			// 项目更新日志
+			LinkPresets.Changelog,
+
+			// 博客更新日志
+			LinkPresets.BlogChangelog,
 		],
 	});
 
@@ -229,6 +196,42 @@ export const LinkPresets: Record<string, NavBarLink> = {
 		name: "关于我",
 		url: "/about/",
 		icon: "material-symbols:person",
+	},
+	Tools: {
+		name: "工具",
+		url: "/tools/",
+		icon: "material-symbols:construction-rounded",
+	},
+	Changelog: {
+		name: "项目更新日志",
+		url: "/changelog/",
+		icon: "material-symbols:history-edu-rounded",
+	},
+	BlogChangelog: {
+		name: "博客日志",
+		url: "/blog-changelog/",
+		icon: "material-symbols:auto-stories-rounded",
+	},
+	Moments: {
+		name: "朋友圈",
+		url: "/moments/",
+		icon: "material-symbols:rss-feed-rounded",
+	},
+	Lottie: {
+		name: "动态表情",
+		url: "/lottie/",
+		icon: "material-symbols:auto-awesome-rounded",
+	},
+	Analytics: {
+		name: "站点统计",
+		url: "/analytics/",
+		icon: "material-symbols:monitoring-rounded",
+	},
+	Anime: {
+		name: "追番",
+		url: "/anime/",
+		icon: "material-symbols:live-tv",
+		pageKey: "anime",
 	},
 };
 
