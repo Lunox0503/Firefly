@@ -358,6 +358,7 @@ body.wallpaper-transparent #navbar-wrapper #navbar[data-full-width="true"] > div
  * ============================================ */
 @media (min-width: 768px) {
     html[data-wallpaper-mode="fullscreen"] #navbar-wrapper #navbar.firefly-navbar > .firefly-nav-shell,
+    html[data-wallpaper-mode="banner"] #navbar-wrapper #navbar.firefly-navbar > .firefly-nav-shell,
     html[data-wallpaper-mode="none"] #navbar-wrapper #navbar.firefly-navbar > .firefly-nav-shell,
     body.wallpaper-transparent #navbar-wrapper #navbar.firefly-navbar > .firefly-nav-shell {
         border-radius: 0 0 0.75rem 0.75rem !important;
