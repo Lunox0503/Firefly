@@ -42,11 +42,32 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 
 	// 本地音乐配置（当 mode 为 'local' 时使用）
 	// 1. 支持传入歌词文件的路径
-	// lrc: "/assets/music/lrc/使一颗心免于哀伤-哼唱.lrc",
+	// lrc: "/assets/music/lrc/碎花.lrc",
 	// 2. 或者直接填入歌词字符串内容
 	// lrc: "[00:00.00]歌词内容...",
 	local: {
 		playlist: [
+			{
+				name: "飞行雪绒的练习时间",
+				artist: "鸣潮先约电台/飞行雪绒",
+				url: "/assets/music/飞行雪绒的练习时间.mp3",
+				cover: "/assets/music/cover/飞行雪绒的练习时间.jpg",
+				lrc: "/assets/music/lrc/飞行雪绒的练习时间.lrc",
+			},
+			{
+				name: "星炬不熄",
+				artist: "鸣潮先约电台/飞行雪绒",
+				url: "/assets/music/星炬不熄.mp3",
+				cover: "/assets/music/cover/星炬不熄.jpg",
+				lrc: "/assets/music/lrc/星炬不熄.lrc",
+			},
+			{
+				name: "碎花",
+				artist: "鸣潮先约电台/飞行雪绒",
+				url: "/assets/music/碎花.mp3",
+				cover: "/assets/music/cover/碎花.jpg",
+				lrc: "/assets/music/lrc/碎花.lrc",
+			},
 			{
 				name: "靛青宇宙",
 				artist: "鸣潮先约电台/飞行雪绒",
@@ -74,14 +95,6 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 				url: "/assets/music/小小奇迹-飞行雪绒.mp3",
 				cover: "/assets/music/cover/xiaoxiaoqiji-cover.jpg",
 				lrc: "/assets/music/lrc/小小奇迹.lrc",
-			},
-			{
-				name: "使一颗心免于哀伤",
-				artist: "塞壬唱片 / 哼唱版",
-				url: "/assets/music/使一颗心免于哀伤-哼唱.mp3",
-				cover: "/assets/music/cover/109951169585655912.webp",
-				// 这段是 39s 哼唱片段，跟原曲 3:22 的歌词时间轴对不上，故不放歌词
-				lrc: "",
 			},
 		],
 	},
