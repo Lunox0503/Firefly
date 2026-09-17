@@ -123,6 +123,45 @@ def _lrc_body(line):
     return re.sub(r"^(\[\d{1,2}:\d{1,2}([.:]\d{1,3})?\])+", "", line).strip()
 
 
+def _ffmpeg_exe():
+    """找一个可用的 ffmpeg：优先 imageio-ffmpeg 自带的，其次 PATH 里的"""
+    try:
+        import imageio_ffmpeg
+        p = imageio_ffmpeg.get_ffmpeg_exe()
+        if p and os.path.exists(p):
+            return p
+    except Exception:
+        pass
+    import shutil
+    return shutil.which("ffmpeg")
+
+
+def convert_to_mp3(src, dest, bitrate="320k"):
+    """把 flac/wav 转成 mp3（尽量保留标签和封面）→ (成功?, 说明)"""
+    exe = _ffmpeg_exe()
+    if not exe:
+        return False, "找不到 ffmpeg（可 pip install imageio-ffmpeg）"
+    import subprocess
+    # 先把封面/标签一起带过去；失败再退回只带音频
+    variants = [
+        ["-map", "0:a", "-map", "0:v?", "-c:v", "copy", "-disposition:v", "attached_pic"],
+        ["-map", "0:a"],
+    ]
+    last = ""
+    for extra in variants:
+        cmd = [exe, "-y", "-hide_banner", "-loglevel", "error", "-i", src] + extra + [
+            "-map_metadata", "0", "-c:a", "libmp3lame", "-b:a", bitrate,
+            "-id3v2_version", "3", dest,
+        ]
+        r = subprocess.run(cmd, capture_output=True, text=True)
+        if r.returncode == 0 and os.path.exists(dest) and os.path.getsize(dest) > 10240:
+            return True, f"已转成 MP3 {bitrate}"
+        last = (r.stderr or "").strip()[:200]
+        if os.path.exists(dest):
+            os.remove(dest)
+    return False, f"转换失败：{last}"
+
+
 def strip_leading_credits(text):
     """去掉开头挤成一团的制作人员名单。
     规则：正文起点 = 第一条「时间>15s 且与上一行间隔>3s」的歌词；
@@ -489,7 +528,8 @@ def write_music_md(name, artist, audio_url, cover_url, lrc_url):
     print(f"  [MD] 已生成 src/content/bangumi/music/{name}.md（记得手动调 score/status）")
 
 
-def process_local(path, server, dry=False, keep_credits=False, with_translation=True):
+def process_local(path, server, dry=False, keep_credits=False, with_translation=True,
+                  keep_lossless=False):
     """本地文件模式：提取内嵌封面 + 多源下载歌词 + 追加歌单"""
     base = os.path.splitext(os.path.basename(path))[0]
     meta_title, meta_artist, meta_dur = read_metadata(path)
@@ -541,21 +581,41 @@ def process_local(path, server, dry=False, keep_credits=False, with_translation=
             print("         → 可手动把 .lrc 丢进 public/assets/music/lrc/，再在 md 里写 lrcUrl")
 
     # 3. 音频：统一按「曲名.扩展名」落到 public/assets/music/，和封面/歌词/md 同名
+    #    flac / wav 默认转成 MP3 320k（网页友好、体积只有 1/3，且能避开 Cloudflare 25MiB 单文件上限）
     if not dry:
+        import shutil
         ext = os.path.splitext(path)[1].lower()
         src_abs = os.path.abspath(path)
-        if os.path.dirname(src_abs) == os.path.abspath(MUSIC_DIR):
+        in_lib = os.path.dirname(src_abs) == os.path.abspath(MUSIC_DIR)
+        lossless = ext in (".flac", ".wav")
+
+        if lossless and not keep_lossless:
+            dest_name = f"{name}.mp3"
+        elif in_lib:
             dest_name = os.path.basename(path)   # 已经在音乐目录里，保持原名不动
         else:
             dest_name = f"{name}{ext}"
         audio_dest = os.path.join(MUSIC_DIR, dest_name)
-        if src_abs != os.path.abspath(audio_dest):
-            if os.path.exists(audio_dest):
-                print(f"  [音频] {dest_name} 已存在，沿用（不覆盖）")
+
+        if os.path.exists(audio_dest) and src_abs != os.path.abspath(audio_dest):
+            print(f"  [音频] {dest_name} 已存在，沿用（不覆盖）")
+        elif src_abs != os.path.abspath(audio_dest):
+            if lossless and not keep_lossless:
+                ok, msg = convert_to_mp3(path, audio_dest)
+                if ok:
+                    print(f"  [音频] {msg} → {dest_name}"
+                          f"（{os.path.getsize(path) / 1048576:.1f} → "
+                          f"{os.path.getsize(audio_dest) / 1048576:.1f} MiB）")
+                else:
+                    dest_name = f"{name}{ext}"
+                    audio_dest = os.path.join(MUSIC_DIR, dest_name)
+                    shutil.copy2(path, audio_dest)
+                    print(f"  [音频] {msg}；已直接复制为 {dest_name}")
+                    print("         ⚠️ 无损文件超过 25 MiB 会导致 Cloudflare 部署失败")
             else:
-                import shutil
                 shutil.copy2(path, audio_dest)
                 print(f"  [音频] 已复制为 {dest_name}（原文件保留不动）")
+
         if " " in dest_name:
             print("  [音频] !! 文件名里有空格，建议手工改成下划线")
         audio_url = f"/assets/music/{dest_name}"
@@ -661,6 +721,8 @@ def main():
     ap.add_argument("--lyrics-only", action="store_true", help="只抓歌词（不下载音频）")
     ap.add_argument("--keep-credits", action="store_true", help="保留开头那段制作人员名单")
     ap.add_argument("--no-translation", action="store_true", help="不并入中文翻译（默认外语歌自动双语）")
+    ap.add_argument("--keep-lossless", action="store_true",
+                    help="flac/wav 不转 MP3，原样放进音乐目录（注意 25MiB 上限）")
     ap.add_argument("--no-proxy", action="store_true", help="强制直连，不走系统代理")
     ap.add_argument("--dry-run", action="store_true", help="只预览，不下载不写配置")
     args = ap.parse_args()
@@ -678,9 +740,11 @@ def main():
             return
         print(f"共 {len(files)} 个音频文件")
         for f in files:
-            process_local(f, args.server, args.dry_run, args.keep_credits, not args.no_translation)
+            process_local(f, args.server, args.dry_run, args.keep_credits, not args.no_translation,
+                          args.keep_lossless)
     elif os.path.isfile(src):
-        process_local(src, args.server, args.dry_run, args.keep_credits, not args.no_translation)
+        process_local(src, args.server, args.dry_run, args.keep_credits, not args.no_translation,
+                      args.keep_lossless)
     else:
         # 当作歌名，进入搜索下载模式
         search_and_download(src, args.artist, args.server, out_dir=MUSIC_DIR,
