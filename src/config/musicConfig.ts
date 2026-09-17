@@ -48,11 +48,18 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 	local: {
 		playlist: [
 			{
+				name: "远航星的告别",
+				artist: "鸣潮先约电台/jixwang/Tarokiki/Emi Evans",
+				url: "/assets/music/远航星的告别.mp3",
+				cover: "/assets/music/cover/远航星的告别.jpg",
+				lrc: "/assets/music/lrc/远航星的告别.lrc",
+			},
+			{
 				name: "小小奇迹",
 				artist: "飞行雪绒",
 				url: "/assets/music/小小奇迹-飞行雪绒.mp3",
 				cover: "/assets/music/cover/xiaoxiaoqiji-cover.jpg",
-				lrc: "",
+				lrc: "/assets/music/lrc/小小奇迹.lrc",
 			},
 		],
 	},
