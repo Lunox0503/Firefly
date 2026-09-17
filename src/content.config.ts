@@ -82,12 +82,44 @@ const dynamicCollection: ContentCollection<DynamicData> = defineCollection({
 	}),
 });
 
+// 追番/读书/音乐等个人收藏条目（/music/ 可视化页面读取 category: music 的条目）
+const bangumiCollection = defineCollection({
+	loader: glob({
+		pattern: "**/*.{md,mdx,yaml,yml}",
+		base: "./src/content/bangumi",
+	}),
+	schema: ({ image }) =>
+		z.object({
+			title: z.string(),
+			name_cn: z.string().optional(),
+			category: z
+				.enum(["book", "anime", "music", "game", "real"])
+				.default("anime"),
+			subcategory: z.enum(["movie", "tv", "anime", "documentary"]).optional(),
+			status: z.number().min(1).max(5).default(2), // 1: 想看, 2: 看过, 3: 在看, 4: 搁置, 5: 抛弃
+			image: z.string(), // 封面图 URL（public 下的绝对路径或外链，不用 image() 以免解析 public 相对路径失败）
+			link: z.string().optional(), // 对应文章的链接；为空时自动从文件路径推导
+			score: z.number().min(0).max(10).optional(),
+			comment: z.string().optional(),
+			tags: z.array(z.string()).optional().default([]),
+			published: z.date().optional(),
+			// Music-specific fields
+			artist: z.string().optional(),
+			audioUrl: z.string().optional(),
+			lrcUrl: z.string().optional(),
+			metingServer: z.string().optional(),
+			metingId: z.string().optional(),
+		}),
+});
+
 export const collections: {
 	dynamic: typeof dynamicCollection;
 	posts: typeof postsCollection;
 	spec: typeof specCollection;
+	bangumi: typeof bangumiCollection;
 } = {
 	dynamic: dynamicCollection,
 	posts: postsCollection,
 	spec: specCollection,
+	bangumi: bangumiCollection,
 };

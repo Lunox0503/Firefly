@@ -97,6 +97,7 @@ export type SiteConfig = {
 		changelog?: boolean; // 项目更新日志页面开关
 		blogChangelog?: boolean; // 博客日志页面开关
 		analytics?: boolean; // 站点统计页面开关
+		musicPage?: boolean; // 音乐可视化页面开关
 	};
 
 	// 分类导航栏开关

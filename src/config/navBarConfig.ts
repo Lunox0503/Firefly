@@ -36,6 +36,13 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 	// 站点统计
 	links.push(LinkPresets.Analytics);
 
+	// 音乐可视化
+	links.push({
+		name: "音乐",
+		url: "/music/",
+		icon: "material-symbols:music-note",
+	});
+
 	// 友链
 	links.push(LinkPresets.Friends);
 

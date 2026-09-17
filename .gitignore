@@ -47,3 +47,6 @@ package/
 .codex*
 .claude
 .mimocode
+
+# python
+__pycache__/

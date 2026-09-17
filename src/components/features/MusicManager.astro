@@ -96,6 +96,7 @@ const managerConfigStr = JSON.stringify({
 
     // ── Audio element (persistent, attached to body) ────────
     var audio = document.createElement('audio');
+    audio.id = 'firefly-music-audio'; // /music/ 可视化页面通过此 id 连接 Web Audio 分析器
     audio.crossOrigin = 'anonymous';
     audio.style.display = 'none';
     audio.preload = 'none'; // 阻止浏览器预加载和自动恢复播放
@@ -458,7 +459,27 @@ const managerConfigStr = JSON.stringify({
     }
 
     // ── Public API ───────────────────────────────────────────
+    var _externalLoaded = false; // /music/ 页面是否已注入收藏歌单
+    function loadExternalPlaylist(playlist) {
+        if (!playlist || playlist.length === 0) return;
+        _externalLoaded = true;
+        state.playlist = playlist;
+        state.currentIndex = 0;
+        if (!state.initialized) {
+            audio.volume = state.volume;
+            state.initialized = true;
+        }
+        emit('fm:init', {
+            playlist: state.playlist,
+            playMode: state.playMode,
+            volume: state.volume,
+            isMuted: state.isMuted
+        });
+        loadTrack(0, false);
+    }
+
     window.__fireflyMusic = {
+        get _externalLoaded() { return _externalLoaded; },
         init: init,
         getState: function () {
             var track = state.playlist[state.currentIndex] || null;
@@ -491,7 +512,8 @@ const managerConfigStr = JSON.stringify({
         seek: seek,
         seekToTime: seekToTime,
         playTrackByIndex: playTrackByIndex,
-        loadTrack: loadTrack
+        loadTrack: loadTrack,
+        loadExternalPlaylist: loadExternalPlaylist
     };
 })();
 </script>

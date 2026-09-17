@@ -46,6 +46,9 @@ const pages = resolvePageToggles({
 	// 站点统计页面开关
 	analytics: true,
 
+	// 音乐可视化页面开关
+	musicPage: true,
+
 	// ── 关于 (About) ──────────────────────────────────
 
 	// 打赏页面开关
