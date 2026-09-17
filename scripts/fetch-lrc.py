@@ -236,6 +236,26 @@ def fetch_cover(name, artist, want_dur=None):
 
 
 
+def _trim_echo_trans(orig, trans):
+    """译文开头若原样重复了原文的英文片段（网易云常见），把它删掉。
+    例：orig="I live freely, freely, my thoughts are shooting stars"
+        trans="I live freely，freely，我的思绪划过夜空的流星" → "我的思绪划过夜空的流星"
+    """
+    if not orig or not trans:
+        return trans
+    m = re.search(r"[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]", trans)
+    if not m or m.start() == 0:
+        return trans
+    head = trans[:m.start()]
+    if not re.search(r"[A-Za-z]", head):
+        return trans
+    key = lambda s: re.sub(r"[^0-9a-z]+", "", s.lower())
+    h, o = key(head), key(orig)
+    if len(h) >= 3 and o.startswith(h):
+        return trans[m.start():].lstrip(" ，,、")
+    return trans
+
+
 def merge_bilingual(lrc_text, tlyric_text, tolerance=0.05):
     """把译文按时间戳并进原文，生成「原文 (译文)」单行。
     播放器解析时会拆成原文+译文两行分别渲染（MusicManager.parseLRC → splitBilingual）。
@@ -260,7 +280,11 @@ def merge_bilingual(lrc_text, tlyric_text, tolerance=0.05):
                     t = v
                     used.add(k)
                     break
-        out.append(f"{line} ({t})" if t and t != body and _norm_text(t) != _norm_text(body) else line)
+        if t and t != body and _norm_text(t) != _norm_text(body):
+            t = _trim_echo_trans(body, t)
+            out.append(f"{line} ({t})" if t and _norm_text(t) != _norm_text(body) else line)
+        else:
+            out.append(line)
     if not out:
         return ""
     meta = [ln for ln in lrc_text.splitlines() if META_RE.match(ln.strip())]
@@ -715,8 +739,9 @@ def main():
     os.makedirs(LRC_DIR, exist_ok=True)
 
     ap = argparse.ArgumentParser(description="音乐歌词/封面一键提取（Firefly 博客专用）")
-    ap.add_argument("source", help="本地音频文件/目录，或搜索模式下的歌名")
-    ap.add_argument("artist", nargs="?", default="", help="歌手名（可选，能显著提高匹配准确度）")
+    ap.add_argument("sources", nargs="+",
+                    help="本地音频文件（可一次给多个）/ 目录，或搜索模式下的歌名")
+    ap.add_argument("--artist", default="", help="歌手名（搜索模式用，能显著提高匹配准确度）")
     ap.add_argument("--server", default="netease", help="搜索模式的 Meting 平台：netease/tencent/kugou")
     ap.add_argument("--lyrics-only", action="store_true", help="只抓歌词（不下载音频）")
     ap.add_argument("--keep-credits", action="store_true", help="保留开头那段制作人员名单")
@@ -730,26 +755,40 @@ def main():
     global _PROXY_OFF
     _PROXY_OFF = args.no_proxy
 
-    src = args.source
-    if args.lyrics_only:
-        lyrics_only(src, args.artist, args.keep_credits, args.dry_run, not args.no_translation)
-    elif os.path.isdir(src):
-        files = [os.path.join(src, f) for f in sorted(os.listdir(src)) if f.lower().endswith(AUDIO_EXTS)]
-        if not files:
-            print(f"目录里没有音频文件：{src}")
-            return
-        print(f"共 {len(files)} 个音频文件")
-        for f in files:
-            process_local(f, args.server, args.dry_run, args.keep_credits, not args.no_translation,
-                          args.keep_lossless)
-    elif os.path.isfile(src):
-        process_local(src, args.server, args.dry_run, args.keep_credits, not args.no_translation,
-                      args.keep_lossless)
-    else:
-        # 当作歌名，进入搜索下载模式
-        search_and_download(src, args.artist, args.server, out_dir=MUSIC_DIR,
-                            dry=args.dry_run, keep_credits=args.keep_credits,
-                            with_translation=not args.no_translation)
+    srcs = list(args.sources)
+    artist = args.artist
+    # 兼容旧写法：fetch-lrc.py "歌名" "歌手" —— 两个参数都不是已存在的路径时，第二个当歌手名
+    if not artist and len(srcs) == 2 and not any(os.path.exists(s) for s in srcs):
+        artist = srcs.pop()
+
+    only_lyrics = args.lyrics_only
+    dry = args.dry_run
+    keep_credits = args.keep_credits
+    with_translation = not args.no_translation
+    keep_lossless = args.keep_lossless
+    server = args.server
+
+    for idx, src in enumerate(srcs):
+        if len(srcs) > 1:
+            print(f"\n===== [{idx + 1}/{len(srcs)}] {os.path.basename(src)} =====")
+        if only_lyrics:
+            lyrics_only(src, artist, keep_credits, dry, with_translation)
+        elif os.path.isdir(src):
+            files = [os.path.join(src, f) for f in sorted(os.listdir(src))
+                     if f.lower().endswith(AUDIO_EXTS)]
+            if not files:
+                print(f"目录里没有音频文件：{src}")
+                continue
+            print(f"共 {len(files)} 个音频文件")
+            for f in files:
+                process_local(f, server, dry, keep_credits, with_translation, keep_lossless)
+        elif os.path.isfile(src):
+            process_local(src, server, dry, keep_credits, with_translation, keep_lossless)
+        else:
+            # 当作歌名，进入搜索下载模式
+            search_and_download(src, artist, server, out_dir=MUSIC_DIR,
+                                dry=dry, keep_credits=keep_credits,
+                                with_translation=with_translation)
 
 
 if __name__ == "__main__":

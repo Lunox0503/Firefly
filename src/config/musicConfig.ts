@@ -48,6 +48,20 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 	local: {
 		playlist: [
 			{
+				name: "靛青宇宙",
+				artist: "鸣潮先约电台/飞行雪绒",
+				url: "/assets/music/靛青宇宙.mp3",
+				cover: "/assets/music/cover/靛青宇宙.jpg",
+				lrc: "/assets/music/lrc/靛青宇宙.lrc",
+			},
+			{
+				name: "纸飞机",
+				artist: "鸣潮先约电台/飞行雪绒",
+				url: "/assets/music/纸飞机.mp3",
+				cover: "/assets/music/cover/纸飞机.jpg",
+				lrc: "/assets/music/lrc/纸飞机.lrc",
+			},
+			{
 				name: "远航星的告别",
 				artist: "鸣潮先约电台/jixwang/Tarokiki/Emi Evans",
 				url: "/assets/music/远航星的告别.mp3",
@@ -60,6 +74,14 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 				url: "/assets/music/小小奇迹-飞行雪绒.mp3",
 				cover: "/assets/music/cover/xiaoxiaoqiji-cover.jpg",
 				lrc: "/assets/music/lrc/小小奇迹.lrc",
+			},
+			{
+				name: "使一颗心免于哀伤",
+				artist: "塞壬唱片 / 哼唱版",
+				url: "/assets/music/使一颗心免于哀伤-哼唱.mp3",
+				cover: "/assets/music/cover/109951169585655912.webp",
+				// 这段是 39s 哼唱片段，跟原曲 3:22 的歌词时间轴对不上，故不放歌词
+				lrc: "",
 			},
 		],
 	},

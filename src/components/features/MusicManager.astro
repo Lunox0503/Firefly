@@ -77,7 +77,8 @@ const managerConfigStr = JSON.stringify({
     // 双语歌词拆分：`原文 (译文)` → { text, trans }
     // 仅当「括号内是中文」且「括号外不是纯中文」时才拆，避免误伤中文歌里的普通括号
     function splitBilingual(text) {
-        var m = text.match(/^(.*?)\s*[（(]\s*([^（()）]+?)\s*[)）]\s*$/);
+        // 允许译文里再嵌一层括号，如 `Finished up (essays) ... (完成了（论文）…)`
+        var m = text.match(/^(.*?)\s*[（(]\s*((?:[^（()）]|[（(][^（()）]*[)）])+?)\s*[)）]\s*$/);
         if (m && m[1] && CJK_RE.test(m[2]) && (LATIN_RE.test(m[1]) || !CJK_RE.test(m[1]))) {
             return { text: m[1].trim(), trans: m[2].trim() };
         }
