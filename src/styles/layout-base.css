@@ -88,10 +88,10 @@
     @apply -translate-y-full;
   }
 
-  /* 非 sticky 导航栏隐藏/显示：只过渡 translate（Tailwind v4 的 translate-y-* 用原生
+  /* 导航栏隐藏/显示：只过渡 translate（Tailwind v4 的 translate-y-* 用原生
      translate 属性而非 transform），实现平滑下滑；不过渡 opacity，避免淡入期间
-     backdrop root 导致的毛玻璃失效白闪（sticky 导航栏永不隐藏，不受影响） */
-  body:not(.sticky-navbar) #navbar-wrapper {
+     backdrop root 导致的毛玻璃失效白闪 */
+  #navbar-wrapper {
     transition: translate 0.2s ease-out;
   }
 
@@ -111,10 +111,13 @@
     translate: none !important;
   }
 
+  /* sticky 导航栏同样支持滚动自动隐藏（scroll-utils 的 scrollFunction 负责加类）：
+     仅放开 translate，其余强制声明保持不变。翻译量 -100% 让整条 Dock 滑出视口上方，
+     #top-row 本身是 pointer-events-none 的透明壳，不会残留可点击区域 */
   body.sticky-navbar #navbar-wrapper.navbar-hidden {
     opacity: 1 !important;
     transform: none !important;
-    translate: none !important;
+    translate: 0 -100% !important;
   }
 }
 

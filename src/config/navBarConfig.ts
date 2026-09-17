@@ -33,9 +33,6 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 		],
 	});
 
-	// 站点统计
-	links.push(LinkPresets.Analytics);
-
 	// 音乐可视化
 	links.push({
 		name: "音乐",
@@ -86,6 +83,9 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 
 			// 关于页面
 			LinkPresets.About,
+
+			// 站点统计
+			LinkPresets.Analytics,
 
 			// 动态表情
 			LinkPresets.Lottie,
