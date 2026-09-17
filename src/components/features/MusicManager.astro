@@ -71,6 +71,19 @@ const managerConfigStr = JSON.stringify({
         return min + ':' + (sec < 10 ? '0' : '') + sec;
     }
 
+    var CJK_RE = /[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]/;
+    var LATIN_RE = /[A-Za-z]/;
+
+    // 双语歌词拆分：`原文 (译文)` → { text, trans }
+    // 仅当「括号内是中文」且「括号外不是纯中文」时才拆，避免误伤中文歌里的普通括号
+    function splitBilingual(text) {
+        var m = text.match(/^(.*?)\s*[（(]\s*([^（()）]+?)\s*[)）]\s*$/);
+        if (m && m[1] && CJK_RE.test(m[2]) && (LATIN_RE.test(m[1]) || !CJK_RE.test(m[1]))) {
+            return { text: m[1].trim(), trans: m[2].trim() };
+        }
+        return { text: text, trans: '' };
+    }
+
     function parseLRC(lrc) {
         if (!lrc) return [];
         var lines = lrc.split('\n');
@@ -79,14 +92,15 @@ const managerConfigStr = JSON.stringify({
         lines.forEach(function (line) {
             var matches = Array.from(line.matchAll(timeReg));
             if (matches.length > 0) {
-                var text = line.replace(timeReg, '').trim();
-                if (text) {
+                var raw = line.replace(timeReg, '').trim();
+                if (raw) {
+                    var parts = splitBilingual(raw);
                     matches.forEach(function (match) {
                         var m = parseInt(match[1]);
                         var s = parseInt(match[2]);
                         var ms = parseInt(match[3]);
                         var time = m * 60 + s + ms / (match[3].length === 3 ? 1000 : 100);
-                        result.push({ time: time, text: text });
+                        result.push({ time: time, text: parts.text, trans: parts.trans });
                     });
                 }
             }

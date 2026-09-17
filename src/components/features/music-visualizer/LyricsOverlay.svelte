@@ -4,6 +4,7 @@ import { onDestroy, onMount, tick } from "svelte";
 interface LyricLine {
 	time: number;
 	text: string;
+	trans?: string;
 }
 
 type LyricStatus = "loading" | "loaded" | "none" | "failed";
@@ -108,6 +109,9 @@ onDestroy(() => {
 				>
 					<span class="music-visualizer__lyric-marker"></span>
 					<span class="music-visualizer__lyric-text">{line.text}</span>
+					{#if line.trans}
+						<span class="music-visualizer__lyric-trans">{line.trans}</span>
+					{/if}
 				</div>
 			{/each}
 		</div>

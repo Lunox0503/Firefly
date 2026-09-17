@@ -64,6 +64,7 @@ CREDIT_RE = re.compile(
     re.I,
 )
 META_RE = re.compile(r"^\[(ti|ar|al|by|offset|length|total|re|ve|kana):", re.I)
+_TIME_TOKEN_RE = re.compile(r"^\[(\d{1,2}):(\d{1,2})(?:[.:](\d{1,3}))?\]")
 
 _PROXY_OFF = False  # --no-proxy 时置 True
 
@@ -107,24 +108,100 @@ def sanitize(name):
     return re.sub(r'[\\/:*?"<>|]', '', name)
 
 
-def clean_lrc(text):
-    """清掉开头那段挤在几秒内滚完的制作人员名单，只留正片歌词"""
-    out, seen_lyric = [], False
+def _timed_rows(text):
+    """把 lrc 文本解析成 [(秒, 原始行)]，只保留带时间戳的行"""
+    rows = []
     for line in text.splitlines():
-        if not line.strip():
-            continue
-        if META_RE.match(line):
-            out.append(line)
-            continue
-        if not re.match(r"^\[\d{1,2}:\d{1,2}([.:]\d{1,3})?\]", line):
-            continue
-        body = re.sub(r"^(\[\d{1,2}:\d{1,2}([.:]\d{1,3})?\])+", "", line).strip()
+        m = _TIME_TOKEN_RE.match(line.strip())
+        if m:
+            cs = m.group(3) or "0"
+            sec = int(m.group(1)) * 60 + int(m.group(2)) + int(cs) / (1000.0 if len(cs) == 3 else 100.0)
+            rows.append((sec, line.strip()))
+    return rows
+
+
+def _lrc_body(line):
+    return re.sub(r"^(\[\d{1,2}:\d{1,2}([.:]\d{1,3})?\])+", "", line).strip()
+
+
+def strip_leading_credits(text):
+    """去掉开头挤成一团的制作人员名单。
+    规则：正文起点 = 第一条「时间>15s 且与上一行间隔>3s」的歌词；
+    并校验被删前缀里至少 6 成行含制作关键词，不像名单就不删（防止误删正文）。
+    """
+    rows = _timed_rows(text)
+    if len(rows) < 4:
+        return text
+    start = 0
+    for i in range(1, len(rows)):
+        if rows[i][0] > 15 and rows[i][0] - rows[i - 1][0] > 3:
+            start = i
+            break
+    if start < 2:
+        return text
+    pre = [r[1] for r in rows[:start]]
+    hits = sum(1 for ln in pre if CREDIT_RE.search(_lrc_body(ln)))
+    if hits < max(2, int(len(pre) * 0.6)):
+        return text
+    meta = [ln for ln in text.splitlines() if META_RE.match(ln.strip())]
+    return "\n".join(meta + [r[1] for r in rows[start:]]) + "\n"
+
+
+def _norm_text(s):
+    return re.sub(r"[^0-9a-z\u3040-\u30ff\u4e00-\u9fff]", "", s.lower())
+
+
+def merge_bilingual(lrc_text, tlyric_text, tolerance=0.05):
+    """把译文按时间戳并进原文，生成「原文 (译文)」单行。
+    播放器解析时会拆成原文+译文两行分别渲染（MusicManager.parseLRC → splitBilingual）。
+    """
+    base = _timed_rows(lrc_text)
+    tmap = {}
+    for sec, line in _timed_rows(tlyric_text):
+        t = _lrc_body(line)
+        if t:
+            tmap[sec] = t
+    if not tmap:
+        return ""
+    out, used = [], set()
+    for sec, line in base:
+        body = _lrc_body(line)
         if not body:
             continue
-        if not seen_lyric and CREDIT_RE.search(body):
+        t = tmap.get(sec)
+        if t is None:
+            for k, v in tmap.items():
+                if k not in used and abs(k - sec) <= tolerance:
+                    t = v
+                    used.add(k)
+                    break
+        out.append(f"{line} ({t})" if t and t != body and _norm_text(t) != _norm_text(body) else line)
+    if not out:
+        return ""
+    meta = [ln for ln in lrc_text.splitlines() if META_RE.match(ln.strip())]
+    return "\n".join(meta + out) + "\n"
+
+
+def clean_lrc(text):
+    """清掉制作名单，只留正片歌词（保留 [ti:] 等元信息行）"""
+    text = strip_leading_credits(text)
+    out, skipping = [], True
+    for line in text.splitlines():
+        s = line.strip()
+        if not s:
             continue
-        seen_lyric = True
-        out.append(line)
+        if META_RE.match(s):
+            out.append(line)
+            continue
+        if not re.match(r"^\[\d{1,2}:\d{1,2}([.:]\d{1,3})?\]", s):
+            continue
+        if skipping and CREDIT_RE.search(_lrc_body(s)):
+            continue  # 开头连续的 作词/作曲/演唱… 行
+        skipping = False
+        if _lrc_body(s):
+            out.append(line)
+    if not out:
+        return ""
     return "\n".join(out) + "\n"
 
 
@@ -143,13 +220,14 @@ def _lrc_from_netease(name, artist, want_dur=None):
         pick = s
         break
     if pick is None:
-        return None, "无同名歌曲"
-    ld = http_json("https://music.163.com/api/song/lyric?id=%s&lv=1&kv=1&tv=-1" % pick["id"],
+        return None, None, "无同名歌曲"
+    ld = http_json("https://music.163.com/api/song/lyric?id=%s&lv=-1&kv=-1&tv=-1" % pick["id"],
                    referer="https://music.163.com/")
     lrc = ((ld.get("lrc") or {}).get("lyric")) or ""
+    tlyric = ((ld.get("tlyric") or {}).get("lyric")) or ""  # 官方中文翻译（外语歌才有）
     if len(lrc) < 80:
-        return None, "歌词为空"
-    return lrc, "网易云 id=%s" % pick["id"]
+        return None, None, "歌词为空"
+    return lrc, tlyric, "网易云 id=%s" % pick["id"]
 
 
 def _lrc_from_qq(name, artist, want_dur=None):
@@ -166,14 +244,15 @@ def _lrc_from_qq(name, artist, want_dur=None):
         pick = s
         break
     if pick is None:
-        return None, "无同名歌曲"
+        return None, None, "无同名歌曲"
     ld = http_json("https://c.y.qq.com/lyric/fcgi-bin/fcg_query_lyric_new.fcg?songmid=%s"
                    "&format=json&nobase64=1&g_tk=5381" % pick["songmid"],
                    referer="https://y.qq.com/portal/player.html")
     lrc = ld.get("lyric") or ""
+    trans = ld.get("trans") or ""  # QQ 音乐的翻译歌词
     if len(lrc) < 80:
-        return None, "歌词为空"
-    return lrc, "QQ音乐 mid=%s" % pick["songmid"]
+        return None, None, "歌词为空"
+    return lrc, trans, "QQ音乐 mid=%s" % pick["songmid"]
 
 
 def _lrc_from_kugou(name, artist, want_dur=None):
@@ -190,14 +269,14 @@ def _lrc_from_kugou(name, artist, want_dur=None):
         pick = it
         break
     if pick is None:
-        return None, "无匹配歌曲"
+        return None, None, "无匹配歌曲"
     ks = http_json("https://krcs.kugou.com/search?ver=1&man=yes&client=mobi&keyword=%s&duration=%s&hash=%s"
                    % (urllib.parse.quote(pick.get("songname") or name),
                       pick.get("duration") or "", pick.get("hash") or ""),
                    referer="https://m.kugou.com/")
     cds = (ks.get("data") or {}).get("candidates") or []
     if not cds:
-        return None, "无歌词候选"
+        return None, None, "无歌词候选"
     c0 = cds[0]
     import base64
     dl = http_json("https://lyrics.kugou.com/download?ver=1&client=pc&id=%s&accesskey=%s&fmt=lrc&charset=utf8"
@@ -205,8 +284,8 @@ def _lrc_from_kugou(name, artist, want_dur=None):
     content = base64.b64decode(dl.get("content") or "")
     lrc = content.decode("utf-8", "ignore")
     if len(lrc) < 80:
-        return None, "歌词为空"
-    return lrc, "酷狗 id=%s" % c0.get("id")
+        return None, None, "歌词为空"
+    return lrc, "", "酷狗 id=%s" % c0.get("id")
 
 
 def _lrc_from_lrclib(name, artist, want_dur=None):
@@ -226,8 +305,8 @@ def _lrc_from_lrclib(name, artist, want_dur=None):
         if best is None or score > best[0]:
             best = (score, r)
     if best is None:
-        return None, "无同步歌词"
-    return best[1]["syncedLyrics"], "lrclib id=%s" % best[1].get("id")
+        return None, None, "无同步歌词"
+    return best[1]["syncedLyrics"], "", "lrclib id=%s" % best[1].get("id")
 
 
 LYRIC_SOURCES = [
@@ -238,15 +317,22 @@ LYRIC_SOURCES = [
 ]
 
 
-def fetch_lyrics(name, artist, want_dur=None, keep_credits=False):
+def fetch_lyrics(name, artist, want_dur=None, keep_credits=False, with_translation=True):
     """按顺序尝试各歌词源，返回 (lrc_text, 来源说明) 或 (None, 失败原因汇总)"""
     reasons = []
     for label, fn in LYRIC_SOURCES:
         try:
-            lrc, note = fn(name, artist, want_dur)
+            lrc, tlyric, note = fn(name, artist, want_dur)
             if lrc:
                 print(f"  [歌词] {label} 命中（{note}），{len(lrc)} 字符")
-                return (lrc if keep_credits else clean_lrc(lrc)), label
+                if tlyric and with_translation:
+                    merged = merge_bilingual(lrc, tlyric)
+                    if merged:
+                        lrc = merged
+                        print(f"  [歌词] 已并入官方中文翻译（{len(tlyric)} 字符），外语歌会自动双语显示")
+                if not keep_credits:
+                    lrc = clean_lrc(lrc)
+                return lrc, label
             reasons.append(f"{label}: {note}")
         except Exception as e:
             reasons.append(f"{label}: {type(e).__name__} {e}")
@@ -357,7 +443,7 @@ def write_music_md(name, artist, audio_url, cover_url, lrc_url):
     print(f"  [MD] 已生成 src/content/bangumi/music/{name}.md（记得手动调 score/status）")
 
 
-def process_local(path, server, dry=False, keep_credits=False):
+def process_local(path, server, dry=False, keep_credits=False, with_translation=True):
     """本地文件模式：提取内嵌封面 + 多源下载歌词 + 追加歌单"""
     base = os.path.splitext(os.path.basename(path))[0]
     meta_title, meta_artist, meta_dur = read_metadata(path)
@@ -389,7 +475,8 @@ def process_local(path, server, dry=False, keep_credits=False):
     elif dry:
         print("  [歌词] (dry-run) 跳过下载")
     else:
-        lrc_text, note = fetch_lyrics(name, artist, want_dur=meta_dur, keep_credits=keep_credits)
+        lrc_text, note = fetch_lyrics(name, artist, want_dur=meta_dur, keep_credits=keep_credits,
+                                      with_translation=with_translation)
         if lrc_text:
             with open(lrc_dest, "w", encoding="utf-8", newline="\n") as f:
                 f.write(lrc_text)
@@ -411,7 +498,8 @@ def process_local(path, server, dry=False, keep_credits=False):
         write_music_md(name, artist, audio_url, cover_url, lrc_url)
 
 
-def search_and_download(title, artist, server, out_dir, dry=False, keep_credits=False):
+def search_and_download(title, artist, server, out_dir, dry=False, keep_credits=False,
+                        with_translation=True):
     """搜索下载模式：搜索 → 下载音频/封面/歌词 → 追加歌单"""
     query = f"{title} {artist}".strip()
     print(f"搜索: {query}")
@@ -456,7 +544,8 @@ def search_and_download(title, artist, server, out_dir, dry=False, keep_credits=
 
     # 歌词统一走多源兜底（Meting 返回的 lrc 链接多为失效死链）
     if not os.path.exists(lrc_dest):
-        lrc_text, note = fetch_lyrics(name, artist_name, keep_credits=keep_credits)
+        lrc_text, note = fetch_lyrics(name, artist_name, keep_credits=keep_credits,
+                                      with_translation=with_translation)
         if lrc_text:
             with open(lrc_dest, "w", encoding="utf-8", newline="\n") as f:
                 f.write(lrc_text)
@@ -472,7 +561,7 @@ def search_and_download(title, artist, server, out_dir, dry=False, keep_credits=
         write_music_md(name, artist_name, audio_url, cover_url, lrc_url)
 
 
-def lyrics_only(title, artist, keep_credits=False, dry=False):
+def lyrics_only(title, artist, keep_credits=False, dry=False, with_translation=True):
     """只抓歌词：不下载音频，直接把 .lrc 落到 public/assets/music/lrc/"""
     name = sanitize(title)
     lrc_dest = os.path.join(LRC_DIR, f"{name}.lrc")
@@ -480,7 +569,8 @@ def lyrics_only(title, artist, keep_credits=False, dry=False):
     if os.path.exists(lrc_dest):
         print("  [歌词] 已存在，跳过（想重新抓就删掉该 .lrc 再跑一次）")
         return
-    lrc_text, note = fetch_lyrics(name, artist, keep_credits=keep_credits)
+    lrc_text, note = fetch_lyrics(name, artist, keep_credits=keep_credits,
+                                  with_translation=with_translation)
     if not lrc_text:
         print(f"  [歌词] 全部源都没拿到：{note}")
         return
@@ -505,6 +595,7 @@ def main():
     ap.add_argument("--server", default="netease", help="搜索模式的 Meting 平台：netease/tencent/kugou")
     ap.add_argument("--lyrics-only", action="store_true", help="只抓歌词（不下载音频）")
     ap.add_argument("--keep-credits", action="store_true", help="保留开头那段制作人员名单")
+    ap.add_argument("--no-translation", action="store_true", help="不并入中文翻译（默认外语歌自动双语）")
     ap.add_argument("--no-proxy", action="store_true", help="强制直连，不走系统代理")
     ap.add_argument("--dry-run", action="store_true", help="只预览，不下载不写配置")
     args = ap.parse_args()
@@ -514,7 +605,7 @@ def main():
 
     src = args.source
     if args.lyrics_only:
-        lyrics_only(src, args.artist, args.keep_credits, args.dry_run)
+        lyrics_only(src, args.artist, args.keep_credits, args.dry_run, not args.no_translation)
     elif os.path.isdir(src):
         files = [os.path.join(src, f) for f in sorted(os.listdir(src)) if f.lower().endswith(AUDIO_EXTS)]
         if not files:
@@ -522,13 +613,14 @@ def main():
             return
         print(f"共 {len(files)} 个音频文件")
         for f in files:
-            process_local(f, args.server, args.dry_run, args.keep_credits)
+            process_local(f, args.server, args.dry_run, args.keep_credits, not args.no_translation)
     elif os.path.isfile(src):
-        process_local(src, args.server, args.dry_run, args.keep_credits)
+        process_local(src, args.server, args.dry_run, args.keep_credits, not args.no_translation)
     else:
         # 当作歌名，进入搜索下载模式
         search_and_download(src, args.artist, args.server, out_dir=MUSIC_DIR,
-                            dry=args.dry_run, keep_credits=args.keep_credits)
+                            dry=args.dry_run, keep_credits=args.keep_credits,
+                            with_translation=not args.no_translation)
 
 
 if __name__ == "__main__":

@@ -451,10 +451,32 @@ html:has(.music-visualizer-page) .footer {
 	transition: transform 0.55s ease;
 }
 
+/* 双语歌词的译文行：跟在原文下方，字号更小、颜色更淡 */
+.music-visualizer__lyric-trans {
+	display: block;
+	min-width: 0;
+	max-width: 100%;
+	margin-top: 4px;
+	font-size: 0.64em;
+	font-weight: 400;
+	line-height: 1.4;
+	letter-spacing: 0;
+	color: rgba(255, 255, 255, 0.48);
+	text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+	transition:
+		color 0.45s ease,
+		opacity 0.45s ease,
+		transform 0.55s ease;
+}
+
 .music-visualizer__lyric-line--past {
 	color: rgba(39, 226, 255, 0.25);
 	opacity: 0.36;
 	filter: blur(0.8px);
+}
+
+.music-visualizer__lyric-line--past .music-visualizer__lyric-trans {
+	color: rgba(39, 226, 255, 0.24);
 }
 
 .music-visualizer__lyric-line--past .music-visualizer__lyric-marker {
@@ -477,6 +499,12 @@ html:has(.music-visualizer-page) .footer {
 .music-visualizer__lyric-line--active .music-visualizer__lyric-text {
 	transform: translateX(8px) scale(1.04);
 	transform-origin: left center;
+}
+
+.music-visualizer__lyric-line--active .music-visualizer__lyric-trans {
+	color: rgba(178, 240, 255, 0.92);
+	text-shadow: 0 0 14px rgba(39, 226, 255, 0.3);
+	transform: translateX(8px);
 }
 
 .music-visualizer__lyric-line--active .music-visualizer__lyric-marker {
