@@ -88,11 +88,13 @@
     @apply -translate-y-full;
   }
 
-  /* 导航栏隐藏/显示：只过渡 translate（Tailwind v4 的 translate-y-* 用原生
-     translate 属性而非 transform），实现平滑下滑；不过渡 opacity，避免淡入期间
-     backdrop root 导致的毛玻璃失效白闪 */
+  /* 导航栏隐藏/显示：过渡位移。transform 也要一起过渡——
+     生产构建的 lightningcss 可能把 translate 写法优化合并成 transform，
+     只写 translate 会导致线上瞬移、没有滑动动画（本地 dev 不复现，容易漏测） */
   #navbar-wrapper {
-    transition: translate 0.2s ease-out;
+    transition:
+      translate 0.2s ease-out,
+      transform 0.2s ease-out;
   }
 
   body.sticky-navbar #top-row {
@@ -104,20 +106,12 @@
     height: 4.5rem !important;
   }
 
+  /* sticky 导航栏：只锁定位与透明度，不再锁死 translate/transform ——
+     这样 .navbar-hidden（-translate-y-full → translate: 0 -100%）在 sticky 下同样生效，
+     sticky / 非 sticky 两条路径用同一个隐藏机制，不会出现位移翻倍 */
   body.sticky-navbar #navbar-wrapper {
     position: static !important;
     opacity: 1 !important;
-    transform: none !important;
-    translate: none !important;
-  }
-
-  /* sticky 导航栏同样支持滚动自动隐藏（scroll-utils 的 scrollFunction 负责加类）：
-     仅放开 translate，其余强制声明保持不变。翻译量 -100% 让整条 Dock 滑出视口上方，
-     #top-row 本身是 pointer-events-none 的透明壳，不会残留可点击区域 */
-  body.sticky-navbar #navbar-wrapper.navbar-hidden {
-    opacity: 1 !important;
-    transform: none !important;
-    translate: 0 -100% !important;
   }
 }
 
