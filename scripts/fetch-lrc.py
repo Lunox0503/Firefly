@@ -1,29 +1,28 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-fetch-lrc.py — 音乐工具脚本（Firefly 博客专用，参考 tsh520 博客教程思路改写）
+fetch-lrc.py — 音乐一键入库脚本（Firefly 博客专用）
 
-功能：
-  1. 本地文件模式：读取 m4a/mp3/flac 的内嵌封面 → 多源搜索下载同步歌词(.lrc)
-     → 自动追加到 src/config/musicConfig.ts 的 local.playlist + 写 bangumi md
-  2. 搜索下载模式：按歌名(+歌手)搜索 → 下载音频/封面/歌词 → 追加歌单
-
-歌词来源（按顺序兜底，任一命中即停）：
-  网易云 → QQ音乐 → 酷狗 → lrclib.net
-  （公共 Meting API 大多已失效，故不再作为主源）
-
-输出目录：
-  public/assets/music/          音频（搜索模式下载到这里；本地模式不移动原文件）
-  public/assets/music/cover/    封面 .jpg
-  public/assets/music/lrc/      同步歌词 .lrc
+把音频丢给它，自动完成：
+  1. 读取 mp3/m4a/flac 的歌名、歌手、时长（内嵌标签）
+  2. 封面：优先音频内嵌封面 → 没有就去网易云/QQ音乐取专辑封面
+  3. 歌词：网易云 → QQ音乐 → 酷狗 → lrclib 依次兜底，外语歌自动并入官方中文翻译
+  4. 音频按「曲名.扩展名」复制进 public/assets/music/，封面 → cover/，歌词 → lrc/
+  5. 追加到底部播放器歌单 src/config/musicConfig.ts，并生成 /music/ 页面条目
+     src/content/bangumi/music/<曲名>.md
 
 用法：
-  python fetch-lrc.py "D:/Music/歌.m4a"            # 单个本地文件
-  python fetch-lrc.py "D:/Music/"                  # 批量处理整个目录
-  python fetch-lrc.py "晴天" "周杰伦"              # 搜索下载模式
-  python fetch-lrc.py "晴天" --dry-run             # 只搜索预览，不下载
-  python fetch-lrc.py "歌.m4a" --keep-credits      # 保留开头制作人员名单
-  python fetch-lrc.py "歌.m4a" --no-proxy          # 强制直连（默认走系统代理）
+  python scripts/fetch-lrc.py "D:/Music/歌.mp3"      # 单个文件（最常用）
+  python scripts/fetch-lrc.py "D:/Music/"            # 整个目录批量
+  python scripts/fetch-lrc.py "歌名" "歌手" --lyrics-only   # 只重抓歌词
+  python scripts/fetch-lrc.py "D:/Music/歌.mp3" --dry-run   # 只预览不写文件
+
+常用开关：
+  --lyrics-only     只抓歌词，不下载/复制音频
+  --no-translation  不并入中文翻译（默认外语歌自动双语）
+  --keep-credits    保留开头的制作人员名单
+  --no-proxy        强制直连（默认跟随系统代理）
+  --dry-run         只预览，不写任何文件
 
 依赖：pip install mutagen（无需 ffmpeg）
 """
@@ -149,6 +148,53 @@ def strip_leading_credits(text):
 
 def _norm_text(s):
     return re.sub(r"[^0-9a-z\u3040-\u30ff\u4e00-\u9fff]", "", s.lower())
+
+
+def fetch_cover(name, artist, want_dur=None):
+    """无内嵌封面时自动取专辑封面：网易云 song/detail 优先，QQ音乐 albummid 兜底 → (图片字节, 来源说明)"""
+    kw = f"{name} {artist}".strip()
+
+    # ① 网易云：搜索拿 id → song/detail 拿 album.picUrl
+    try:
+        d = http_json("https://music.163.com/api/search/get?s=%s&type=1&limit=10&offset=0"
+                      % urllib.parse.quote(kw), referer="https://music.163.com/")
+        for s in ((d.get("result") or {}).get("songs")) or []:
+            if (s.get("name") or "").strip() != name:
+                continue
+            dur = (s.get("duration") or 0) / 1000.0
+            if want_dur and abs(dur - want_dur) > 8:
+                continue
+            sid = s.get("id")
+            det = http_json("https://music.163.com/api/song/detail?ids=%%5B%s%%5D" % sid,
+                            referer="https://music.163.com/")
+            album = ((det.get("songs") or [{}])[0]).get("album") or {}
+            pic = album.get("picUrl") or ""
+            if pic:
+                sep = "&" if "?" in pic else "?"
+                return http_get(pic + sep + "param=600y600"), "网易云专辑封面"
+            break
+    except Exception as e:  # noqa: BLE001
+        print(f"  [封面] 网易云取封面失败：{e}")
+
+    # ② QQ音乐：albummid 拼固定格式地址
+    try:
+        d = http_json("https://c.y.qq.com/soso/fcgi-bin/client_search_cp?w=%s&format=json&n=10&p=1"
+                      % urllib.parse.quote(kw), referer="https://y.qq.com/")
+        for s in (((d.get("data") or {}).get("song") or {}).get("list") or []):
+            if (s.get("songname") or "").strip() != name:
+                continue
+            if want_dur and abs((s.get("interval") or 0) - want_dur) > 8:
+                continue
+            mid = s.get("albummid")
+            if mid:
+                url = f"https://y.qq.com/music/photo_new/T002R500x500M000{mid}.jpg"
+                return http_get(url, referer="https://y.qq.com/"), "QQ音乐专辑封面"
+            break
+    except Exception as e:  # noqa: BLE001
+        print(f"  [封面] QQ音乐取封面失败：{e}")
+
+    return None, "未找到封面"
+
 
 
 def merge_bilingual(lrc_text, tlyric_text, tolerance=0.05):
@@ -429,7 +475,7 @@ def write_music_md(name, artist, audio_url, cover_url, lrc_url):
         "---\n"
         f"title: {name}\n"
         "category: music\n"
-        "status: 2\n"
+        "status: 3\n"
         "score: 0\n"
         f"image: {cover_url}\n"
         f"artist: {artist}\n"
@@ -457,17 +503,26 @@ def process_local(path, server, dry=False, keep_credits=False, with_translation=
     cover_url = f"/assets/music/cover/{name}.jpg"
     lrc_url = f"/assets/music/lrc/{name}.lrc"
 
-    # 1. 封面：优先内嵌
+    # 1. 封面：优先音频内嵌，没有就去网易云取专辑封面
     if os.path.exists(cover_dest):
         print("  [封面] 已存在，跳过")
+    elif dry:
+        print("  [封面] (dry-run) 跳过")
     else:
         img = extract_embedded_cover(path)
-        if img and not dry:
+        note = "音频内嵌封面"
+        if not img:
+            try:
+                img, note = fetch_cover(name, artist, meta_dur)
+            except Exception as e:  # noqa: BLE001
+                img, note = None, f"网易云取封面失败 {e}"
+        if img:
             with open(cover_dest, "wb") as f:
                 f.write(img)
-            print(f"  [封面] 从文件内嵌提取 → {os.path.relpath(cover_dest, BLOG_ROOT)}")
+            print(f"  [封面] 已保存（{note}）→ cover/{name}.jpg")
         else:
-            print("  [封面] 无内嵌封面，稍后由搜索结果补")
+            print(f"  [封面] 没拿到（{note}）")
+            print(f"         → 手动放一张图到 public/assets/music/cover/{name}.jpg 即可")
 
     # 2. 歌词：网易云 → QQ音乐 → 酷狗 → lrclib 依次兜底
     if os.path.exists(lrc_dest):
@@ -485,15 +540,25 @@ def process_local(path, server, dry=False, keep_credits=False, with_translation=
             print(f"  [歌词] 全部源都没拿到：{note}")
             print("         → 可手动把 .lrc 丢进 public/assets/music/lrc/，再在 md 里写 lrcUrl")
 
-    # 3. 歌单追加（本地模式音频路径直接指向 public/assets/music/ 下的原文件）
-    audio_name = sanitize(os.path.splitext(os.path.basename(path))[0])
-    audio_dest = os.path.join(MUSIC_DIR, os.path.basename(path))
+    # 3. 音频：统一按「曲名.扩展名」落到 public/assets/music/，和封面/歌词/md 同名
     if not dry:
-        if os.path.abspath(path) != os.path.abspath(audio_dest) and not os.path.exists(audio_dest):
-            import shutil
-            shutil.copy2(path, audio_dest)
-            print(f"  [音频] 已复制到 public/assets/music/（原文件保留不动）")
-        audio_url = f"/assets/music/{urllib.parse.quote(os.path.basename(audio_dest))}"
+        ext = os.path.splitext(path)[1].lower()
+        src_abs = os.path.abspath(path)
+        if os.path.dirname(src_abs) == os.path.abspath(MUSIC_DIR):
+            dest_name = os.path.basename(path)   # 已经在音乐目录里，保持原名不动
+        else:
+            dest_name = f"{name}{ext}"
+        audio_dest = os.path.join(MUSIC_DIR, dest_name)
+        if src_abs != os.path.abspath(audio_dest):
+            if os.path.exists(audio_dest):
+                print(f"  [音频] {dest_name} 已存在，沿用（不覆盖）")
+            else:
+                import shutil
+                shutil.copy2(path, audio_dest)
+                print(f"  [音频] 已复制为 {dest_name}（原文件保留不动）")
+        if " " in dest_name:
+            print("  [音频] !! 文件名里有空格，建议手工改成下划线")
+        audio_url = f"/assets/music/{dest_name}"
         append_to_playlist(name, artist, audio_url, cover_url, lrc_url)
         write_music_md(name, artist, audio_url, cover_url, lrc_url)
 
